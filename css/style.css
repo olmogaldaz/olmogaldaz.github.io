@@ -63,15 +63,16 @@ p{margin:0 0 14px 0; color:var(--text)}
 }
 
 .grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
+  display:flex;
   gap:20px;
   margin:24px 0;
 }
 
 .grid .card{
+  flex:1;
   margin:0;
 }
+
 
 
 .minor{
