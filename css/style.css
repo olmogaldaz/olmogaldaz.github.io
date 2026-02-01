@@ -52,16 +52,27 @@ p{margin:0 0 14px 0; color:var(--text)}
   margin:14px 0;
 }
 
+/* HOME hierarchy */
+
 .hero{
-  padding:28px;
+  padding:40px;
+}
+
+.hero h2{
+  font-size:1.8rem;
 }
 
 .grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap:16px;
+  gap:20px;
+  margin:24px 0;
 }
 
 .minor{
-  opacity:.9;
+  opacity:.85;
+}
+
+.minor h2{
+  font-size:1.1rem;
 }
