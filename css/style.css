@@ -90,3 +90,10 @@ p{margin:0 0 14px 0; color:var(--text)}
   border-radius:8px;
   text-decoration:none;
 }
+
+@media (max-width: 600px){
+  header h1{
+    font-size:1.6rem;
+  }
+}
+
