@@ -69,6 +69,11 @@ p{margin:0 0 14px 0; color:var(--text)}
   margin:24px 0;
 }
 
+.grid .card{
+  margin:0;
+}
+
+
 .minor{
   opacity:.85;
 }
