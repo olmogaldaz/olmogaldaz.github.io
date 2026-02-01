@@ -93,7 +93,7 @@ p{margin:0 0 14px 0; color:var(--text)}
 
 @media (max-width: 600px){
   header h1{
-    font-size:1.3rem !important;
+    font-size:1.5rem !important;
     line-height:1.25;
   }
 }
