@@ -5,7 +5,9 @@
   --max: 980px;
 }
 
-/* Reset básico */
+/* =========================
+   RESET BÁSICO
+   ========================= */
 *{
   box-sizing:border-box;
 }
@@ -22,52 +24,78 @@ body{
   line-height:1.6;
 }
 
-/* Enlaces */
+/* =========================
+   ENLACES
+   ========================= */
 a{
   color:inherit;
   text-decoration:underline;
 }
+
 a:hover{
   opacity:.8;
 }
 
-/* Contenedor general */
+/* =========================
+   CONTENEDOR GENERAL
+   ========================= */
 .wrap{
   max-width:var(--max);
   margin:0 auto;
   padding:32px 18px;
 }
 
-/* Cabecera */
+/* =========================
+   CABECERA
+   ========================= */
 header{
   border-bottom:1px solid var(--line);
   padding-bottom:18px;
   margin-bottom:24px;
 }
 
-nav{
+header h1{
+  font-size:2rem;
+  line-height:1.2;
+  margin:0 0 10px 0;
+}
+
+/* =========================
+   MENÚ (ESCRITORIO POR DEFECTO)
+   ========================= */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:0;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+
+.main-nav{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:14px;
 }
 
-nav a{
+.main-nav a{
   text-decoration:none;
   border-bottom:1px solid transparent;
 }
 
-nav a:hover{
+.main-nav a:hover{
   border-bottom:1px solid var(--text);
 }
 
-/* Tipografía */
-h1{
-  font-size:2rem;
-  line-height:1.2;
-  margin:0 0 10px 0;
+.small{
+  color:var(--muted);
+  font-size:.95rem;
+  margin-left:auto;
 }
 
+/* =========================
+   TIPOGRAFÍA GENERAL
+   ========================= */
 h2{
   font-size:1.25rem;
   margin:0 0 10px 0;
@@ -78,13 +106,9 @@ p{
   color:var(--text);
 }
 
-.small{
-  color:var(--muted);
-  font-size:.95rem;
-  margin-left:auto;
-}
-
-/* Layout HOME */
+/* =========================
+   HOME – ESTRUCTURA
+   ========================= */
 
 /* Filas horizontales */
 .row{
@@ -102,7 +126,7 @@ p{
   background:#fff;
 }
 
-/* Tarjetas principales (La historia / Sentencia) */
+/* Tarjetas principales */
 .card.hero{
   padding:40px;
 }
@@ -111,7 +135,7 @@ p{
   font-size:1.8rem;
 }
 
-/* Tarjeta inferior (Prensa) */
+/* Tarjeta inferior */
 .card.minor{
   opacity:.85;
   margin-top:24px;
@@ -121,7 +145,9 @@ p{
   font-size:1.1rem;
 }
 
-/* Botón */
+/* =========================
+   BOTONES
+   ========================= */
 .cta{
   display:inline-block;
   padding:8px 14px;
@@ -136,7 +162,9 @@ p{
   color:#fff;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE (MÓVIL)
+   ========================= */
 @media (max-width: 600px){
 
   header h1{
@@ -144,27 +172,7 @@ p{
     line-height:1.25;
   }
 
-  nav{
-    gap:10px;
-  }
-
-  .row{
-    flex-direction:column;
-  }
-
-  .card.hero{
-    padding:24px;
-  }
-
   /* Menú móvil */
-.menu-toggle{
-  display:none;
-  background:none;
-  border:0;
-  font-size:1.5rem;
-}
-
-@media (max-width:600px){
   .menu-toggle{
     display:block;
   }
@@ -173,10 +181,26 @@ p{
     display:none;
     width:100%;
     margin-top:12px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
   }
 
   .main-nav.open{
-    display:block;
+    display:flex;
   }
-}
+
+  .small{
+    margin-left:0;
+    margin-top:10px;
+  }
+
+  /* Home en una columna */
+  .row{
+    flex-direction:column;
+  }
+
+  .card.hero{
+    padding:24px;
+  }
 }
