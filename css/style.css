@@ -162,6 +162,13 @@ p{
   color:#fff;
 }
 
+nav a.active {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
 /* =========================
    RESPONSIVE (MÓVIL)
    ========================= */
