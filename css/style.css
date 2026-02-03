@@ -155,4 +155,28 @@ p{
   .card.hero{
     padding:24px;
   }
+
+  /* Menú móvil */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:0;
+  font-size:1.5rem;
+}
+
+@media (max-width:600px){
+  .menu-toggle{
+    display:block;
+  }
+
+  .main-nav{
+    display:none;
+    width:100%;
+    margin-top:12px;
+  }
+
+  .main-nav.open{
+    display:block;
+  }
+}
 }
