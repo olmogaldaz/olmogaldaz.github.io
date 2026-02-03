@@ -5,9 +5,15 @@
   --max: 980px;
 }
 
-*{box-sizing:border-box}
+/* Reset básico */
+*{
+  box-sizing:border-box;
+}
 
-html{font-size:16px}
+html{
+  font-size:16px;
+}
+
 body{
   margin:0;
   color:var(--text);
@@ -16,86 +22,137 @@ body{
   line-height:1.6;
 }
 
-a{color:inherit; text-decoration:underline}
-a:hover{opacity:.8}
+/* Enlaces */
+a{
+  color:inherit;
+  text-decoration:underline;
+}
+a:hover{
+  opacity:.8;
+}
 
+/* Contenedor general */
 .wrap{
   max-width:var(--max);
   margin:0 auto;
   padding:32px 18px;
 }
 
+/* Cabecera */
 header{
   border-bottom:1px solid var(--line);
   padding-bottom:18px;
   margin-bottom:24px;
 }
 
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:14px;
+}
+
 nav a{
-  margin-right:14px;
   text-decoration:none;
   border-bottom:1px solid transparent;
 }
+
 nav a:hover{
   border-bottom:1px solid var(--text);
 }
 
-h1{font-size:2rem; line-height:1.2; margin:0 0 10px 0}
-h2{font-size:1.25rem; margin:28px 0 10px 0}
-p{margin:0 0 14px 0; color:var(--text)}
-.small{color:var(--muted); font-size:.95rem}
-
-.card{
-  border:1px solid var(--line);
-  padding:16px;
-  border-radius:12px;
-  margin:14px 0;
+/* Tipografía */
+h1{
+  font-size:2rem;
+  line-height:1.2;
+  margin:0 0 10px 0;
 }
 
-/* HOME hierarchy */
-
-.hero{
-  padding:40px;
+h2{
+  font-size:1.25rem;
+  margin:0 0 10px 0;
 }
 
-.hero h2{
-  font-size:1.8rem;
+p{
+  margin:0 0 14px 0;
+  color:var(--text);
 }
 
-.grid{
+.small{
+  color:var(--muted);
+  font-size:.95rem;
+  margin-left:auto;
+}
+
+/* Layout HOME */
+
+/* Filas horizontales */
+.row{
   display:flex;
   gap:20px;
   margin:24px 0;
 }
 
-.grid .card{
+/* Tarjetas */
+.card{
   flex:1;
-  margin:0;
+  border:1px solid var(--line);
+  padding:16px;
+  border-radius:12px;
+  background:#fff;
 }
 
+/* Tarjetas principales (La historia / Sentencia) */
+.card.hero{
+  padding:40px;
+}
 
+.card.hero h2{
+  font-size:1.8rem;
+}
 
-.minor{
+/* Tarjeta inferior (Prensa) */
+.card.minor{
   opacity:.85;
+  margin-top:24px;
 }
 
-.minor h2{
+.card.minor h2{
   font-size:1.1rem;
 }
 
+/* Botón */
 .cta{
   display:inline-block;
   padding:8px 14px;
   border:1px solid var(--text);
   border-radius:8px;
   text-decoration:none;
+  font-size:.95rem;
 }
 
+.cta:hover{
+  background:#000;
+  color:#fff;
+}
+
+/* Responsive */
 @media (max-width: 600px){
+
   header h1{
-    font-size:1.8rem !important;
+    font-size:1.8rem;
     line-height:1.25;
   }
+
+  nav{
+    gap:10px;
+  }
+
+  .row{
+    flex-direction:column;
+  }
+
+  .card.hero{
+    padding:24px;
+  }
 }
-
-
