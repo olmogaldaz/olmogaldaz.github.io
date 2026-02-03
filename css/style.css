@@ -101,6 +101,10 @@ header h1{
   border-top: 1px solid #ddd;
 }
 
+.main-nav .small a {
+  display: inline;
+  padding: 0;
+}
 
 /* =========================
    TIPOGRAFÍA GENERAL
