@@ -79,6 +79,8 @@ header h1{
 }
 
 .main-nav a{
+  display: block;
+  padding: 0.6rem 0;
   text-decoration:none;
   border-bottom:1px solid transparent;
 }
@@ -92,6 +94,13 @@ header h1{
   font-size:.95rem;
   margin-left:auto;
 }
+
+.main-nav .small {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #ddd;
+}
+
 
 /* =========================
    TIPOGRAFÍA GENERAL
@@ -198,6 +207,10 @@ nav a.active {
     display:flex;
   }
 
+  .main-nav a.active {
+    font-weight: 600;
+  }
+  
   .small{
     margin-left:0;
     margin-top:10px;
