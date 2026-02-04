@@ -2,22 +2,28 @@
 <html lang="{{ page.lang }}">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{{ page.title }}</title>
+
+  <link rel="icon" type="image/png" href="/img/GA_512x512.png">
+  <link rel="apple-touch-icon" href="/img/GA_512x512.png">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="/css/style.css">
 
   <!-- hreflang -->
   {% if page.lang == "es" %}
     <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.alt }}">
-  {% elsif page.lang == "en" %}
+  {% else %}
     <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.alt }}">
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}">
   {% endif %}
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/es/">
-
-  <link rel="icon" type="image/png" href="/img/GA_512x512.png">
-  <link rel="apple-touch-icon" href="/img/GA_512x512.png">
 </head>
 <body>
   {{ content }}
 </body>
 </html>
+
