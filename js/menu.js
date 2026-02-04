@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isEN = location.pathname.startsWith('/en/');
 
   const navES = `
-    <h1>Caso Olmo Gómez Aldaz</h1>
+    <div class="site-title">Caso Olmo Gómez Aldaz</div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/es/">Inicio</a>
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   const navEN = `
-    <h1>Olmo Gómez Aldaz Case</h1>
+    <div class="site-title">Olmo Gómez Aldaz Case</div>
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
