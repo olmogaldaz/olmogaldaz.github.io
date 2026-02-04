@@ -1,92 +1,90 @@
 # gomezaldaz.com — Web structure
 
 Este repositorio contiene la estructura y el contenido estático de la web
-gomezaldaz.com y de sus subdominios asociados.
+gomezaldaz.com.
 
 El proyecto está organizado por idioma y por bloques conceptuales.
-Los subdominios públicos se mapean internamente a directorios de este repositorio.
-La estructura de carpetas es una capa interna (no visible para el usuario final)
-y responde a un criterio de orden y estabilidad a largo plazo.
+La estructura de carpetas es interna y responde a un criterio de orden,
+claridad y estabilidad a largo plazo.
+
+No se utilizan subdominios. Toda la web se publica mediante rutas.
 
 ---
 
 ## Estructura general del repositorio
 
 /
-├── es/        # Español (idioma base)
-├── en/        # English
-├── assets/    # Recursos compartidos (CSS, imágenes, etc.)
+├── index.html        # Índice principal (inglés)
+├── en/               # Contenido en inglés
+├── es/               # Contenido en español
+├── css/              # Hojas de estilo
+├── js/               # JavaScript (menú, interacción)
+├── img/              # Imágenes y recursos gráficos
+├── _layouts/         # Layouts Jekyll
+├── config.yml        # Configuración del sitio
+├── sitemap.xml
+├── robots.txt
 └── README.md
+
+---
+
+## Inglés — / y /en/
+
+El inglés es el idioma de entrada principal del sitio.
+
+Existe un índice en la raíz (`/index.html`) y una estructura completa
+replicada en `/en/`, organizada por bloques conceptuales.
+
+Estructura:
+
+/en/
+├── index.html        # General index
+├── author/           # Author
+├── story/            # Story
+├── sentence/         # Court ruling / judgment
+├── books/            # Books
+└── press/            # Press
 
 ---
 
 ## Español — /es/
 
-El español es el idioma base del proyecto.
+El español es una traducción editorial del contenido en inglés.
 
-Dentro de /es/ se encuentran el índice general y los distintos bloques
-conceptuales, cada uno de los cuales se publica externamente mediante
-un subdominio propio.
+La estructura replica exactamente los bloques conceptuales,
+con los nombres traducidos.
 
 Estructura:
 
 /es/
-├── index.html        # Índice general (español)
+├── index.html        # Índice general
 ├── autor/            # Autor
 ├── caso/             # Caso Gómez Aldaz
 ├── sentencia/        # Sentencia
 ├── libros/           # Libros
 └── prensa/           # Prensa
 
-Correspondencia pública (subdominios → carpetas):
-
-- gomezaldaz.com              → /es/
-- autor.gomezaldaz.com        → /es/autor/
-- caso.gomezaldaz.com         → /es/caso/
-- sentencia.gomezaldaz.com    → /es/sentencia/
-- libros.gomezaldaz.com       → /es/libros/
-- prensa.gomezaldaz.com       → /es/prensa/
-
 ---
 
-## English — /en/
+## Recursos comunes
 
-El inglés es una traducción editorial del contenido en español.
-No es un proyecto independiente ni dinámico, sino una versión equivalente
-en otro idioma.
+Los recursos compartidos por todos los idiomas se alojan en la raíz:
 
-La estructura replica la organización conceptual del español, con los
-nombres de los bloques traducidos.
+- `css/` → estilos globales
+- `js/` → lógica de navegación y comportamiento
+- `img/` → imágenes y elementos gráficos
 
-Estructura:
-
-/en/
-├── index.html        # General index (English)
-├── author/           # Author
-├── story/            # story
-├── sentence/         # Court ruling / judgment
-├── books/            # Books
-└── press/            # Press
-
-Correspondencia pública (subdominios → carpetas):
-
-- gomezaldaz.com/en/          → /en/
-- author.gomezaldaz.com       → /en/author/
-- case.gomezaldaz.com         → /en/case/
-- sentence.gomezaldaz.com     → /en/sentence/
-- books.gomezaldaz.com        → /en/books/
-- press.gomezaldaz.com        → /en/press/
+Estas rutas son absolutas y comunes a todo el sitio.
 
 ---
 
 ## Notas importantes
 
-- Cada bloque conceptual se publica en un subdominio propio.
-- Los menús de navegación utilizan siempre URLs absolutas y canónicas.
-- El selector de idioma enlaza explícitamente entre páginas equivalentes
-  (por ejemplo, autor ↔ author).
-- No se utilizan rutas relativas para saltar entre subdominios.
+- La web se organiza exclusivamente por **rutas**, no por subdominios.
+- La estructura por idiomas es explícita y estable.
+- Los menús utilizan URLs absolutas.
+- El selector de idioma enlaza páginas equivalentes entre `/en/` y `/es/`.
 - La estructura de carpetas no debe modificarse sin una razón clara,
-  ya que está pensada para estabilidad a largo plazo.
+  ya que es la base de la coherencia editorial y técnica del sitio.
 
-Este README documenta la arquitectura de referencia del proyecto.
+Este README documenta la arquitectura real del proyecto.
