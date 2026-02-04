@@ -4,10 +4,10 @@ Este repositorio contiene la estructura y el contenido estático de la web
 gomezaldaz.com.
 
 El proyecto está organizado por idioma y por bloques conceptuales.
-La estructura de carpetas es interna y responde a un criterio de orden,
-claridad y estabilidad a largo plazo.
+La estructura de carpetas es interna (no visible para el usuario final)
+y responde a un criterio de orden, claridad y estabilidad a largo plazo.
 
-No se utilizan subdominios. Toda la web se publica mediante rutas.
+La web se publica exclusivamente mediante rutas. No se utilizan subdominios.
 
 ---
 
@@ -20,7 +20,7 @@ No se utilizan subdominios. Toda la web se publica mediante rutas.
 ├── css/              # Hojas de estilo
 ├── js/               # JavaScript (menú, interacción)
 ├── img/              # Imágenes y recursos gráficos
-├── _layouts/         # Layouts Jekyll
+├── _layouts/         # Layouts (Jekyll)
 ├── config.yml        # Configuración del sitio
 ├── sitemap.xml
 ├── robots.txt
@@ -51,7 +51,7 @@ Estructura:
 
 El español es una traducción editorial del contenido en inglés.
 
-La estructura replica exactamente los bloques conceptuales,
+La estructura replica los mismos bloques conceptuales,
 con los nombres traducidos.
 
 Estructura:
@@ -68,7 +68,7 @@ Estructura:
 
 ## Recursos comunes
 
-Los recursos compartidos por todos los idiomas se alojan en la raíz:
+Los recursos compartidos por todos los idiomas se alojan en la raíz del proyecto:
 
 - `css/` → estilos globales
 - `js/` → lógica de navegación y comportamiento
