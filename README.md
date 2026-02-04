@@ -63,7 +63,7 @@ Estructura:
 /en/
 ├── index.html        # General index (English)
 ├── author/           # Author
-├── case/             # Case
+├── story/            # story
 ├── sentence/         # Court ruling / judgment
 ├── books/            # Books
 └── press/            # Press
