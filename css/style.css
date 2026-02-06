@@ -209,9 +209,8 @@ nav a.active{
 @media (max-width:600px){
 
   .site-title {
-    font-size: 1.8rem;   /* el tamaño que ya te guste */
-    font-weight: 700;
-    margin: 0;
+    font-size: 1.1rem;   /* el tamaño que ya te guste */
+
   }
   header h1{
     font-size:1.8rem;
