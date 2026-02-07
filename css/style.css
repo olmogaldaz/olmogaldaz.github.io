@@ -197,6 +197,12 @@ p{
   color:#fff;
 }
 
+a.cta {
+  min-width: 180px;
+  text-align: center;
+  display: inline-block;
+}
+
 nav a.active{
   font-weight:600;
   text-decoration:underline;
