@@ -8,6 +8,7 @@
   <url><loc>https://gomezaldaz.com/es/sentencia/</loc></url>
   <url><loc>https://gomezaldaz.com/es/libros/</loc></url>
   <url><loc>https://gomezaldaz.com/es/prensa/</loc></url>
+  <url><loc>https://gomezaldaz.com/es/prensa/medios/</loc></url>
 
   <!-- English -->
   <url><loc>https://gomezaldaz.com/en/</loc></url>
@@ -16,5 +17,6 @@
   <url><loc>https://gomezaldaz.com/en/sentence/</loc></url>
   <url><loc>https://gomezaldaz.com/en/books/</loc></url>
   <url><loc>https://gomezaldaz.com/en/press/</loc></url>
+  <url><loc>https://gomezaldaz.com/en/press/media/</loc></url>
 
 </urlset>
