@@ -41,9 +41,15 @@
         © 2026 · Olmo Gómez Aldaz · Web personal y documental
       </p>
       <p class="footer-lang">
-        <a href="/es/" {% if page.lang == "es" %}class="active"{% endif %}>ES</a>
-        | 
-        <a href="/en/" {% if page.lang == "en" %}class="active"{% endif %}>EN</a>
+        {% if page.lang == "es" %}
+          <strong class="active">ES</strong>
+          |
+          <a href="{{ page.alt }}">EN</a>
+        {% else %}
+          <a href="{{ page.alt }}">ES</a>
+          |
+          <strong class="active">EN</strong>
+        {% endif %}
       </p>
     </div>
   </footer>
