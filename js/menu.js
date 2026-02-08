@@ -22,11 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="/es/libros/">Libros</a>
       <a href="/es/autor/">Autor</a>
       <a href="/es/prensa/">Prensa</a>
-<div class="small">
-  <strong>ES</strong> |
-  <a href="${altHref || '/en/'}">EN</a>
-</div>
-
+      <div class="small">
+        <strong>ES</strong> |
+        <a href="${altHref || '/en/'}">EN</a>
+      </div>
     </nav>
   `;
 
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="/en/author/">Author</a>
       <a href="/en/press/">Press</a>
       <div class="small">
-        <a href="/es/">ES</a> |
+        <a href="${altHref || '/es/'}">ES</a> |
         <strong>EN</strong>
       </div>
     </nav>
