@@ -211,7 +211,8 @@ nav a.active{
 @media (max-width:600px){
 
   .site-title {
-    font-size: 1.8rem;   /* el tamaño que ya te guste */
+    margin:0;
+    font-size: 1.82rem;   /* el tamaño que ya te guste */
 
   }
   header h1{
@@ -230,6 +231,8 @@ nav a.active{
     flex-direction:column;
     align-items:flex-start;
     gap:10px;
+
+    flex-basis:100%;    
   }
 
   .main-nav.open{
@@ -261,6 +264,13 @@ nav a.active{
 
   .card.hero{
     padding:24px;
+  }    
+
+  #site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
   }
 }
 
