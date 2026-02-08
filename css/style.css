@@ -104,11 +104,18 @@ header h1{
   flex-wrap:wrap;
   align-items:center;
   gap:14px;
+  padding-top:8px;      /* menos espacio al abrir */
+}
+
+.main-nav ul{
+  gap:8px;              /* antes era mucho mayor */
 }
 
 .main-nav a{
   text-decoration:none;
   border-bottom:1px solid transparent;
+  padding:4px 0;        /* reduce altura de cada ítem */
+  line-height:1.3;      /* evita aire innecesario */
 }
 
 .main-nav a:hover{
