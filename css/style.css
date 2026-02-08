@@ -237,6 +237,23 @@ nav a.active{
   text-decoration:underline;
 }
 
+.site-footer .footer-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.footer-lang a{
+  text-decoration:none;
+  font-weight:400;
+}
+
+.footer-lang a.active{
+  font-weight:600;
+  text-decoration:none; /* asegura que no se subraye */
+}
+
 /* =========================
    RESPONSIVE (MÓVIL)
    ========================= */
