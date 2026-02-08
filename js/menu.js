@@ -75,20 +75,5 @@ document.addEventListener('DOMContentLoaded', () => {
       a.classList.add('active');
     }
   });
-
-  // Fix footer language switcher
-  const footerLang = document.querySelector('.footer-lang');
-  if (footerLang && altHref) {
-    const links = footerLang.querySelectorAll('a');
-    links.forEach(a => {
-      if (a.textContent.trim() === 'ES') {
-        a.href = isEN ? altHref : location.pathname;
-      }
-      if (a.textContent.trim() === 'EN') {
-        a.href = isEN ? location.pathname : altHref;
-      }
-    });
-  }
-
   
 });
