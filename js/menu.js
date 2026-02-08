@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const isEN = location.pathname.startsWith('/en/');
 
+  const altLang = 
+    document.querySelector('link[hreflang][rel="alternate"]:not([hreflang="x-default"])');
+  const altHref = 
+    altLang ? altLang.getAttribute('href') : null;
+
+  
   const navES = `
     <div class="site-title">Caso Olmo Gómez Aldaz</div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
@@ -16,10 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="/es/libros/">Libros</a>
       <a href="/es/autor/">Autor</a>
       <a href="/es/prensa/">Prensa</a>
-      <div class="small">
-        <strong>ES</strong> |
-        <a href="/en/">EN</a>
-      </div>
+<div class="small">
+  <strong>ES</strong> |
+  <a href="${altHref || '/en/'}">EN</a>
+</div>
+
     </nav>
   `;
 
