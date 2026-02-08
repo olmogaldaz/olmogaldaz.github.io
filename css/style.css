@@ -210,6 +210,11 @@ nav a.active{
    ========================= */
 @media (max-width:600px){
 
+  header{
+    padding-bottom:8px;
+    margin-bottom:16px;
+  }
+
   .site-title {
     margin:0;
     font-size: 1.2rem;   /* el tamaño que ya te guste */
