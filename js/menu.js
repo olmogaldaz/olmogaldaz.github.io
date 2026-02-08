@@ -4,13 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!header) return;
 
   const isEN = location.pathname.startsWith('/en/');
-
-  const altLang = 
-    document.querySelector('link[hreflang][rel="alternate"]:not([hreflang="x-default"])');
-  const altHref = 
-    altLang ? altLang.getAttribute('href') : null;
-
+  const targetLang = isEN ? 'es' : 'en';
   
+  const altLink = document.querySelector(
+    `link[rel="alternate"][hreflang="${targetLang}"]`
+  );
+  
+  const altHref = altLink ? altLink.getAttribute('href') : null;
+    
   const navES = `
     <div class="site-title">Caso Olmo Gómez Aldaz</div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
