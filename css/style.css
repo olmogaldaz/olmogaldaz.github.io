@@ -276,33 +276,34 @@ nav a.active{
     display:block;
   }
 
+
   .main-nav{
     display:none;
     width:100%;
     margin-top:12px;
-  
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px 16px;
+    flex-direction:column;
+    align-items:flex-end;
+    text-align:right;
+    gap:4px;
+
+    flex-basis:100%;    
   }
-  
+
   .main-nav.open{
     display:flex;
   }
-  
+
   .main-nav a{
-    flex: 0 0 50%;   /* ← dos columnas */
+    display:block;
     padding:0.25rem 0;
     line-height:1.2;
-  }
-  
-  .main-nav .small{
-    flex: 0 0 100%;
     text-align:right;
+  }
+
+  .main-nav .small{
     margin-top:6px;
     padding-top:6px;
   }
-
   
   .main-nav .small a{
     display:inline;
@@ -310,6 +311,12 @@ nav a.active{
     text-align:right;
     padding:0;
   }
+
+
+
+
+  
+
 
   .main-nav a.active{
     font-weight:600;
