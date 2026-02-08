@@ -334,6 +334,16 @@ nav a.active{
     justify-content:space-between;
     flex-wrap:wrap;
   }
+
+  .site-footer .footer-row{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .footer-lang{
+    text-align: left;
+  }
 }
 
 #site-header{
