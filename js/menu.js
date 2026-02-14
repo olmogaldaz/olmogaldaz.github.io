@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
-      <a href="/es/caso/">Historia</a>
+      <a href="/es/historia/">Historia</a>
       <a href="/es/demanda/">Demanda</a>
       <a href="/es/sentencia/">Sentencia</a>
       <a href="/es/libros/">Libros</a>
