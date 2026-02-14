@@ -370,8 +370,8 @@ nav a.active{
 }
 
 @media (max-width:600px){
-  .logo-ga{
-    height: 80px !important;
+.site-title .logo-ga {
+  height: 80px !important;
   }
 }
 
