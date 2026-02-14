@@ -280,6 +280,7 @@ nav a.active{
 
   .site-title .logo-ga {
     height: 20px;
+      border: 5px solid red;
   }
 
   header h1{
@@ -368,8 +369,3 @@ nav a.active{
   z-index: 1000;
   background: #fff;
 }
-
-img {
-  height: 10px !important;
-}
-
