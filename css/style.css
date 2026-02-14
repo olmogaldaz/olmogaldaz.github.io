@@ -369,3 +369,7 @@ nav a.active{
   background: #fff;
 }
 
+img {
+  height: 200px !important;
+}
+
