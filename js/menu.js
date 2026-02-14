@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="site-title">Caso Olmo Gómez Aldaz</div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
-      <a href="/es/">Inicio</a>
+      <a href="/">Inicio</a>
       <a href="/es/caso/">Historia</a>
       <a href="/es/demanda/">Demanda</a>
       <a href="/es/sentencia/">Sentencia</a>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="/en/author/">Author</a>
       <a href="/en/press/">Press</a>
       <div class="small">
-        <a href="${altHref || '/es/'}">ES</a> |
+        <a href="${altHref || '/'}">ES</a> |
         <strong>EN</strong>
       </div>
     </nav>
