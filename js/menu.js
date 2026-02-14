@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const altHref = altLink ? altLink.getAttribute('href') : null;
     
   const navES = `
-    <div class="site-title">Caso Olmo Gómez Aldaz</div>
+    <div class="site-title">
+      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
+      <span>Olmo Gómez Aldaz</span>
+    </div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
@@ -31,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   const navEN = `
-    <div class="site-title">Olmo Gómez Aldaz Case</div>
+    <div class="site-title">
+      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
+      <span>Olmo Gómez Aldaz</span>
+    </div>
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
