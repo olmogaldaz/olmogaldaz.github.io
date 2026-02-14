@@ -1,11 +1,8 @@
 # gomezaldaz.com — Web structure
 
-Este repositorio contiene la estructura y el contenido estático de la web
-gomezaldaz.com.
+Este repositorio contiene la estructura y el contenido estático de la web gomezaldaz.com.
 
-El proyecto está organizado por idioma y por bloques conceptuales.
-La estructura de carpetas es interna (no visible para el usuario final)
-y responde a un criterio de orden, claridad y estabilidad a largo plazo.
+El proyecto está organizado por idioma y por bloques conceptuales. La estructura de carpetas es interna (no visible para el usuario final) y responde a un criterio de orden, claridad y estabilidad a largo plazo.
 
 La web se publica exclusivamente mediante rutas. No se utilizan subdominios.
 
@@ -14,9 +11,9 @@ La web se publica exclusivamente mediante rutas. No se utilizan subdominios.
 ## Estructura general del repositorio
 
 /
-├── index.html        # Índice principal (inglés)
-├── en/               # Contenido en inglés
-├── es/               # Contenido en español
+├── index.html        # Home principal (idioma por defecto)
+├── en/               # Contenido completo en inglés
+├── es/               # Contenido completo en español
 ├── css/              # Hojas de estilo
 ├── js/               # JavaScript (menú, interacción)
 ├── img/              # Imágenes y recursos gráficos
@@ -28,12 +25,17 @@ La web se publica exclusivamente mediante rutas. No se utilizan subdominios.
 
 ---
 
-## Inglés — / y /en/
+## Idioma por defecto — /
 
-El inglés es el idioma de entrada principal del sitio.
+La raíz del sitio (`/`) actúa como punto de entrada principal y como única home oficial.
 
-Existe un índice en la raíz (`/index.html`) y una estructura completa
-replicada en `/en/`, organizada por bloques conceptuales.
+No duplica estructuras internas. Las estructuras completas por idioma viven exclusivamente en `/en/` y `/es/`.
+
+---
+
+## Inglés — /en/
+
+Estructura completa en inglés, organizada por bloques conceptuales.
 
 Estructura:
 
@@ -43,26 +45,25 @@ Estructura:
 ├── story/            # Story
 ├── sentence/         # Court ruling / judgment
 ├── books/            # Books
-└── press/            # Press
+├── press/            # Press
+│   └── media/        # Media
 
 ---
 
 ## Español — /es/
 
-El español es una traducción editorial del contenido en inglés.
-
-La estructura replica los mismos bloques conceptuales,
-con los nombres traducidos.
+Traducción editorial estructural del contenido en inglés.
 
 Estructura:
 
 /es/
 ├── index.html        # Índice general
 ├── autor/            # Autor
-├── caso/             # Caso Gómez Aldaz
+├── historia/         # Historia
 ├── sentencia/        # Sentencia
 ├── libros/           # Libros
-└── prensa/           # Prensa
+├── prensa/           # Prensa
+│   └── medios/       # Medios
 
 ---
 
@@ -80,11 +81,11 @@ Estas rutas son absolutas y comunes a todo el sitio.
 
 ## Notas importantes
 
-- La web se organiza exclusivamente por **rutas**, no por subdominios.
+- La web se organiza exclusivamente por rutas, no por subdominios.
 - La estructura por idiomas es explícita y estable.
+- La raíz (`/`) es la única home oficial.
 - Los menús utilizan URLs absolutas.
 - El selector de idioma enlaza páginas equivalentes entre `/en/` y `/es/`.
-- La estructura de carpetas no debe modificarse sin una razón clara,
-  ya que es la base de la coherencia editorial y técnica del sitio.
+- La estructura de carpetas no debe modificarse sin una razón clara, ya que es la base de la coherencia editorial y técnica del sitio.
 
-Este README documenta la arquitectura real del proyecto.
+Este README documenta la arquitectura real y vigente del proyecto.
