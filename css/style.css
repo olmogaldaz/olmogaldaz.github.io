@@ -278,8 +278,8 @@ nav a.active{
     gap: 10px;
   }
 
-  .logo-ga {
-    height: 50px;
+  .site-title .logo-ga {
+    height: 20px;
   }
 
   header h1{
@@ -369,9 +369,5 @@ nav a.active{
   background: #fff;
 }
 
-@media (max-width:600px){
-.site-title .logo-ga {
-  height: 80px !important;
-  }
 }
 
