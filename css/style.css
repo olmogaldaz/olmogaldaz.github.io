@@ -86,7 +86,7 @@ header h1{
 }
 
 .site-title .logo-ga {
-  height: 80px;   /* ajusta si lo quieres más pequeño */
+  height: 60px;   /* ajusta si lo quieres más pequeño */
   width: auto;
   display: block;
 }
