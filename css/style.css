@@ -263,6 +263,38 @@ nav a.active{
 }
 
 /* =========================
+   FORMULARIOS
+   ========================= */
+
+form {
+  margin-top: 8px;
+}
+
+form label {
+  display: block;
+  margin: 12px 0 6px 0;
+  font-weight: 500;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+
+
+
+/* =========================
    RESPONSIVE (MÓVIL)
    ========================= */
 @media (max-width:600px){
