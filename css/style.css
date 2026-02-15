@@ -293,7 +293,7 @@ form textarea {
 
 .contact-form {
   display: grid;
-  grid-template-columns: 180px 500px;
+  grid-template-columns: 180px 600px;
   row-gap: 16px;
   column-gap: 16px;
   align-items: start;
