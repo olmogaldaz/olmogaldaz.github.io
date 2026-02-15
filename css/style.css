@@ -313,7 +313,7 @@ form textarea {
 /* =========================
    RESPONSIVE (MÓVIL)
    ========================= */
-@media (max-width:600px){
+@media (max-width:768px){
 
   header{
     padding-bottom:8px;
