@@ -291,6 +291,22 @@ form textarea {
   resize: vertical;
 }
 
+.contact-form {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 16px;
+  column-gap: 16px;
+  align-items: start;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
 
 
 
