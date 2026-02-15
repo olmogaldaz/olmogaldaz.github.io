@@ -408,6 +408,10 @@ form textarea {
   .footer-lang{
     text-align: left;
   }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
 }
 
 #site-header{
