@@ -351,6 +351,13 @@ form textarea {
   object-fit:contain;
 }
 
+.legal-quote{
+  margin:20px 0;
+  padding:16px 20px;
+  border-left:4px solid #000;
+  font-size:0.95em;
+}
+
 
 
 
