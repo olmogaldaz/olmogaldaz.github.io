@@ -319,11 +319,15 @@ form textarea {
 .genus-logo{
   text-align:center;
   margin:40px 0;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 .genus-logo img{
   height:160px;   /* o 160px si lo quieres más contenido */
   width:auto;
+  border-radius:8px;
 }
 
 .books-mini{
@@ -331,6 +335,7 @@ form textarea {
   gap:20px;
   margin-bottom:20px;
   justify-content:center;   /* centra las portadas */
+  align-items:flex-start;
 }
 
 .book-mini{
