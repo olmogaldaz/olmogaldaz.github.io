@@ -317,11 +317,10 @@ form textarea {
 }
 
 .editorial-visual{
-  text-align:center;
-  margin:40px 0;
   display:flex;
   justify-content:center;
-  align-items:flex-start
+  align-items:flex-start;
+  margin:20px 0;
 }
 
 .editorial-img{
