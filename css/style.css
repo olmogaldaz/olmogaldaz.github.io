@@ -365,6 +365,13 @@ form textarea {
   font-size:0.95em;
 }
 
+.legal-quote .signature{
+  margin-top:14px;
+  font-size:0.9rem;
+  opacity:.75;
+  text-align:right;   /* opcional */
+  font-style:normal;  /* importante si todo va en <em> */
+}
 
 
 
