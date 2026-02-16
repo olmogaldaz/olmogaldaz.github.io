@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
+      <a href="/es/autor/">Autor</a>
       <a href="/es/historia/">Historia</a>
       <a href="/es/demanda/">Demanda</a>
       <a href="/es/sentencia/">Sentencia</a>
       <a href="/es/libros/">Libros</a>
-      <a href="/es/autor/">Autor</a>
       <a href="/es/prensa/">Prensa</a>
       <div class="small">
         <strong>ES</strong> |
@@ -41,11 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
+      <a href="/en/author/">Author</a>
       <a href="/en/story/">Story</a>
       <a href="/en/claim/">Claim</a>
       <a href="/en/sentence/">Sentence</a>
       <a href="/en/books/">Books</a>
-      <a href="/en/author/">Author</a>
       <a href="/en/press/">Press</a>
       <div class="small">
         <a href="${altHref || '/'}">ES</a> |
