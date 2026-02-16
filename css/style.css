@@ -316,6 +316,17 @@ form textarea {
   resize: vertical;
 }
 
+.genus-logo{
+  text-align:center;
+  margin:40px 0;
+}
+
+.genus-logo img{
+  max-width:260px;
+  width:100%;
+  height:auto;
+}
+
 
 
 /* =========================
