@@ -182,12 +182,13 @@ p{
   flex-direction:column;
 }
 
-.card .cta{
-  margin-top:auto;
-}
-
 .row .card {
   margin-bottom: 0;
+}
+
+.card-cta{ 
+  margin-top:auto; 
+  margin-bottom:0; 
 }
 
 .card.hero{
