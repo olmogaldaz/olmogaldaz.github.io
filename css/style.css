@@ -316,33 +316,12 @@ form textarea {
   resize: vertical;
 }
 
-.genus-logo{
+.editorial-visual{
   text-align:center;
   margin:40px 0;
   display:flex;
   justify-content:center;
-  align-items:flex-start;
-}
-
-.genus-logo img{
-  height:160px;   /* o 160px si lo quieres más contenido */
-  width:auto;
-  border-radius:8px;
-}
-
-.books-mini{
-  display:flex;
-  gap:20px;
-  margin-bottom:20px;
-  justify-content:center;   /* centra las portadas */
-  align-items:flex-start;
-}
-
-.book-mini{
-  height:160px;              /* todas igual de altas */
-  width:auto;                /* mantiene proporción */
-  border-radius:8px;         /* esquinas redondeadas */
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  align-items:flex-start
 }
 
 .editorial-img{
@@ -352,20 +331,6 @@ form textarea {
   box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.editorial-visual{
-  text-align:center;
-  margin:40px 0;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start
-}
-
-.editorial-visual img{
-  height:160px;
-  width:auto;
-  border-radius:8px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
 
 
 
