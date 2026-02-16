@@ -331,6 +331,19 @@ form textarea {
   box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
+.test-circle{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#fff;
+}
+
+.test-circle img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
 
 
 
