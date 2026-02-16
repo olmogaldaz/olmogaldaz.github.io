@@ -327,6 +327,19 @@ form textarea {
   height:auto;
 }
 
+.books-mini{
+  display:flex;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.book-mini{
+  max-width:100px;
+  width:100%;
+  height:auto;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
 
 
 /* =========================
