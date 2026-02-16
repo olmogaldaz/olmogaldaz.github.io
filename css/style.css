@@ -220,6 +220,12 @@ p{
   color:#fff;
 }
 
+.cta-full{
+  display:block;
+  width:100%;
+  text-align:center;
+}
+
 nav a.active{
   font-weight:600;
   text-decoration:underline;
