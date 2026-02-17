@@ -6,13 +6,13 @@ if (form) {
 
     const data = new FormData(form);
 
-    // const response = await fetch("https://formspree.io/f/xpqjdbed", {
-    //   method: "POST",
-    //   body: data,
-    //   headers: { "Accept": "application/json" }
-    // });
-    
-    const response = { ok: false };
+    const response = await fetch("https://formspree.io/f/xpqjdbed", {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+
+    // const response = { ok: false }; // prueba simulada
     
     const ingles = window.location.pathname.startsWith("/en/");
 
@@ -42,13 +42,13 @@ if (formEditorial) {
 
     const data = new FormData(formEditorial);
 
-    // const response = await fetch("https://formspree.io/f/xvzbalgd", {
-    //   method: "POST",
-    //   body: data,
-    //   headers: { "Accept": "application/json" }
-    // });
+    const response = await fetch("https://formspree.io/f/xvzbalgd", {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
     
-    const response = { ok: false }; // prueba simulada
+    // const response = { ok: false }; // prueba simulada
     
     const ingles = window.location.pathname.startsWith("/en/");
 
