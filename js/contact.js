@@ -31,6 +31,12 @@ if (formEditorial) {
 
     const data = new FormData(formEditorial);
 
+    // const response = await fetch("https://formspree.io/f/xvzbalgd", {
+    //   method: "POST",
+    //   body: data,
+    //   headers: { "Accept": "application/json" }
+    // });
+    
     const response = { ok: false }; // prueba simulada
 
     if (response.ok) {
