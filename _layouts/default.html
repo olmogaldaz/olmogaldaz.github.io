@@ -24,6 +24,33 @@
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}">
   {% endif %}
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+
+  {% if page.lang == "es" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Olmo Gómez Aldaz",
+      "url": "https://gomezaldaz.com",
+      "image": "https://gomezaldaz.com/img/olmo.jpg",
+      "jobTitle": "Autor",
+      "description": "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación."
+    }
+    </script>
+    {% elsif page.lang == "en" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Olmo Gómez Aldaz",
+      "url": "https://gomezaldaz.com/en/",
+      "image": "https://gomezaldaz.com/img/olmo.jpg",
+      "jobTitle": "Author",
+      "description": "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation."
+    }
+    </script>
+    {% endif %}
+
 </head>
 <body>
   <!-- Google tag (gtag.js) -->
