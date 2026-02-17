@@ -91,7 +91,10 @@ description: Trayectoria personal del autor, archivo documental, proceso de rest
       <div class="card">
       <h2>Contacta con Olmo</h2>
     
-        <form action="https://formspree.io/f/xpqjdbed" method="POST" class="contact-form">
+        <form action="https://formspree.io/f/xpqjdbed"
+          method="POST"
+          class="contact-form"
+          id="form-autor">
     
         <label for="subject-author">Asunto</label>
         <input type="text" id="subject-author" name="subject" required>
@@ -104,7 +107,7 @@ description: Trayectoria personal del autor, archivo documental, proceso de rest
     
         <input type="text" name="_gotcha" style="display:none">
     
-        <div></div>
+        <div class="form-status"></div>
         <button type="submit" class="cta">Enviar</button>
     
         </form>
