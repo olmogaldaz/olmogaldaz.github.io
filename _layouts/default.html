@@ -25,41 +25,120 @@
   {% endif %}
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
 
-  {% if page.lang == "es" %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Olmo Gómez Aldaz",
-      "url": "https://gomezaldaz.com",
-      "image": "https://gomezaldaz.com/img/olmo.jpg",
-      "jobTitle": "Autor",
-      "description": "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación.",
-      "sameAs": [
-        "https://www.linkedin.com/in/olmogomezaldaz/",
-        "https://www.instagram.com/olmo.gomez.aldaz/",
-        "https://www.facebook.com/olmo.gomez.aldaz/"
+  <!-- schema -->
+  {% if page.schema == "organization" %}
+
+    {% if page.lang == "es" %}
+      <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://gomezaldaz.com/#person",
+          "name": "Olmo Gómez Aldaz",
+          "url": "https://gomezaldaz.com/",
+          "image": "https://gomezaldaz.com/img/olmo.jpg",
+          "jobTitle": "Autor",
+          "description": "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación.",
+          "sameAs": [
+            "https://www.linkedin.com/in/olmogomezaldaz/",
+            "https://www.instagram.com/olmo.gomez.aldaz/",
+            "https://www.facebook.com/olmo.gomez.aldaz/"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://gomezaldaz.com/#genus-homo",
+          "name": "Genus Homo",
+          "url": "https://gomezaldaz.com/es/genus-homo/",
+          "description": "Genus Homo es una editorial independiente fundada por Olmo Gómez Aldaz para la edición y publicación de sus obras.",
+          "logo": "https://gomezaldaz.com/img/genus-homo.jpg",
+          "foundingDate": "2025",
+          "founder": {
+            "@id": "https://gomezaldaz.com/#person"
+          }
+        }
       ]
-    }
-    </script>
+      </script>
+  
     {% elsif page.lang == "en" %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Olmo Gómez Aldaz",
-      "url": "https://gomezaldaz.com/en/",
-      "image": "https://gomezaldaz.com/img/olmo.jpg",
-      "jobTitle": "Author",
-      "description": "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation.",
-      "sameAs": [
-        "https://www.linkedin.com/in/olmogomezaldaz/",
-        "https://www.instagram.com/olmo.gomez.aldaz/",
-        "https://www.facebook.com/olmo.gomez.aldaz/"
+      <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://gomezaldaz.com/#person",
+          "name": "Olmo Gómez Aldaz",
+          "url": "https://gomezaldaz.com/en/",
+          "image": "https://gomezaldaz.com/img/olmo.jpg",
+          "jobTitle": "Author",
+          "description": "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation.",
+          "sameAs": [
+            "https://www.linkedin.com/in/olmogomezaldaz/",
+            "https://www.instagram.com/olmo.gomez.aldaz/",
+            "https://www.facebook.com/olmo.gomez.aldaz/"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://gomezaldaz.com/#genus-homo",
+          "name": "Genus Homo",
+          "url": "https://gomezaldaz.com/en/genus-homo/",
+          "description": "Genus Homo is an independent publishing imprint founded by Olmo Gómez Aldaz for the edition and publication of his works.",
+          "logo": "https://gomezaldaz.com/img/genus-homo.jpg",
+          "foundingDate": "2025",
+          "founder": {
+            "@id": "https://gomezaldaz.com/#person"
+          }
+        }
       ]
-    }
-    </script>
+      </script>
     {% endif %}
+  
+  {% else %}
+  
+    {% if page.lang == "es" %}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://gomezaldaz.com/#person",
+        "name": "Olmo Gómez Aldaz",
+        "url": "https://gomezaldaz.com",
+        "image": "https://gomezaldaz.com/img/olmo.jpg",
+        "jobTitle": "Autor",
+        "description": "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación.",
+        "sameAs": [
+          "https://www.linkedin.com/in/olmogomezaldaz/",
+          "https://www.instagram.com/olmo.gomez.aldaz/",
+          "https://www.facebook.com/olmo.gomez.aldaz/"
+        ]
+      }
+      </script>
+  
+    {% elsif page.lang == "en" %}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://gomezaldaz.com/#person",
+        "name": "Olmo Gómez Aldaz",
+        "url": "https://gomezaldaz.com/en/",
+        "image": "https://gomezaldaz.com/img/olmo.jpg",
+        "jobTitle": "Author",
+        "description": "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation.",
+        "sameAs": [
+          "https://www.linkedin.com/in/olmogomezaldaz/",
+          "https://www.instagram.com/olmo.gomez.aldaz/",
+          "https://www.facebook.com/olmo.gomez.aldaz/"
+        ]
+      }
+      </script>
+    {% endif %}
+  
+  {% endif %}
 
 </head>
 <body>
