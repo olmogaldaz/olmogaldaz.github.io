@@ -121,10 +121,14 @@
       "author": {
         "@id": "https://gomezaldaz.com/#person"
       },
+      "about": {
+        "@id": "https://gomezaldaz.com/#person"
+      },
       "mainEntityOfPage": "https://gomezaldaz.com{{ page.url }}",
       "inLanguage": "{{ page.lang }}"
     }
     {% endcapture %}
+
 
   
     {% assign schema_nodes = schema_nodes | append: case_node %}
