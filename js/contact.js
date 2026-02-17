@@ -1,25 +1,24 @@
 const form = document.getElementById("form-autor");
 
 if (form) {
-  const status = form.querySelector(".form-status");
-
   form.addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const data = new FormData(form);
 
-    const response = await fetch("https://formspree.io/f/xpqjdbed", {
-      method: "POST",
-      body: data,
-      headers: { "Accept": "application/json" }
-    });
+    // const response = await fetch("https://formspree.io/f/xpqjdbed", {
+    //   method: "POST",
+    //   body: data,
+    //   headers: { "Accept": "application/json" }
+    // });
+    
+    const response = { ok: true };
 
     if (response.ok) {
-      status.textContent = "Mensaje enviado correctamente.";
+      alert("Mensaje enviado correctamente.");
       form.reset();
     } else {
-      status.textContent = "Error al enviar. Inténtalo más tarde.";
+      alert("Error al enviar. Inténtalo más tarde.");
     }
   });
 }
-
