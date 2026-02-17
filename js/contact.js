@@ -13,13 +13,24 @@ if (form) {
     // });
     
     const response = { ok: false };
+    
+    const ingles = window.location.pathname.startsWith("/en/");
 
     if (response.ok) {
-      alert("Mensaje enviado correctamente.");
+      if (ingles) {
+        alert("Message sent successfully.");
+      } else {
+        alert("Mensaje enviado correctamente.");
+      }
       form.reset();
     } else {
-      alert("Error al enviar. Inténtalo más tarde.");
+      if (ingles) {
+        alert("Error sending message. Please try again later.");
+      } else {
+        alert("Error al enviar. Inténtalo más tarde.");
+      }
     }
+    
   });
 }
 
@@ -38,12 +49,23 @@ if (formEditorial) {
     // });
     
     const response = { ok: false }; // prueba simulada
+    
+    const ingles = window.location.pathname.startsWith("/en/");
 
     if (response.ok) {
-      alert("Mensaje enviado correctamente.");
-      formEditorial.reset();
+      if (ingles) {
+        alert("Message sent successfully.");
+      } else {
+        alert("Mensaje enviado correctamente.");
+      }
+      form.reset();
     } else {
-      alert("Error al enviar. Inténtalo más tarde.");
+      if (ingles) {
+        alert("Error sending message. Please try again later.");
+      } else {
+        alert("Error al enviar. Inténtalo más tarde.");
+      }
     }
+
   });
 }
