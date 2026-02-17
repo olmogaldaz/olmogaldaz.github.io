@@ -22,3 +22,22 @@ if (form) {
     }
   });
 }
+
+const formEditorial = document.getElementById("form-editorial");
+
+if (formEditorial) {
+  formEditorial.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const data = new FormData(formEditorial);
+
+    const response = { ok: false }; // prueba simulada
+
+    if (response.ok) {
+      alert("Mensaje enviado correctamente.");
+      formEditorial.reset();
+    } else {
+      alert("Error al enviar. Inténtalo más tarde.");
+    }
+  });
+}
