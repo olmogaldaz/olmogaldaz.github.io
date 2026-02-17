@@ -113,14 +113,19 @@
     ,
     {
       "@context": "https://schema.org",
-      "@type": "LegalCase",
+      "@type": "Article",
       "@id": "https://gomezaldaz.com/#legal-case",
-      "name": "{{ case_name }}",
+      "headline": "{{ case_name }}",
       "description": "{{ case_desc }}",
       "url": "https://gomezaldaz.com{{ page.url }}",
-      "involvedParty": { "@id": "https://gomezaldaz.com/#person" }
+      "author": {
+        "@id": "https://gomezaldaz.com/#person"
+      },
+      "mainEntityOfPage": "https://gomezaldaz.com{{ page.url }}",
+      "inLanguage": "{{ page.lang }}"
     }
     {% endcapture %}
+
   
     {% assign schema_nodes = schema_nodes | append: case_node %}
   
@@ -145,14 +150,23 @@
     ,
     {
       "@context": "https://schema.org",
-      "@type": "CourtDecision",
+      "@type": "Article",
       "@id": "https://gomezaldaz.com/#court-decision",
-      "name": "{{ decision_name }}",
+      "headline": "{{ decision_name }}",
       "description": "{{ decision_desc }}",
       "url": "https://gomezaldaz.com{{ page.url }}",
-      "about": { "@id": "https://gomezaldaz.com/#legal-case" }
+      "author": {
+        "@id": "https://gomezaldaz.com/#person"
+      },
+      "about": [
+        { "@id": "https://gomezaldaz.com/#person" },
+        { "@id": "https://gomezaldaz.com/#legal-case" }
+      ],
+      "mainEntityOfPage": "https://gomezaldaz.com{{ page.url }}",
+      "inLanguage": "{{ page.lang }}"
     }
     {% endcapture %}
+
   
     {% assign schema_nodes = schema_nodes | append: decision_node %}
   
