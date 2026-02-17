@@ -12,7 +12,7 @@ if (form) {
     //   headers: { "Accept": "application/json" }
     // });
     
-    const response = { ok: true };
+    const response = { ok: false };
 
     if (response.ok) {
       alert("Mensaje enviado correctamente.");
