@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
-      <a href="/es/autor/">Autor</a>
+      <a href="/es/autor/">Perfil</a>
       <a href="/es/historia/">Historia</a>
       <a href="/es/demanda/">Demanda</a>
       <a href="/es/sentencia/">Sentencias</a>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
-      <a href="/en/author/">Author</a>
+      <a href="/en/author/">Profile</a>
       <a href="/en/story/">Story</a>
       <a href="/en/claim/">Claim</a>
       <a href="/en/sentence/">Judgments</a>
