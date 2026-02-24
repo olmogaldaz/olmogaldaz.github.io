@@ -1,28 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Español -->
-  <url><loc>https://gomezaldaz.com/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/autor/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/historia/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/demanda/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/sentencia/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/memoria/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/libros/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/prensa/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/prensa/medios/</loc></url>
-  <url><loc>https://gomezaldaz.com/es/genus-homo/</loc></url>
+  <!-- HOME -->
+  <url>
+    <loc>https://gomezaldaz.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/" />
+  </url>
 
-  <!-- English -->
-  <url><loc>https://gomezaldaz.com/en/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/author/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/story/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/claim/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/sentence/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/memory/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/books/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/press/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/press/media/</loc></url>
-  <url><loc>https://gomezaldaz.com/en/genus-homo/</loc></url>
+  <url>
+    <loc>https://gomezaldaz.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/" />
+  </url>
+
+  <!-- AUTOR / AUTHOR -->
+  <url>
+    <loc>https://gomezaldaz.com/es/autor/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/autor/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/author/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/author/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/author/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/autor/" />
+  </url>
+
+  <!-- HISTORIA / STORY -->
+  <url>
+    <loc>https://gomezaldaz.com/es/historia/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/historia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/story/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/story/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/story/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/historia/" />
+  </url>
+
+  <!-- DEMANDA / CLAIM -->
+  <url>
+    <loc>https://gomezaldaz.com/es/demanda/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/demanda/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/claim/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/claim/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/claim/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/demanda/" />
+  </url>
+
+  <!-- SENTENCIA / JUDGMENTS (ruta /en/sentence/) -->
+  <url>
+    <loc>https://gomezaldaz.com/es/sentencia/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/sentencia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/sentence/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/sentence/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/sentence/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/sentencia/" />
+  </url>
+
+  <!-- MEMORIA / MEMORY -->
+  <url>
+    <loc>https://gomezaldaz.com/es/memoria/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/memoria/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/memory/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/memory/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/memory/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/memoria/" />
+  </url>
+
+  <!-- LIBROS / BOOKS -->
+  <url>
+    <loc>https://gomezaldaz.com/es/libros/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/libros/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/books/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/books/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/books/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/libros/" />
+  </url>
+
+  <!-- PRENSA / PRESS -->
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/" />
+  </url>
+
+  <!-- DOSIER / MEDIA DOSSIER -->
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/medios/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/media/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/media/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/media/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
+  </url>
+
+  <!-- GENUS HOMO -->
+  <url>
+    <loc>https://gomezaldaz.com/es/genus-homo/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/genus-homo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
+  </url>
 
 </urlset>
