@@ -133,17 +133,4 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
   </url>
 
-  <!-- GENUS HOMO -->
-  <url>
-    <loc>https://gomezaldaz.com/es/genus-homo/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
-  </url>
-
-  <url>
-    <loc>https://gomezaldaz.com/en/genus-homo/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
-  </url>
-
 </urlset>
