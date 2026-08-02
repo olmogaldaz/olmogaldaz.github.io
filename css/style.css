@@ -357,6 +357,10 @@ nav a.active:hover{
   font-size:.9rem;
 }
 
+.el-correo-page .back-top{
+  margin-bottom:1.5rem;
+}
+
 .back-top a{
   text-decoration:none;
 }
