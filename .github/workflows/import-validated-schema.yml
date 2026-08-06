@@ -1,0 +1,241 @@
+name: Import validated schema
+
+on:
+  push:
+    branches:
+      - schema-webpage-website-20260806
+    paths:
+      - '.github/workflows/import-validated-schema.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import-and-validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: schema-webpage-website-20260806
+          fetch-depth: 0
+
+      - name: Fetch validated test source
+        run: |
+          git clone --no-checkout https://github.com/olmogaldaz/gomezaldaz-pruebas.git /tmp/gomezaldaz-pruebas
+          git -C /tmp/gomezaldaz-pruebas fetch --depth 1 origin 5588b74d69a180cd46f08d4e01143e4fb84e88be
+          git -C /tmp/gomezaldaz-pruebas checkout --detach 5588b74d69a180cd46f08d4e01143e4fb84e88be
+
+      - name: Verify production compatibility and copy final source
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'fileutils'
+
+          TEST_ROOT = '/tmp/gomezaldaz-pruebas'
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+
+          def source_path(url)
+            return 'index.html' if url == '/'
+            "#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          def split_document(path)
+            text = File.read(path, encoding: 'UTF-8').gsub("\r\n", "\n")
+            match = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            raise "No front matter in #{path}" unless match
+            [YAML.unsafe_load(match[1]) || {}, text[match.end(0)..] || '']
+          end
+
+          def visible_body(body)
+            body.sub(/\A[\s\uFEFF]+/, '')
+          end
+
+          def layout_without_schema(text)
+            normalized = text.gsub("\r\n", "\n")
+            result = normalized.sub(%r{  <!-- schema -->.*?  </script>\n}m, "  <!-- schema -->\n[SCHEMA BLOCK]\n  </script>\n")
+            raise 'Schema block could not be isolated in layout' if result == normalized
+            result
+          end
+
+          prod_resources = YAML.unsafe_load_file('_data/resources.yml')
+          test_resources = YAML.unsafe_load_file(File.join(TEST_ROOT, '_data/resources.yml'))
+
+          prod_urls = prod_resources.fetch('html').map { |item| item.fetch('url') }
+          test_urls = test_resources.fetch('html').map { |item| item.fetch('url') }
+          raise 'The indexed HTML URL catalog differs between production and tests' unless prod_urls == test_urls
+          raise "Expected 56 indexed HTML pages, found #{test_urls.length}" unless test_urls.length == 56
+
+          prod_comparable = Marshal.load(Marshal.dump(prod_resources))
+          test_comparable = Marshal.load(Marshal.dump(test_resources))
+          prod_comparable.fetch('html').each { |item| item.delete('modified') }
+          test_comparable.fetch('html').each { |item| item.delete('modified') }
+          unless prod_comparable == test_comparable
+            raise 'resources.yml differs beyond the HTML modified timestamps'
+          end
+
+          prod_layout = File.read('_layouts/default.html', encoding: 'UTF-8')
+          test_layout = File.read(File.join(TEST_ROOT, '_layouts/default.html'), encoding: 'UTF-8')
+          unless layout_without_schema(prod_layout) == layout_without_schema(test_layout)
+            raise 'The layout differs outside the Schema block; import stopped'
+          end
+
+          copied = []
+          test_urls.each do |url|
+            path = source_path(url)
+            prod_data, prod_body = split_document(path)
+            test_data, test_body = split_document(File.join(TEST_ROOT, path))
+
+            unless visible_body(prod_body) == visible_body(test_body)
+              raise "Visible page body differs between production and tests: #{path}"
+            end
+
+            FileUtils.cp(File.join(TEST_ROOT, path), path)
+            copied << path
+          end
+
+          FileUtils.cp(File.join(TEST_ROOT, '_layouts/default.html'), '_layouts/default.html')
+          FileUtils.cp(File.join(TEST_ROOT, '_data/resources.yml'), '_data/resources.yml')
+
+          imported_text = (copied + ['_layouts/default.html', '_data/resources.yml']).map { |path| File.read(path, encoding: 'UTF-8') }.join("\n")
+          raise 'A test-domain reference was found in imported source' if imported_text.include?('pruebas.gomezaldaz.com')
+
+          allowed = copied + ['_layouts/default.html', '_data/resources.yml', '.github/workflows/import-validated-schema.yml']
+          changed = `git status --porcelain`.lines.map { |line| line[3..].strip }
+          unexpected = changed - allowed
+          raise "Unexpected changed files: #{unexpected.join(', ')}" unless unexpected.empty?
+
+          File.write('/tmp/imported-paths.txt', copied.join("\n") + "\n")
+          puts "Compatibility verified and final source copied for #{copied.length} indexed pages."
+          RUBY
+
+      - name: Validate source schema
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+          PAGE_TYPES = ['WebPage', 'ProfilePage', 'CollectionPage'].freeze
+
+          def source_path(url)
+            return 'index.html' if url == '/'
+            "#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          def data_for(path)
+            text = File.read(path, encoding: 'UTF-8')
+            match = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            raise "No front matter in #{path}" unless match
+            YAML.unsafe_load(match[1]) || {}
+          end
+
+          resources = YAML.unsafe_load_file('_data/resources.yml').fetch('html')
+          raise "Expected 56 HTML resources, found #{resources.length}" unless resources.length == 56
+          timestamps = resources.map { |item| item['modified'] }.uniq
+          raise "HTML modified timestamps are not uniform: #{timestamps.inspect}" unless timestamps.length == 1
+
+          resources.each do |resource|
+            path = source_path(resource.fetch('url'))
+            data = data_for(path)
+            nodes = Array(data['schema_nodes'])
+            pages = nodes.select { |node| node.is_a?(Hash) && PAGE_TYPES.include?(node['@type']) }
+            raise "#{path}: expected exactly one page node, found #{pages.length}" unless pages.length == 1
+
+            page = pages.first
+            part = page['isPartOf']
+            unless part.is_a?(Hash) && part['@id'] == WEBSITE_ID
+              raise "#{path}: page node is not linked to the shared WebSite"
+            end
+            if nodes.any? { |node| node.is_a?(Hash) && node.key?('mainEntityOfPage') }
+              raise "#{path}: inverse mainEntityOfPage remains"
+            end
+            unless data['schema_date_target'] == page['@id']
+              raise "#{path}: schema_date_target does not point to the page node"
+            end
+
+            non_page_nodes = nodes.reject { |node| node.is_a?(Hash) && PAGE_TYPES.include?(node['@type']) }
+            if non_page_nodes.any?
+              main = page['mainEntity']
+              unless main.is_a?(Hash) && main['@id']
+                raise "#{path}: page with entity nodes has no mainEntity"
+              end
+              known_ids = non_page_nodes.map { |node| node['@id'] }.compact + ['https://gomezaldaz.com/#person']
+              unless known_ids.include?(main['@id'])
+                raise "#{path}: mainEntity #{main['@id']} does not identify a known entity"
+              end
+            end
+          end
+
+          puts "Source Schema validation passed for #{resources.length} pages."
+          RUBY
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+
+      - name: Build production branch
+        run: jekyll build --trace
+
+      - name: Validate generated JSON-LD
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'json'
+
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+          PAGE_TYPES = ['WebPage', 'ProfilePage', 'CollectionPage'].freeze
+
+          def generated_path(url)
+            return '_site/index.html' if url == '/'
+            "_site/#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          resources = YAML.unsafe_load_file('_data/resources.yml').fetch('html')
+          expected_modified = resources.first.fetch('modified')
+
+          resources.each do |resource|
+            path = generated_path(resource.fetch('url'))
+            text = File.read(path, encoding: 'UTF-8')
+            match = text.match(%r{<script type="application/ld\+json">\s*(\{.*?\})\s*</script>}m)
+            raise "#{path}: JSON-LD script missing" unless match
+            graph = JSON.parse(match[1]).fetch('@graph')
+
+            websites = graph.select { |node| node['@type'] == 'WebSite' && node['@id'] == WEBSITE_ID }
+            pages = graph.select { |node| PAGE_TYPES.include?(node['@type']) }
+            raise "#{path}: expected one shared WebSite, found #{websites.length}" unless websites.length == 1
+            raise "#{path}: expected one page node, found #{pages.length}" unless pages.length == 1
+
+            page = pages.first
+            part = page['isPartOf']
+            unless part.is_a?(Hash) && part['@id'] == WEBSITE_ID
+              raise "#{path}: generated page is not linked to WebSite"
+            end
+            unless page['dateModified'] == expected_modified
+              raise "#{path}: dateModified differs from resources.yml"
+            end
+            if graph.any? { |node| node.key?('mainEntityOfPage') }
+              raise "#{path}: generated inverse mainEntityOfPage remains"
+            end
+            if page['mainEntity'].is_a?(Hash) && page['mainEntity']['@id']
+              target = page['mainEntity']['@id']
+              unless graph.any? { |node| node['@id'] == target }
+                raise "#{path}: generated mainEntity target #{target} is missing"
+              end
+            end
+          end
+
+          puts "Generated JSON-LD validation passed for #{resources.length} pages."
+          RUBY
+
+      - name: Commit validated production source and remove workflow
+        run: |
+          mapfile -t imported_paths < /tmp/imported-paths.txt
+          rm .github/workflows/import-validated-schema.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "${imported_paths[@]}" _layouts/default.html _data/resources.yml .github/workflows/import-validated-schema.yml
+          git commit -m 'Normalize Schema relationships across the site'
+          git push origin HEAD:schema-webpage-website-20260806
