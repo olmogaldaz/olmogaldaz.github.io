@@ -129,16 +129,19 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 ├── _includes/
 │   ├── menu.html                      # Navegación principal
 │   ├── media-items.html               # Generación de fichas del dosier de medios
+│   ├── media-filters.html             # Interfaz bilingüe de búsqueda y filtros
 │   ├── google-analytics.html          # Selector automático por entorno
 │   ├── google-analytics-production.html
 │   └── google-analytics-pruebas.html
 ├── _layouts/
 │   └── default.html                   # Layout, metadatos, indexación y Schema
 ├── css/
-│   ├── style.css                      # Estilos generales y de escritorio
-│   └── mobile.css                     # Adaptación responsive y menú móvil
+│   ├── style.css                      # Estilos globales
+│   ├── mobile.css                     # Responsive global y menú móvil
+│   └── media-filters.css              # Estilos propios de búsqueda y filtros
 ├── js/
-│   └── menu.js                        # Comportamiento interactivo del menú
+│   ├── menu.js                        # Comportamiento interactivo del menú
+│   └── media-filters.js               # Búsqueda, filtros y estado en URL del dosier
 ├── img/                               # Imágenes y recursos gráficos
 ├── docs/                              # Documentos públicos y PDF
 ├── sitemap.xml                        # Plantilla Liquid del sitemap
@@ -190,10 +193,20 @@ La estructura del menú se genera en `_includes/menu.html`. El layout lo incorpo
 
 ## CSS
 
-Los estilos están separados en dos archivos:
+Los estilos se organizan por alcance:
 
-- `/css/style.css`: estilos generales y de escritorio.
-- `/css/mobile.css`: reglas responsive, adaptación a pantallas pequeñas y menú móvil.
+- `/css/style.css`: estilos globales de la web.
+- `/css/mobile.css`: reglas responsive globales y menú móvil.
+- `/css/media-filters.css`: estilos exclusivos de la búsqueda y los filtros del dosier de medios, incluido su responsive.
+
+El layout permite que una página declare hojas de estilo adicionales mediante `extra_css` en el front matter. Así, los estilos específicos no se cargan en el resto del sitio.
+
+Las páginas del dosier declaran:
+
+```yml
+extra_css:
+  - /css/media-filters.css
+```
 
 ---
 
@@ -204,7 +217,8 @@ El archivo `_layouts/default.html` centraliza:
 - título y descripción;
 - control automático de `noindex`;
 - URL canónica basada en `public_url`;
-- iconos y hojas de estilo;
+- iconos y hojas de estilo globales;
+- carga opcional de CSS específico mediante `extra_css`;
 - enlaces `hreflang` basados en `public_url`;
 - nodo Schema `Person` común;
 - incorporación de los nodos Schema específicos de cada página;
@@ -337,7 +351,27 @@ Cada registro puede contener, según el caso:
 
 Los campos de subtítulo admiten HTML puntual cuando sea necesario conservar elementos de presentación existentes, por ejemplo cursivas o enlaces internos.
 
-Los campos `type`, `territory` y `date` están normalizados para permitir posteriormente búsqueda y filtros sin duplicar una tabla de índices independiente.
+Los campos `date`, `type`, `territory` y `medium` alimentan los filtros y sus opciones disponibles. No existe una segunda lista independiente que determine qué valores existen.
+
+### Búsqueda y filtros
+
+La interfaz se genera desde `_includes/media-filters.html`, la lógica vive en `/js/media-filters.js` y su presentación en `/css/media-filters.css`.
+
+Permite combinar:
+
+- búsqueda de texto libre;
+- año;
+- tipo de medio;
+- territorio;
+- medio concreto.
+
+La búsqueda de texto ignora mayúsculas, minúsculas y tildes, y recorre el contenido visible de cada ficha y sus metadatos. Los filtros se combinan entre sí y el contador muestra el número de resultados visibles.
+
+Cuando una sección no contiene resultados, se oculta completa junto con su cabecera, texto introductorio y enlace «Volver arriba». Si no hay resultados se muestra un aviso bilingüe.
+
+El estado se refleja en la query string mediante `q`, `year`, `type`, `territory` y `medium`. El canonical sigue siendo la URL base del dosier, ya que los filtros no crean páginas indexables independientes.
+
+La interfaz utiliza mejora progresiva: sin JavaScript no se muestran controles inertes y el dosier completo permanece visible en el HTML generado por Jekyll.
 
 ### Mantenimiento del dosier
 
@@ -345,7 +379,7 @@ Para incorporar una nueva aparición en medios:
 
 1. Añadir un único registro a `_data/media.yml`.
 2. Completar las variantes ES/EN de los textos que procedan.
-3. Asignar `section`, `type`, `territory` y `date` normalizados.
+3. Asignar `section`, `type`, `territory`, `medium` y `date` normalizados.
 4. Si la noticia ha desaparecido, conservar `original_url`, la URL archivada y `archived: true`.
 5. No añadir manualmente la misma ficha a las dos páginas HTML.
 6. Comprobar el resultado en pruebas antes de trasladarlo a producción.
@@ -383,7 +417,12 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Creación de `_includes/media-items.html` para generar las fichas bilingües.
 - Migración de `/es/prensa/medios/` y `/en/press/media/` desde fichas HTML duplicadas a datos estructurados.
 - Conservación de noticias archivadas, URLs originales, enlaces documentales adicionales y formato HTML puntual.
-- Preparación de `date`, `type` y `territory` como campos normalizados para futuras búsquedas y filtros.
+- Normalización de `date`, `type`, `territory` y `medium` para búsqueda y filtros.
+- Incorporación de búsqueda libre y filtros combinables por año, tipo, territorio y medio.
+- Incorporación de contador de resultados, limpieza de filtros, ocultación de secciones vacías y estado compartible mediante query string.
+- Mejora progresiva para conservar el dosier completo cuando JavaScript no está disponible.
+- Creación de `/css/media-filters.css` y extracción de los estilos del buscador fuera de los CSS globales.
+- Incorporación de `extra_css` en el layout para cargar hojas de estilo específicas solo en las páginas que las declaran.
 
 ---
 
@@ -397,10 +436,13 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los documentos públicos viven bajo `/docs/`.
 - Las URL públicas y sus fechas se mantienen en `_data/resources.yml`.
 - Las apariciones del dosier de medios se mantienen en `_data/media.yml`.
+- Los filtros del dosier deben derivar sus opciones de los registros existentes, no de una lista paralela.
+- Los estilos específicos de una página deben declararse mediante `extra_css` cuando no sean globales.
 - El sitemap no debe volver a convertirse en una lista manual de URL.
 - El menú estructural debe mantenerse en `_includes/menu.html`.
-- `menu.js` debe limitarse al comportamiento interactivo.
-- Los estilos generales y responsive deben permanecer separados.
+- `menu.js` debe limitarse al comportamiento interactivo del menú.
+- `media-filters.js` debe limitarse a la búsqueda y filtrado del dosier.
+- Los estilos globales y responsive deben mantenerse separados de los estilos específicos de componentes o páginas cuando corresponda.
 - Los nodos Schema específicos deben mantenerse en el front matter de cada página.
 - El nodo Schema que representa cada URL será el destinatario de las fechas centralizadas.
 - `_config.yml` y `CNAME` no deben copiarse directamente entre entornos.
