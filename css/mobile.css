@@ -103,8 +103,7 @@
     width:100%;
   }
 
-  .doc-meta,
-  .contact-form{
+  .doc-meta{
     grid-template-columns:1fr;
   }
 
@@ -116,5 +115,16 @@
 
   .footer-lang{
     text-align:left;
+  }
+
+  .footer-links{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    width:100%;
+    margin-top:1rem;
+  }
+
+  .footer-links a{
+    white-space:nowrap;
   }
 }

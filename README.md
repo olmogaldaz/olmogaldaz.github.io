@@ -17,6 +17,8 @@ Configuración común:
 
 Jekyll procesa Liquid, los datos YAML, los layouts y los includes durante cada compilación. GitHub Pages publica después archivos HTML, XML, CSS y JavaScript ya generados. Las peticiones de visitantes y buscadores no vuelven a ejecutar Liquid.
 
+La carpeta `_site/` es la salida local generada automáticamente por Jekyll durante una compilación. No forma parte del código fuente del proyecto, no debe versionarse y está excluida mediante `.gitignore`.
+
 ---
 
 ## Entornos de pruebas y producción
@@ -120,6 +122,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 /
 ├── .github/
 │   └── environment-backups/          # Copias de emergencia de ambos entornos
+├── .gitignore                         # Exclusiones de Git; entre ellas, la salida generada _site/
 ├── index.html                         # Portada principal en español
 ├── en/                                # Versión inglesa
 ├── es/                                # Páginas interiores en español
@@ -161,6 +164,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 - `/` — portada oficial en español
 - `/es/` — ruta técnica de compatibilidad hacia `/`
 - `/es/autor/`
+- `/es/contacto/`
 - `/es/historia/`
 - `/es/demanda/`
 - `/es/sentencia/`
@@ -173,6 +177,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 
 - `/en/` — portada oficial en inglés
 - `/en/author/`
+- `/en/contact/`
 - `/en/story/`
 - `/en/claim/`
 - `/en/sentence/`
@@ -189,6 +194,31 @@ Cada página declara su idioma, su URL equivalente y sus metadatos propios. El l
 
 La estructura del menú se genera en `_includes/menu.html`. El layout lo incorpora mediante `{% include menu.html %}`. El archivo `/js/menu.js` se limita al comportamiento interactivo, especialmente en móvil.
 
+El pie contiene una fila independiente de accesos de utilidad, sin duplicar el menú estructural. El orden vigente es:
+
+- Español: `Libros · Notas de prensa · Contacto`
+- Inglés: `Books · Press releases · Contact`
+
+Sus destinos son `/es/obra/libros/`, `/es/prensa/notas-de-prensa/`, `/es/contacto/` y sus equivalentes ingleses. Los tres accesos se distribuyen en columnas izquierda, centro y derecha. El selector `ES | EN` permanece separado y no debe partirse entre líneas.
+
+---
+
+## Contacto
+
+Las páginas generales de contacto son:
+
+- `/es/contacto/`
+- `/en/contact/`
+
+Ofrecen dos vías:
+
+- contacto general: `contacto@gomezaldaz.com`;
+- prensa y medios de comunicación: `prensa@gomezaldaz.com`.
+
+Las páginas `/es/autor/` y `/en/author/` ya no contienen formulario de contacto. Las páginas de Genus Homo tampoco utilizan formulario: mantienen un acceso contextual mediante `mailto:` a `contacto@gomezaldaz.com` con el asunto `Genus Homo`.
+
+El antiguo JavaScript específico de formularios (`/js/contact.js`) fue eliminado al dejar de existir formularios de contacto en las páginas activas.
+
 ---
 
 ## CSS
@@ -198,6 +228,8 @@ Los estilos se organizan por alcance:
 - `/css/style.css`: estilos globales de la web.
 - `/css/mobile.css`: reglas responsive globales y menú móvil.
 - `/css/media-filters.css`: estilos exclusivos de la búsqueda y los filtros del dosier de medios, incluido su responsive.
+
+Las hojas globales `style.css` y `mobile.css` se cargan desde el layout con un parámetro de versión basado en la hora de compilación de Jekyll. Así, cada despliegue genera una URL distinta y evita que el navegador conserve una versión anterior de los estilos.
 
 El layout permite que una página declare hojas de estilo adicionales mediante `extra_css` en el front matter. Así, los estilos específicos no se cargan en el resto del sitio.
 
@@ -218,6 +250,7 @@ El archivo `_layouts/default.html` centraliza:
 - control automático de `noindex`;
 - URL canónica basada en `public_url`;
 - iconos y hojas de estilo globales;
+- versionado de las hojas CSS globales para evitar caché obsoleta;
 - carga opcional de CSS específico mediante `extra_css`;
 - enlaces `hreflang` basados en `public_url`;
 - nodo Schema `Person` común;
@@ -257,6 +290,8 @@ El front matter de cada página indica mediante `schema_date_target` qué nodo S
 - las URL de documentos PDF y su `lastmod` cuando existe.
 
 Tanto en pruebas como en producción, las URL incluidas en el sitemap apuntan a `https://gomezaldaz.com`.
+
+Las páginas de contacto están incorporadas a `_data/resources.yml`; por tanto, `/es/contacto/` y `/en/contact/` se incluyen automáticamente en el sitemap junto con su `lastmod` y sus alternancias de idioma. Su fecha de creación se conserva en `published` para generar `datePublished` en Schema.
 
 ---
 
@@ -423,6 +458,14 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Mejora progresiva para conservar el dosier completo cuando JavaScript no está disponible.
 - Creación de `/css/media-filters.css` y extracción de los estilos del buscador fuera de los CSS globales.
 - Incorporación de `extra_css` en el layout para cargar hojas de estilo específicas solo en las páginas que las declaran.
+- Creación de `/es/contacto/` y `/en/contact/` con contacto general y contacto específico para prensa y medios.
+- Incorporación de `published` y `modified` para las nuevas páginas de contacto en `_data/resources.yml`.
+- Eliminación de los formularios de `/es/autor/`, `/en/author/`, `/es/genus-homo/` y `/en/genus-homo/`, y eliminación de `/js/contact.js`.
+- Sustitución de los formularios de Genus Homo por contacto directo mediante correo electrónico.
+- Incorporación al pie de los accesos `Libros · Notas de prensa · Contacto` y sus equivalentes ingleses.
+- Ajuste responsive del pie para conservar la distribución de los tres accesos y mantener `ES | EN` inseparable.
+- Versionado automático de las hojas CSS globales en cada compilación para evitar caché obsoleta tras los despliegues.
+- Eliminación del `_site/` generado accidentalmente en una compilación anterior y exclusión permanente de esa salida mediante `.gitignore`.
 
 ---
 
@@ -440,11 +483,13 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los estilos específicos de una página deben declararse mediante `extra_css` cuando no sean globales.
 - El sitemap no debe volver a convertirse en una lista manual de URL.
 - El menú estructural debe mantenerse en `_includes/menu.html`.
+- Los accesos de utilidad del pie se mantienen en `_layouts/default.html` y no deben confundirse con el menú principal.
 - `menu.js` debe limitarse al comportamiento interactivo del menú.
 - `media-filters.js` debe limitarse a la búsqueda y filtrado del dosier.
 - Los estilos globales y responsive deben mantenerse separados de los estilos específicos de componentes o páginas cuando corresponda.
 - Los nodos Schema específicos deben mantenerse en el front matter de cada página.
 - El nodo Schema que representa cada URL será el destinatario de las fechas centralizadas.
+- `_site/` es salida generada por Jekyll y no debe incorporarse al repositorio.
 - `_config.yml` y `CNAME` no deben copiarse directamente entre entornos.
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
