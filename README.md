@@ -258,6 +258,8 @@ El archivo `_layouts/default.html` centraliza:
 - Google Analytics según el entorno;
 - menú, contenido, pie y JavaScript común.
 
+El nombre registral anterior y las variantes sin tilde se conservan en `alternateName` del nodo `Person`. No se utiliza `additionalProperty`, cuyo dominio en Schema.org no incluye `Person`.
+
 El nodo `Person` se genera siempre desde el layout. Los nodos específicos de cada página se declaran en su front matter mediante `schema_nodes` y el layout los serializa con `jsonify`.
 
 Una página puede contener varios nodos Schema. El nodo que representa la URL concreta puede ser `WebPage` o uno de sus subtipos, como `ProfilePage` o `CollectionPage`.
@@ -271,9 +273,9 @@ Una página puede contener varios nodos Schema. El nodo que representa la URL co
 - `html`: páginas HTML públicas;
 - `pdf`: documentos PDF públicos.
 
-Las entradas HTML pueden contener `url`, `lang`, `alternate`, `published`, `modified` e `images`.
+Cada entrada HTML agrupa las versiones `es` y `en`. Cada versión admite `url`, `published`, `modified` e `images`. La opción `sitemap: false`, situada en la pareja, excluye ambas versiones del sitemap.
 
-El layout localiza la entrada de la página actual comparando `page.url` con `resource.url` y deja disponibles las variables `resource_published` y `resource_modified`.
+El layout localiza la página comparando `page.url` con `pair.es.url` o `pair.en.url`. La otra versión proporciona el destino del selector de idioma y los enlaces `hreflang`; las fechas de la versión actual alimentan `resource_published` y `resource_modified`.
 
 El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen las fechas correspondientes en `_data/resources.yml`.
 
@@ -423,6 +425,32 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 
 ---
 
+## Queja n.º 26097224
+
+- Español: `/es/queja-26097224/`.
+- Inglés: `/en/complaint-26097224/`.
+- Las portadas `/` y `/en/` contienen un banner que enlaza con la versión correspondiente.
+- Las páginas y los banners comparten `/css/queja.css`, declarado en `extra_css`.
+- La pareja ES/EN está registrada en `_data/resources.yml`, que genera la alternancia de idioma y su inclusión en el sitemap.
+- Los documentos enlazados siguen en español: `/docs/Guia_adhesion_queja_26097224.pdf` y `/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf`. Ambos figuran en el catálogo PDF.
+- La adhesión se explica como la presentación de una nueva queja vinculada a la n.º 26097224, con el documento completo adjunto.
+- Las versiones ES/EN enlazan con el formulario oficial en su idioma correspondiente.
+
+### Actualización de prensa y sitemap
+
+Los dosieres `/es/prensa/medios/` y `/en/press/media/` se generan automáticamente desde `_data/media.yml`. Las páginas generales `/es/prensa/` y `/en/press/` contienen una cronología editorial que se actualiza por separado.
+
+Para añadir una publicación:
+
+1. Incorporar un único registro en `_data/media.yml`, con títulos, resúmenes y enlaces de acción ES/EN, fecha, autoría en los metadatos, medio, sección, tipo y territorio.
+2. Conservar el enlace al original; traducir la ficha inglesa sin dar a entender que el medio ofrece una traducción del artículo.
+3. Si se amplía la cronología, actualizar las dos páginas generales de prensa y sus índices.
+4. Actualizar `modified` en `_data/resources.yml` para las páginas cuyo contenido cambie, incluidos ambos dosieres. Mantener `published` cuando ya exista y usar fechas documentadas.
+5. Añadir al grupo `pdf` los nuevos documentos públicos. Los enlaces externos de prensa se mantienen en `_data/media.yml`; no se añaden como URL propias al sitemap.
+6. Dejar que `sitemap.xml` se genere desde el catálogo y comprobar el resultado en pruebas.
+
+---
+ 
 ## Documentos públicos
 
 La carpeta `/docs/` contiene PDF y otros documentos públicos enlazados desde la web o incluidos en el catálogo de recursos.
@@ -469,6 +497,27 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 
 ---
 
+### 20 de septiembre de 2026
+
+- Incorporación en pruebas de la página de la queja n.º 26097224 en inglés y del banner en la portada inglesa.
+- Registro de la pareja ES/EN y de los PDF de la guía y la queja en `_data/resources.yml`; actualización de las fechas de modificación de las páginas afectadas.
+- Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en Canarias Ahora / elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
+- Incorporación de las etiquetas Canarias / Canary Islands al filtro territorial; sus opciones siguen derivándose de los registros.
+- Documentación del circuito de actualización de prensa y sitemap.
+- Corrección del Schema común: retirada de `additionalProperty` del nodo `Person`, conservando el nombre registral anterior en `alternateName`.
+
+---
+
+## Paso a producción — 20 de septiembre de 2026
+
+- Versión de pruebas utilizada: `9783b5011e20462babd29325f16af74f7439c66e`.
+- Estado anterior de producción para recuperación: `c8a5af3b915284e7778eb407cdf85b3a3ff125cf`.
+- Traslado de las páginas y banners de la queja ES/EN, la actualización de prensa, el catálogo de recursos, la corrección de Schema y la documentación.
+- Se conservan `_config.yml` y `CNAME` propios de producción: dominio `gomezaldaz.com`, indexación y Analytics activos.
+- Recuperación: crear un commit que restaure el árbol de la versión anterior de producción, conservando el historial.
+
+---
+
 ## Reglas de mantenimiento
 
 - La raíz `/` es la portada oficial en español.
@@ -494,4 +543,4 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
 
-Este README documenta la arquitectura principal y vigente del proyecto a **11 de agosto de 2026**.
+Este README documenta la arquitectura del proyecto y los cambios trasladados de pruebas a producción a **20 de septiembre de 2026**.
