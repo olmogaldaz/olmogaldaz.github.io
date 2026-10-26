@@ -24,8 +24,8 @@ html:
     en: {url: "/en/claim/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/sentencia/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/sentence/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/memoria/", modified: "2026-09-27T14:57:39+02:00"}
-    en: {url: "/en/memory/", modified: "2026-09-27T14:57:39+02:00"}
+  - es: {url: "/es/memoria/", modified: "2026-10-26"}
+    en: {url: "/en/memory/", modified: "2026-10-26"}
   - es: {url: "/es/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
     en: {url: "/en/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
   - es: {url: "/es/obra/", modified: "2026-08-06T01:48:08+02:00"}
@@ -83,6 +83,7 @@ html:
 pdf:
   - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-26"}
   - {url: "/docs/resolucion-inscripcion-maria-micaela-aldaz-ilarregui-censo-victimas-2026.pdf", modified: "2026-09-27"}
+  - {url: "/docs/resolucion-inscripcion-olmo-gomez-aldaz-censo-victimas-2026.pdf", modified: "2026-10-26"}
   - {url: "/docs/guia-adhesion-adoptados-bebes-robados.pdf", modified: "2026-09-27"}
   - {url: "/docs/queja-adhesion-adoptados-bebes-robados.pdf", modified: "2026-09-27"}
   - {url: "/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf"}
