@@ -48,14 +48,17 @@
     {%- endfor %}
   {%- endif %}
 
+  <link rel="stylesheet" href="/css/menu.css?v=20261101-5">
+
+  {%- assign alternate_base = site.url | default: public_url %}
   <!-- hreflang -->
   {%- if resource_alt %}
     {%- if page.lang == "es" %}
-    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ page.url }}">
-    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ resource_alt }}">
+    <link rel="alternate" hreflang="es" href="{{ alternate_base }}{{ page.url }}">
+    <link rel="alternate" hreflang="en" href="{{ alternate_base }}{{ resource_alt }}">
     {%- else %}
-    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ resource_alt }}">
-    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ page.url }}">
+    <link rel="alternate" hreflang="es" href="{{ alternate_base }}{{ resource_alt }}">
+    <link rel="alternate" hreflang="en" href="{{ alternate_base }}{{ page.url }}">
     {%- endif %}
   {%- endif %}
 
@@ -201,7 +204,7 @@
     </div>
   </footer>
 
-  <script src="/js/menu.js"></script>
+  <script src="/js/menu.js?v=20261101"></script>
 
 </body>
 </html>

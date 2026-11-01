@@ -1,49 +1,42 @@
-<header id="site-header">
-  {% if page.lang == "es" %}
-    <a href="/" class="site-title" aria-label="Ir al inicio">
-      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
-      <span>
-        Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span style="color: #c62828;"> · PRUEBAS</span>{% endif %}
-      </span>
-    </a>
-
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <nav class="main-nav">
-      <a href="/">Inicio</a>
-      <a href="/es/autor/">Olmo</a>
-      <a href="/es/historia/">Historia</a>
-      <a href="/es/demanda/">Demandas</a>
-      <a href="/es/sentencia/">Sentencias</a>
-      <a href="/es/memoria/">Memoria</a>
-      <a href="/es/obra/">Obra</a>
-      <a href="/es/prensa/">Prensa</a>
-      <div class="small">
-        <strong>ES</strong> |
-        <a href="{{ include.alt | default: '/en/' }}">EN</a>
-      </div>
-    </nav>
-  {% else %}
-    <a href="/en/" class="site-title" aria-label="Go to home page">
-      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
-      <span>
-        Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span style="color: #c62828;"> · PRUEBAS</span>{% endif %}
-      </span>
-    </a>
-
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
-    <nav class="main-nav">
-      <a href="/en/">Home</a>
-      <a href="/en/author/">Olmo</a>
-      <a href="/en/story/">Story</a>
-      <a href="/en/claim/">Legal actions</a>
-      <a href="/en/sentence/">Judgments</a>
-      <a href="/en/memory/">Memory</a>
-      <a href="/en/work/">Work</a>
-      <a href="/en/press/">Press</a>
-      <div class="small">
-        <a href="{{ include.alt | default: '/' }}">ES</a> |
-        <strong>EN</strong>
-      </div>
-    </nav>
-  {% endif %}
+{% assign is_spanish = false %}
+{% if page.lang == "es" %}{% assign is_spanish = true %}{% endif %}
+<header id="site-header" class="menu-preview-header">
+  <a href="{% if is_spanish %}/{% else %}/en/{% endif %}" class="site-title" aria-label="{% if is_spanish %}Ir al inicio{% else %}Go to home page{% endif %}">
+    <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
+    <span>Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span class="preview-environment"> · {% if is_spanish %}PRUEBAS{% else %}TEST{% endif %}</span>{% endif %}<span class="preview-tagline">{% if is_spanish %}UN HOMBRE AL QUE NO PUDIERON BORRAR{% else %}A MAN THEY COULD NOT ERASE{% endif %}</span></span>
+  </a>
+  <div class="preview-header-actions">
+    <div class="preview-languages" aria-label="{% if is_spanish %}Idioma{% else %}Language{% endif %}">
+      {% if is_spanish %}<strong lang="es">ES</strong> <span aria-hidden="true">·</span> <a href="{{ include.alt }}" lang="en" hreflang="en" title="Cambiar a inglés">EN</a>{% else %}<a href="{{ include.alt }}" lang="es" hreflang="es" title="Switch to Spanish">ES</a> <span aria-hidden="true">·</span> <strong lang="en">EN</strong>{% endif %}
+    </div>
+    <details class="preview-disclosure">
+      <summary aria-controls="preview-navigation"><span class="preview-toggle-label">{% if is_spanish %}Menú{% else %}Menu{% endif %}</span><span class="preview-menu-open" aria-hidden="true">☰</span><span class="preview-menu-close" aria-hidden="true">✕</span></summary>
+      <nav id="preview-navigation" class="preview-navigation" aria-label="{% if is_spanish %}Navegación principal{% else %}Main navigation{% endif %}">
+        {% if is_spanish %}
+        <a href="/"{% if page.url == "/" %} aria-current="page"{% endif %} title="Página de inicio">Inicio</a>
+        <a href="/es/autor/"{% if page.url contains "/es/autor/" %} aria-current="{% if page.url == "/es/autor/" %}page{% else %}location{% endif %}"{% endif %} title="Perfil de Olmo Gómez Aldaz">Olmo</a>
+        <a href="/es/historia/"{% if page.url contains "/es/historia/" %} aria-current="{% if page.url == "/es/historia/" %}page{% else %}location{% endif %}"{% endif %} title="Historia personal">Historia</a>
+        <a href="/es/demanda/"{% if page.url contains "/es/demanda/" %} aria-current="{% if page.url == "/es/demanda/" %}page{% else %}location{% endif %}"{% endif %} title="Demandas y reclamaciones">Demandas</a>
+        <a href="/es/sentencia/"{% if page.url contains "/es/sentencia/" %} aria-current="{% if page.url == "/es/sentencia/" %}page{% else %}location{% endif %}"{% endif %} title="Sentencias y resoluciones judiciales">Sentencias</a>
+        <a href="/es/memoria/"{% if page.url contains "/es/memoria/" %} aria-current="{% if page.url == "/es/memoria/" %}page{% else %}location{% endif %}"{% endif %} title="Memoria histórica">Memoria</a>
+        <a href="/es/obra/"{% if page.url contains "/es/obra/" %} aria-current="{% if page.url == "/es/obra/" %}page{% else %}location{% endif %}"{% endif %} title="Obra y publicaciones">Obra</a>
+        <a href="/es/colaboraciones/"{% if page.url contains "/es/colaboraciones/" %} aria-current="{% if page.url == "/es/colaboraciones/" %}page{% else %}location{% endif %}"{% endif %} title="Colaboraciones y participación pública">Colaboraciones</a>
+        <a href="/es/prensa/"{% if page.url contains "/es/prensa/" %} aria-current="{% if page.url == "/es/prensa/" %}page{% else %}location{% endif %}"{% endif %} title="Prensa y apariciones en medios">Prensa</a>
+        {% else %}
+        <a href="/en/"{% if page.url == "/en/" %} aria-current="page"{% endif %} title="Home page">Home</a>
+        <a href="/en/author/"{% if page.url contains "/en/author/" %} aria-current="{% if page.url == "/en/author/" %}page{% else %}location{% endif %}"{% endif %} title="Profile of Olmo Gómez Aldaz">Olmo</a>
+        <a href="/en/story/"{% if page.url contains "/en/story/" %} aria-current="{% if page.url == "/en/story/" %}page{% else %}location{% endif %}"{% endif %} title="Personal history">Story</a>
+        <a href="/en/claim/"{% if page.url contains "/en/claim/" %} aria-current="{% if page.url == "/en/claim/" %}page{% else %}location{% endif %}"{% endif %} title="Legal actions and complaints">Legal actions</a>
+        <a href="/en/sentence/"{% if page.url contains "/en/sentence/" %} aria-current="{% if page.url == "/en/sentence/" %}page{% else %}location{% endif %}"{% endif %} title="Judgments and court decisions">Judgments</a>
+        <a href="/en/memory/"{% if page.url contains "/en/memory/" %} aria-current="{% if page.url == "/en/memory/" %}page{% else %}location{% endif %}"{% endif %} title="Historical memory">Memory</a>
+        <a href="/en/work/"{% if page.url contains "/en/work/" %} aria-current="{% if page.url == "/en/work/" %}page{% else %}location{% endif %}"{% endif %} title="Work and publications">Work</a>
+        <a href="/en/collaborations/"{% if page.url contains "/en/collaborations/" %} aria-current="{% if page.url == "/en/collaborations/" %}page{% else %}location{% endif %}"{% endif %} title="Collaborations and public participation">Collaborations</a>
+        <a href="/en/press/"{% if page.url contains "/en/press/" %} aria-current="{% if page.url == "/en/press/" %}page{% else %}location{% endif %}"{% endif %} title="Press and media coverage">Press</a>
+        {% endif %}
+        <div class="preview-menu-languages" aria-label="{% if is_spanish %}Idioma{% else %}Language{% endif %}">
+      {% if is_spanish %}<strong lang="es">ES</strong> <span aria-hidden="true">·</span> <a href="{{ include.alt }}" lang="en" hreflang="en" title="Cambiar a inglés">EN</a>{% else %}<a href="{{ include.alt }}" lang="es" hreflang="es" title="Switch to Spanish">ES</a> <span aria-hidden="true">·</span> <strong lang="en">EN</strong>{% endif %}
+    </div>
+      </nav>
+    </details>
+  </div>
 </header>
