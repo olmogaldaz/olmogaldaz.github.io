@@ -16,21 +16,21 @@
         <a href="/"{% if page.url == "/" %} aria-current="page"{% endif %} title="Página de inicio">Inicio</a>
         <a href="/es/autor/"{% if page.url contains "/es/autor/" %} aria-current="{% if page.url == "/es/autor/" %}page{% else %}location{% endif %}"{% endif %} title="Perfil de Olmo Gómez Aldaz">Olmo</a>
         <a href="/es/historia/"{% if page.url contains "/es/historia/" %} aria-current="{% if page.url == "/es/historia/" %}page{% else %}location{% endif %}"{% endif %} title="Historia personal">Historia</a>
+        <a href="/es/memoria/"{% if page.url contains "/es/memoria/" %} aria-current="{% if page.url == "/es/memoria/" %}page{% else %}location{% endif %}"{% endif %} title="Memoria histórica">Memoria</a>
         <a href="/es/demanda/"{% if page.url contains "/es/demanda/" %} aria-current="{% if page.url == "/es/demanda/" %}page{% else %}location{% endif %}"{% endif %} title="Demandas y reclamaciones">Demandas</a>
         <a href="/es/sentencia/"{% if page.url contains "/es/sentencia/" %} aria-current="{% if page.url == "/es/sentencia/" %}page{% else %}location{% endif %}"{% endif %} title="Sentencias y resoluciones judiciales">Sentencias</a>
-        <a href="/es/memoria/"{% if page.url contains "/es/memoria/" %} aria-current="{% if page.url == "/es/memoria/" %}page{% else %}location{% endif %}"{% endif %} title="Memoria histórica">Memoria</a>
-        <a href="/es/obra/"{% if page.url contains "/es/obra/" %} aria-current="{% if page.url == "/es/obra/" %}page{% else %}location{% endif %}"{% endif %} title="Obra y publicaciones">Obra</a>
         <a href="/es/colaboraciones/"{% if page.url contains "/es/colaboraciones/" %} aria-current="{% if page.url == "/es/colaboraciones/" %}page{% else %}location{% endif %}"{% endif %} title="Colaboraciones y participación pública">Colaboraciones</a>
+        <a href="/es/obra/"{% if page.url contains "/es/obra/" %} aria-current="{% if page.url == "/es/obra/" %}page{% else %}location{% endif %}"{% endif %} title="Obra y publicaciones">Obra</a>
         <a href="/es/prensa/"{% if page.url contains "/es/prensa/" %} aria-current="{% if page.url == "/es/prensa/" %}page{% else %}location{% endif %}"{% endif %} title="Prensa y apariciones en medios">Prensa</a>
         {% else %}
         <a href="/en/"{% if page.url == "/en/" %} aria-current="page"{% endif %} title="Home page">Home</a>
         <a href="/en/author/"{% if page.url contains "/en/author/" %} aria-current="{% if page.url == "/en/author/" %}page{% else %}location{% endif %}"{% endif %} title="Profile of Olmo Gómez Aldaz">Olmo</a>
         <a href="/en/story/"{% if page.url contains "/en/story/" %} aria-current="{% if page.url == "/en/story/" %}page{% else %}location{% endif %}"{% endif %} title="Personal history">Story</a>
+        <a href="/en/memory/"{% if page.url contains "/en/memory/" %} aria-current="{% if page.url == "/en/memory/" %}page{% else %}location{% endif %}"{% endif %} title="Historical memory">Memory</a>
         <a href="/en/claim/"{% if page.url contains "/en/claim/" %} aria-current="{% if page.url == "/en/claim/" %}page{% else %}location{% endif %}"{% endif %} title="Legal actions and complaints">Legal actions</a>
         <a href="/en/sentence/"{% if page.url contains "/en/sentence/" %} aria-current="{% if page.url == "/en/sentence/" %}page{% else %}location{% endif %}"{% endif %} title="Judgments and court decisions">Judgments</a>
-        <a href="/en/memory/"{% if page.url contains "/en/memory/" %} aria-current="{% if page.url == "/en/memory/" %}page{% else %}location{% endif %}"{% endif %} title="Historical memory">Memory</a>
-        <a href="/en/work/"{% if page.url contains "/en/work/" %} aria-current="{% if page.url == "/en/work/" %}page{% else %}location{% endif %}"{% endif %} title="Work and publications">Work</a>
         <a href="/en/collaborations/"{% if page.url contains "/en/collaborations/" %} aria-current="{% if page.url == "/en/collaborations/" %}page{% else %}location{% endif %}"{% endif %} title="Collaborations and public participation">Collaborations</a>
+        <a href="/en/work/"{% if page.url contains "/en/work/" %} aria-current="{% if page.url == "/en/work/" %}page{% else %}location{% endif %}"{% endif %} title="Work and publications">Work</a>
         <a href="/en/press/"{% if page.url contains "/en/press/" %} aria-current="{% if page.url == "/en/press/" %}page{% else %}location{% endif %}"{% endif %} title="Press and media coverage">Press</a>
         {% endif %}
         <div class="preview-menu-languages" aria-label="{% if is_spanish %}Idioma{% else %}Language{% endif %}">

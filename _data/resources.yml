@@ -82,12 +82,12 @@ html:
 
 
   # Colaboraciones: páginas bilingües definitivas.
-  - es: {url: "/es/colaboraciones/", published: "2026-11-01", modified: "2026-11-01"}
-    en: {url: "/en/collaborations/", published: "2026-11-01", modified: "2026-11-01"}
+  - es: {url: "/es/colaboraciones/", published: "2026-11-01", modified: "2026-11-02"}
+    en: {url: "/en/collaborations/", published: "2026-11-01", modified: "2026-11-02"}
   - es: {url: "/es/colaboraciones/fibgar/", published: "2026-11-01", modified: "2026-11-01"}
     en: {url: "/en/collaborations/fibgar/", published: "2026-11-01", modified: "2026-11-01"}
-  - es: {url: "/es/colaboraciones/jornadas-navarra-argentina/", published: "2026-11-01", modified: "2026-11-01"}
-    en: {url: "/en/collaborations/amalur/", published: "2026-11-01", modified: "2026-11-01"}
+  - es: {url: "/es/colaboraciones/jornadas-navarra-argentina/", published: "2026-11-01", modified: "2026-11-02"}
+    en: {url: "/en/collaborations/amalur/", published: "2026-11-01", modified: "2026-11-02"}
 
 pdf:
   - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-26"}
