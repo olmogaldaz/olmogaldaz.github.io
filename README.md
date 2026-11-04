@@ -26,12 +26,12 @@ La carpeta `_site/` es la salida local generada automáticamente por Jekyll dura
 | Elemento | Pruebas | Producción |
 |---|---|---|
 | Repositorio | `olmogaldaz/gomezaldaz-pruebas` | `olmogaldaz/olmogaldaz.github.io` |
-| Dominio | `pruebas.gomezaldaz.com` | `gomezaldaz.com` |
-| `url` | `https://pruebas.gomezaldaz.com` | `https://gomezaldaz.com` |
+| Dominio | `enpruebas.gomezaldaz.com` | `gomezaldaz.com` |
+| `url` | `https://enpruebas.gomezaldaz.com` | `https://gomezaldaz.com` |
 | `public_url` | `https://gomezaldaz.com` | `https://gomezaldaz.com` |
 | `indexable` | `false` | `true` |
 | Google Analytics | Desactivado | Activado |
-| Meta `noindex` | Sí | No |
+| Meta `noindex` en páginas con el layout común | Sí | Solo con `noindex: true` |
 | Sitemap anunciado en `robots.txt` | No | Sí |
 
 ### Archivos que deben ser diferentes
@@ -46,7 +46,7 @@ CNAME
 Configuración de pruebas:
 
 ```yml
-url: https://pruebas.gomezaldaz.com
+url: https://enpruebas.gomezaldaz.com
 public_url: https://gomezaldaz.com
 indexable: false
 markdown: kramdown
@@ -69,7 +69,7 @@ La variable `indexable` controla automáticamente:
 - la activación o desactivación de Google Analytics;
 - la inclusión o ausencia del sitemap en `robots.txt`.
 
-La variable `public_url` hace que las URL canónicas y los enlaces `hreflang` apunten siempre a la web pública, incluso cuando la página se compila en el entorno de pruebas.
+`public_url` da a las URL canónicas el dominio de producción en ambos entornos. Las etiquetas `hreflang` del HTML usan `url`, de modo que apuntan al propio entorno.
 
 ### Google Analytics
 
@@ -162,7 +162,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 ### Español
 
 - `/` — portada oficial en español
-- `/es/` — ruta técnica de compatibilidad hacia `/`
+- `/es/` — aviso de traslado con un botón a la portada `/`
 - `/es/autor/`
 - `/es/contacto/`
 - `/es/historia/`
@@ -170,6 +170,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 - `/es/sentencia/`
 - `/es/memoria/`
 - `/es/genus-homo/`
+- `/es/colaboraciones/` — incluye las [Jornadas Navarra–Argentina](https://gomezaldaz.com/es/colaboraciones/jornadas-navarra-argentina/)
 - `/es/obra/`
 - `/es/prensa/`
 
@@ -183,10 +184,11 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 - `/en/sentence/`
 - `/en/memory/`
 - `/en/genus-homo/`
+- `/en/collaborations/` — incluye las [Jornadas Navarra–Argentina en inglés](https://gomezaldaz.com/en/collaborations/navarre-argentina-conference/)
 - `/en/work/`
 - `/en/press/`
 
-Cada página declara su idioma, su URL equivalente y sus metadatos propios. El layout genera los enlaces `hreflang` español/inglés utilizando `public_url`.
+Cada página declara su idioma y sus metadatos. El catálogo relaciona las páginas equivalentes y el layout genera sus enlaces `hreflang` con el dominio del entorno.
 
 ---
 
@@ -252,7 +254,7 @@ El archivo `_layouts/default.html` centraliza:
 - iconos y hojas de estilo globales;
 - versionado de las hojas CSS globales para evitar caché obsoleta;
 - carga opcional de CSS específico mediante `extra_css`;
-- enlaces `hreflang` basados en `public_url`;
+- enlaces `hreflang` del HTML basados en `url`;
 - nodo Schema `Person` común;
 - incorporación de los nodos Schema específicos de cada página;
 - Google Analytics según el entorno;
@@ -268,14 +270,13 @@ Una página puede contener varios nodos Schema. El nodo que representa la URL co
 
 ## Catálogo central de recursos
 
-`_data/resources.yml` es el catálogo central de recursos públicos e indexables de producción. Contiene dos grupos:
+`_data/resources.yml` contiene tres grupos:
 
-- `html`: páginas HTML públicas;
-- `pdf`: documentos PDF públicos.
+- `html`: parejas ES/EN de páginas vigentes, en el orden en que aparecen en el sitemap. El campo `section` en la primera pareja de un bloque genera su encabezado en el XML.
+- `legacy_html`: parejas ES/EN de avisos antiguos que conservan su selector de idioma y sus fechas. El sitemap omite este grupo.
+- `pdf`: documentos PDF incluidos al final del sitemap.
 
-Cada entrada HTML agrupa las versiones `es` y `en`. Cada versión admite `url`, `published`, `modified` e `images`. La opción `sitemap: false`, situada en la pareja, excluye ambas versiones del sitemap.
-
-El layout localiza la página comparando `page.url` con `pair.es.url` o `pair.en.url`. La otra versión proporciona el destino del selector de idioma y los enlaces `hreflang`; las fechas de la versión actual alimentan `resource_published` y `resource_modified`.
+Cada versión HTML admite `url`, `published`, `modified` e `images`. El layout busca la página en los dos grupos HTML. La otra versión proporciona el enlace del selector de idioma y el `hreflang`. `published` y `modified` proporcionan las fechas a los datos estructurados cuando están registradas.
 
 El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen las fechas correspondientes en `_data/resources.yml`.
 
@@ -283,7 +284,7 @@ El front matter de cada página indica mediante `schema_date_target` qué nodo S
 
 ## Sitemap
 
-`sitemap.xml` es una plantilla Liquid generada desde `_data/resources.yml`. Produce automáticamente:
+Jekyll usa la plantilla `sitemap.xml` y el catálogo `_data/resources.yml` para generar el XML que sirve la web. El resultado contiene:
 
 - las URL HTML;
 - `lastmod` cuando existe `modified`;
@@ -291,9 +292,9 @@ El front matter de cada página indica mediante `schema_date_target` qué nodo S
 - los datos opcionales de imágenes;
 - las URL de documentos PDF y su `lastmod` cuando existe.
 
-Tanto en pruebas como en producción, las URL incluidas en el sitemap apuntan a `https://gomezaldaz.com`.
+En ambos entornos, el XML enumera direcciones de producción. `modified` se publica como `<lastmod>` y representa la última modificación registrada. `published` representa la fecha de publicación en los datos estructurados de la página.
 
-Las páginas de contacto están incorporadas a `_data/resources.yml`; por tanto, `/es/contacto/` y `/en/contact/` se incluyen automáticamente en el sitemap junto con su `lastmod` y sus alternancias de idioma. Su fecha de creación se conserva en `published` para generar `datePublished` en Schema.
+Para revisar el archivo generado, abre [el sitemap de pruebas](https://enpruebas.gomezaldaz.com/sitemap.xml) o [el sitemap público](https://gomezaldaz.com/sitemap.xml) y pulsa **Ctrl+U** en Chrome. El código fuente muestra los encabezados por sección, las parejas ES/EN y los PDF al final.
 
 ---
 
@@ -302,8 +303,8 @@ Las páginas de contacto están incorporadas a `_data/resources.yml`; por tanto,
 ### Pruebas
 
 - `indexable: false`;
-- todas las páginas generan `noindex, nofollow, noarchive, nosnippet`;
-- canonical y `hreflang` apuntan a producción;
+- el layout común genera `noindex, nofollow, noarchive, nosnippet`;
+- la canónica apunta a producción y el `hreflang` del HTML apunta a pruebas;
 - `robots.txt` permite el rastreo, pero no anuncia sitemap;
 - Google Analytics permanece desactivado.
 
@@ -433,12 +434,12 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 - Inglés: `/en/complaint-adoptees-stolen-babies/`.
 - Las portadas enlazan directamente con estas rutas descriptivas. Las páginas y los banners comparten `/css/queja.css`.
 - Las rutas antiguas `/es/queja-26097224/` y `/en/complaint-26097224/` muestran un aviso explicativo con un botón hacia la nueva página. No tienen redirección automática.
-- La pareja antigua permanece en el catálogo para el selector de idioma, con `sitemap: false`. Cada aviso declara `noindex: true` y canonical hacia la nueva página de su idioma; el layout admite esta exclusión por página.
+- La pareja antigua permanece en `legacy_html` para el selector de idioma y queda fuera del sitemap. Cada aviso declara `noindex: true` y canonical hacia la nueva página de su idioma; el layout admite esta exclusión por página.
 - PDF actuales en español: `/docs/guia-adhesion-adoptados-bebes-robados.pdf` y `/docs/queja-adhesion-adoptados-bebes-robados.pdf`. El catálogo incluye sus rutas nuevas y las fechas de modificación.
 - Los dos PDF anteriores, `/docs/Guia_adhesion_queja_26097224.pdf` y `/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf`, sirven copias de los PDF actualizados para conservar enlaces compartidos. No se duplican en el sitemap.
 - Se parte de los dos Word aportados por Olmo el 27/09/2026, cotejados con los PDF publicados. Se conserva la última página «Documentación de referencia del caso ilustrativo» y las referencias bibliográficas corregidas. No utilizar como base la V1.1 anterior generada a partir de un Word incompleto.
 - La guía conserva el texto de adhesión en la página 4 y las variantes en la 5; el documento de adhesión conserva sus 24 páginas.
-- En pruebas, el enlace al documento dentro del Word y PDF de la guía apunta a `https://pruebas.gomezaldaz.com/docs/queja-adhesion-adoptados-bebes-robados.pdf`, para permitir revisar el recorrido completo antes de publicar.
+- Al preparar una guía de pruebas, comprobar que el enlace del Word y el PDF permite revisar el recorrido en el dominio de pruebas antes de publicar.
 - En producción, el texto y el vínculo de la guía apuntan a `https://gomezaldaz.com/docs/queja-adhesion-adoptados-bebes-robados.pdf`. El PDF se ha regenerado y su copia en la ruta antigua se actualiza a la vez. Conservar esta diferencia de dominio al trasladar futuras versiones entre entornos.
 - La adhesión consiste en presentar una nueva queja vinculada al expediente 26037767, con el documento de adhesión adjunto. ES/EN enlazan con el formulario oficial en el idioma correspondiente.
 
@@ -528,7 +529,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 
 - La raíz `/` es la portada oficial en español.
 - `/en/` es la portada oficial en inglés.
-- `/es/` se conserva como ruta técnica de compatibilidad.
+- `/es/` conserva un aviso con un botón hacia la portada en español.
 - Las páginas interiores españolas viven bajo `/es/`.
 - Las páginas inglesas viven bajo `/en/`.
 - Los documentos públicos viven bajo `/docs/`.
@@ -549,7 +550,6 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
 
-Este README documenta la arquitectura del proyecto y los cambios trasladados de pruebas a producción a **20 de septiembre de 2026**.
 
 ### Actualización preparada en pruebas — 27 de septiembre de 2026
 

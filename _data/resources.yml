@@ -1,35 +1,49 @@
-# Catálogo central de recursos indexables.
-# HTML agrupa cada contenido bilingüe en una pareja es/en.
-# Cada versión admite: url, published, modified e images.
-# sitemap: false excluye una pareja HTML del sitemap.
+# Catálogo de páginas bilingües y documentos PDF.
+# html y pdf alimentan el sitemap. legacy_html recoge los avisos antiguos.
+# En html, section abre un bloque en el XML generado.
+# Cada versión HTML admite url, published, modified e images.
 # images es una lista opcional con url, title y caption.
 
 html:
-  - es: {url: "/es/prensa/notas-de-prensa/queja-adoptados-bebes-robados-adhesion-fibgar/", published: "2026-10-26", modified: "2026-10-26"}
-    en: {url: "/en/press/press-releases/complaint-adoptees-stolen-babies-fibgar-endorsement/", published: "2026-10-26", modified: "2026-10-26"}
-  - es: {url: "/es/queja-adoptados-bebes-robados/", modified: "2026-09-27"}
-    en: {url: "/en/complaint-adoptees-stolen-babies/", published: "2026-09-20", modified: "2026-09-27"}
-  - es: {url: "/es/queja-26097224/", modified: "2026-09-27"}
-    en: {url: "/en/complaint-26097224/", published: "2026-09-20", modified: "2026-09-27"}
-    sitemap: false
   - es: {url: "/", modified: "2026-11-01"}
     en: {url: "/en/", modified: "2026-11-01"}
+    section: "PORTADA / HOME"
+
   - es: {url: "/es/autor/", modified: "2026-08-11T02:56:00+02:00"}
     en: {url: "/en/author/", modified: "2026-08-11T02:56:00+02:00"}
-  - es: {url: "/es/contacto/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
-    en: {url: "/en/contact/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
+    section: "OLMO"
+
   - es: {url: "/es/historia/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/story/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/demanda/", modified: "2026-08-06T01:48:08+02:00"}
-    en: {url: "/en/claim/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/sentencia/", modified: "2026-08-06T01:48:08+02:00"}
-    en: {url: "/en/sentence/", modified: "2026-08-06T01:48:08+02:00"}
+    section: "HISTORIA / STORY"
+
   - es: {url: "/es/memoria/", modified: "2026-10-27"}
     en: {url: "/en/memory/", modified: "2026-10-27"}
-  - es: {url: "/es/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
-    en: {url: "/en/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
+    section: "MEMORIA / MEMORY"
+
+  - es: {url: "/es/demanda/", modified: "2026-08-06T01:48:08+02:00"}
+    en: {url: "/en/claim/", modified: "2026-08-06T01:48:08+02:00"}
+    section: "DEMANDAS / CLAIMS"
+
+  - es: {url: "/es/sentencia/", modified: "2026-08-06T01:48:08+02:00"}
+    en: {url: "/en/sentence/", modified: "2026-08-06T01:48:08+02:00"}
+    section: "SENTENCIAS / JUDGMENTS"
+
+  - es: {url: "/es/queja-adoptados-bebes-robados/", modified: "2026-09-27"}
+    en: {url: "/en/complaint-adoptees-stolen-babies/", published: "2026-09-20", modified: "2026-09-27"}
+    section: "QUEJA / COMPLAINT"
+
+  - es: {url: "/es/colaboraciones/", published: "2026-11-01", modified: "2026-11-02"}
+    en: {url: "/en/collaborations/", published: "2026-11-01", modified: "2026-11-02"}
+    section: "COLABORACIONES / COLLABORATIONS"
+  - es: {url: "/es/colaboraciones/fibgar/", published: "2026-11-01", modified: "2026-11-04"}
+    en: {url: "/en/collaborations/fibgar/", published: "2026-11-01", modified: "2026-11-04"}
+  - es: {url: "/es/colaboraciones/jornadas-navarra-argentina/", published: "2026-11-01", modified: "2026-11-02"}
+    en: {url: "/en/collaborations/navarre-argentina-conference/", published: "2026-11-01", modified: "2026-11-02"}
+
   - es: {url: "/es/obra/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/work/", modified: "2026-08-06T01:48:08+02:00"}
+    section: "OBRA / WORK"
   - es: {url: "/es/obra/libros/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/work/books/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/obra/testimonios/", modified: "2026-08-06T01:48:08+02:00"}
@@ -54,16 +68,24 @@ html:
     en: {url: "/en/work/stolen-babies/maria-madre-association-report/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/obra/bebes-robados/informe-adoptados-bilbao/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/work/stolen-babies/adoptados-bilbao-report/", modified: "2026-08-06T01:48:08+02:00"}
+
+  - es: {url: "/es/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
+    en: {url: "/en/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
+    section: "GENUS HOMO"
+
   - es: {url: "/es/prensa/", modified: "2026-10-11"}
     en: {url: "/en/press/", modified: "2026-10-11"}
+    section: "PRENSA / PRESS"
+  - es: {url: "/es/prensa/medios/", modified: "2026-10-11"}
+    en: {url: "/en/press/media/", modified: "2026-10-11"}
   - es: {url: "/es/prensa/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/prensa/medios/", modified: "2026-10-11"}
-    en: {url: "/en/press/media/", modified: "2026-10-11"}
   - es: {url: "/es/prensa/notas-de-prensa/", modified: "2026-10-26"}
     en: {url: "/en/press/press-releases/", modified: "2026-10-26"}
+  - es: {url: "/es/prensa/notas-de-prensa/queja-adoptados-bebes-robados-adhesion-fibgar/", published: "2026-10-26", modified: "2026-10-26"}
+    en: {url: "/en/press/press-releases/complaint-adoptees-stolen-babies-fibgar-endorsement/", published: "2026-10-26", modified: "2026-10-26"}
   - es: {url: "/es/prensa/notas-de-prensa/sentencia-pionera-identidad-dni/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/press-releases/landmark-ruling-identity-restored-id-card/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/notas-de-prensa/reconocimiento-bebe-robado-nulidad-adopcion/", modified: "2026-08-06T01:48:08+02:00"}
@@ -71,23 +93,19 @@ html:
   - es: {url: "/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/press-releases/democratic-memory-law-stolen-babies/", modified: "2026-08-06T01:48:08+02:00"}
 
+  - es: {url: "/es/contacto/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
+    en: {url: "/en/contact/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
+    section: "CONTACTO / CONTACT"
 
-  # Direcciones antiguas conservadas con aviso y enlace a la página actual.
+legacy_html:
+  - es: {url: "/es/queja-26097224/", modified: "2026-09-27"}
+    en: {url: "/en/complaint-26097224/", published: "2026-09-20", modified: "2026-09-27"}
+
   - es: {url: "/es/obra/undoing-adoption/", modified: "2026-10-11"}
     en: {url: "/en/work/undoing-adoption/", modified: "2026-10-11"}
-    sitemap: false
+
   - es: {url: "/es/obra/asociacion-maria-madre/", modified: "2026-10-11"}
     en: {url: "/en/work/maria-madre-association/", modified: "2026-10-11"}
-    sitemap: false
-
-
-  # Colaboraciones: páginas bilingües definitivas.
-  - es: {url: "/es/colaboraciones/", published: "2026-11-01", modified: "2026-11-02"}
-    en: {url: "/en/collaborations/", published: "2026-11-01", modified: "2026-11-02"}
-  - es: {url: "/es/colaboraciones/fibgar/", published: "2026-11-01", modified: "2026-11-04"}
-    en: {url: "/en/collaborations/fibgar/", published: "2026-11-01", modified: "2026-11-04"}
-  - es: {url: "/es/colaboraciones/jornadas-navarra-argentina/", published: "2026-11-01", modified: "2026-11-02"}
-    en: {url: "/en/collaborations/navarre-argentina-conference/", published: "2026-11-01", modified: "2026-11-02"}
 
 pdf:
   - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-26"}
