@@ -3,3 +3,15 @@
 .manifesto-figure img{display:block;width:100%;max-width:760px;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;}
 .manifesto-figure figcaption{margin-top:8px;color:var(--muted);font-size:.9rem;text-align:center;}
 #manifiesto .cta-row .cta,#manifesto .cta-row .cta{min-width:0;max-width:100%;}
+
+.manifesto-details{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:8px;min-width:0;}
+.manifesto-details summary{cursor:pointer;font-weight:600;overflow-wrap:anywhere;}
+.manifesto-details[open] summary{margin-bottom:16px;}
+.manifesto-source{color:var(--muted);font-size:.95rem;}
+.manifesto-text{overflow-wrap:anywhere;}
+.manifesto-text h3{font-size:1.2rem;line-height:1.4;}
+.manifesto-text h4,.manifesto-text h5{font-size:1rem;margin:24px 0 12px;}
+.manifesto-text li{margin-bottom:10px;}
+.manifesto-text ul{padding-left:1.3rem;}
+.manifesto-notes{border-top:1px solid var(--line);padding-top:16px;font-size:.9rem;}
+.manifesto-notes p{scroll-margin-top:140px;}
