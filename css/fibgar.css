@@ -1,0 +1,5 @@
+.manifesto-figure{margin:12px 0 16px;}
+.manifesto-figure a{display:block;}
+.manifesto-figure img{display:block;width:100%;max-width:760px;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;}
+.manifesto-figure figcaption{margin-top:8px;color:var(--muted);font-size:.9rem;text-align:center;}
+#manifiesto .cta-row .cta,#manifesto .cta-row .cta{min-width:0;max-width:100%;}
