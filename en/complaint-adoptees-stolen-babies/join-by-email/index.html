@@ -1,0 +1,392 @@
+---
+layout: default
+lang: en
+title: Join by email
+description: Form to join Spanish Ombudsman case file no. 26037767 by email.
+extra_css:
+  - /css/queja.css
+---
+<main class="complaint-page adhesiones-correo">
+  <p class="breadcrumb"><a href="/en/">Home</a> &gt; <a href="../">Complaint to the Spanish Ombudsman</a> &gt; Join by email</p>
+  <header class="complaint-hero">
+    <p class="complaint-kicker">Spanish Ombudsman · Case file no. 26037767</p>
+    <h1>Join by email</h1>
+    <p class="complaint-lead">Complete the form to prepare your statement of support. The email includes the official form, the original complaint and your statement of support.</p>
+  </header>
+  <p>Before joining, you can <a href="/docs/queja-adhesion-adoptados-bebes-robados.pdf" target="_blank" rel="noopener">read the original complaint (PDF, in Spanish)</a>, which will be attached to the email.</p>
+  <p class="resource-note">The official form and original complaint are in Spanish. Your statement of support below is in English and can be edited.</p>
+  <form id="formulario-adhesion" data-endpoint="https://adhesionesmail.vercel.app/api/{% if site.indexable %}adhesiones_mail_produccion{% else %}adhesiones_mail{% endif %}" method="post">
+    <p>Fields marked with * are required.</p>
+    <fieldset>
+      <legend>Personal details</legend>
+      <div class="adhesion-grid">
+        <label>Title *<select name="tratamiento" required><option value="">Select</option><option value="Sr">Mr</option><option value="Sra">Ms</option></select></label>
+        <label>Given name(s) *<input name="nombre" type="text" maxlength="100" required></label>
+        <label>First surname *<input name="apellido1" type="text" maxlength="100" required></label>
+        <label>Second surname<input name="apellido2" type="text" maxlength="100"></label>
+        <label>Document type *<select name="tipoDocumento" required><option value="">Select</option><option value="NIF">NIF</option><option value="NIE">NIE</option><option value="Pasaporte">Passport</option><option value="CIF">CIF</option></select></label>
+        <label>Document number *<input name="documento" type="text" maxlength="40" required></label>
+      </div>
+    </fieldset>
+    <fieldset id="datos-entidad" hidden>
+      <legend>Organisation represented</legend>
+      <div class="adhesion-grid">
+        <label>Organisation *<input name="entidad" type="text" maxlength="60" required disabled></label>
+        <label>Role *<input name="cargo" type="text" maxlength="200" required disabled></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Address</legend>
+      <label>Where do you live? *<select name="domicilio" required><option value="">Select</option><option value="espana">Spain</option><option value="extranjero">Another country</option></select></label>
+      <div id="domicilio-espana" class="adhesion-grid" hidden>
+        <label>Postcode *<input name="codigoPostal" type="text" maxlength="5" required inputmode="numeric" pattern="[0-9]{5}"></label>
+        <label>Province *<input name="provincia" type="text" maxlength="50" required></label>
+        <label>Town or city *<input name="poblacion" type="text" maxlength="80" required></label>
+        <label>Street type *<input name="tipoVia" type="text" maxlength="40" required list="tipos-via" placeholder="CALLE"></label>
+        <datalist id="tipos-via"><option value="CALLE"><option value="AVDA."><option value="PLAZA"><option value="CAMINO"><option value="CARRETERA"><option value="PASAJE"><option value="Pº"></datalist>
+        <label>Street name *<input name="via" type="text" maxlength="100" required></label>
+        <label>Number *<input name="numero" type="text" maxlength="7" required></label>
+        <label>Block<input name="bloque" type="text" maxlength="10"></label>
+        <label>Floor<input name="piso" type="text" maxlength="10"></label>
+        <label>Door<input name="puerta" type="text" maxlength="10"></label>
+        <label>Staircase<input name="escalera" type="text" maxlength="3"></label>
+      </div>
+      <div id="domicilio-extranjero" class="adhesion-grid" hidden>
+        <label>Country *<input name="pais" type="text" maxlength="100" required></label>
+        <label>Address *<input name="direccion" type="text" maxlength="100" required></label>
+        <label>Address, line 2<input name="direccion2" type="text" maxlength="150"></label>
+        <label>Address, line 3<input name="direccion3" type="text" maxlength="150"></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Contact details</legend>
+      <div class="adhesion-grid">
+        <label>Email address *<input name="correo" type="email" maxlength="60" required autocomplete="email"></label>
+        <label>Confirm your email address *<input name="confirmarCorreo" type="email" maxlength="60" required autocomplete="off"></label>
+        <label>Mobile phone<input name="telefonoMovil" type="tel" maxlength="20"></label>
+        <label>Landline phone<input name="telefonoFijo" type="tel" maxlength="20"></label>
+        <label>Fax<input name="fax" type="tel" maxlength="20"></label>
+      </div>
+      <p>You will receive, at the email address you entered, a copy of the message sent to the Spanish Ombudsman at registro@defensordelpueblo.es, with all three documents attached.</p>
+    </fieldset>
+    <fieldset>
+      <legend>Statement of support</legend>
+      <p>Review and adapt the statement of support to your circumstances. It will be included in full in an attached PDF.</p>
+      <p id="identificacion-adhesion" aria-live="polite">I, [full name], with [document type] [number],</p>
+      <label>Reasons for supporting the complaint *<textarea name="texto" rows="12" maxlength="50000" required>I appear as a citizen interested in the regulation of adoption and join the complaint under case file no. 26037767. The full reasoning, the three complaints raised and the requests made are set out in the attached document, whose content I support.
+
+Spanish legislation has extensively regulated adoption during childhood, but leaves the legal position of adopted adults insufficiently resolved. Adoption may have extinguished their legal ties of origin, replaced their surnames and determined their registered identity without their having any say, with these effects then remaining essentially permanent.
+
+The right to know one’s origins does not necessarily mean legally recovering parentage or all the rights arising from it. This statement therefore supports the examination of the three general issues developed in the attached complaint.
+
+The first is the difference in treatment that may arise when an adopted person’s parentage by nature has been legally established, but the existence of the adoption limits effects that the same parentage would have for a person who was not adopted. The illustrative case included in the complaint shows that parentage of origin and adoption can legally coexist.
+
+The second is the absence of a legal action available to adopted adults themselves to terminate their adoption. Irrevocability protects children against unilateral abandonment by adopters, but should not prevent them, once they reach adulthood, from deciding whether to continue a legal relationship established during childhood.
+
+The third concerns the model of adoption that replaces parentage: as a general rule, adoption extinguishes legal ties with the family of origin. The complaint argues that protecting a child does not necessarily require this general extinction, since incompatible powers held by adults can be restricted without erasing parentage or all the rights arising from origin.
+
+For these reasons, I ask the Spanish Ombudsman to examine the issues and requests developed in the attached complaint and to consider the action and reforms needed to guarantee the rights of adopted adults to parentage, identity and autonomy.</textarea></label>
+      <p id="contador-texto" aria-live="polite"></p>
+    </fieldset>
+    <label class="adhesion-confirmacion"><input type="checkbox" name="veracidad" required> I declare that the information provided is true and corresponds to my identity and contact details.</label>
+    <div class="adhesion-privacidad">
+      <p>Your data will be used only to complete the documents and send this email. This website does not use it for other purposes or keep its own archive of statements of support. The process uses the services of <a href="https://vercel.com/legal/dpa" target="_blank" rel="noopener">Vercel</a> and <a href="https://resend.com/security/gdpr/" target="_blank" rel="noopener">Resend</a>; the links explain how they process and retain data. <a href="https://www.defensordelpueblo.es/wp-content/uploads/queja/FormularioQuejasOffline.pdf#page=3" target="_blank" rel="noopener">Read the Spanish Ombudsman’s data protection notice (page 3 of the official PDF, in Spanish)</a>.</p>
+    </div>
+    <button class="cta cta-campaign" type="submit" disabled>Send statement of support</button>
+    <p id="resultado-adhesion" role="status" aria-live="polite"></p>
+    <noscript><p>Enable JavaScript to use this form.</p></noscript>
+  </form>
+  <div class="adhesion-volver-inicio">
+    <a class="cta" href="/en/">Once you have finished submitting the form, click here to return to this website’s home page</a>
+  </div>
+</main>
+<style>
+  .adhesiones-correo fieldset { margin: 1.4rem 0; padding: 1rem; border: 1px solid var(--campaign-line); border-radius: 12px; min-width: 0; }
+  .adhesiones-correo fieldset[hidden] { display: none; }
+  .adhesiones-correo legend { padding: 0 .4rem; color: var(--campaign-dark); font-weight: 700; }
+  .adhesion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: .85rem 1rem; }
+  .adhesion-grid[hidden] { display: none; }
+  .adhesiones-correo label { display: block; font-weight: 600; }
+  .adhesiones-correo input:not([type="checkbox"]), .adhesiones-correo select, .adhesiones-correo textarea { display: block; box-sizing: border-box; width: 100%; padding: .55rem; margin: .25rem 0 0; border: 1px solid var(--campaign-line); border-radius: 6px; font: inherit; font-weight: normal; }
+  .adhesiones-correo textarea { resize: vertical; }
+  .adhesion-error { display: block; color: #a32121; font-size: .92rem; font-weight: normal; margin-top: .3rem; }
+  .adhesion-error[hidden] { display: none; }
+  .adhesiones-correo [aria-invalid="true"] { border-color: #a32121; }
+  .adhesiones-correo a:not(.cta), .adhesiones-correo a:not(.cta):hover { text-decoration: none; }
+  .adhesiones-correo a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  #identificacion-adhesion { margin: 1rem 0 .6rem; }
+  .adhesion-privacidad { margin: 1rem 0; font-size: .95rem; }
+  .adhesiones-correo select[name="domicilio"] { margin-bottom: .85rem; }
+  .adhesiones-correo .adhesion-confirmacion { margin-top: .85rem; font-weight: normal; }
+  .adhesiones-correo button:disabled { opacity: .65; cursor: default; }
+  .adhesiones-correo .adhesion-volver-inicio { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .adhesiones-correo .adhesion-volver-inicio .cta { display: block; box-sizing: border-box; width: 100%; min-width: 0; white-space: normal; text-align: center; }
+</style>
+<script>
+const limitesAdhesion = {
+  entidad: 60, cargo: 200, tratamiento: 10, nombre: 100, apellido1: 100, apellido2: 100, tipoDocumento: 20,
+  documento: 40, domicilio: 12, codigoPostal: 5, provincia: 50, poblacion: 80,
+  tipoVia: 40, via: 100, numero: 7, bloque: 10, piso: 10, puerta: 10, escalera: 3,
+  pais: 100, direccion: 100, direccion2: 150, direccion3: 150,
+  correo: 60, confirmarCorreo: 60, telefonoFijo: 20, telefonoMovil: 20, fax: 20, texto: 50000,
+};
+const provinciasAdhesion = ["Álava","Albacete","Alicante","Almería","Ávila","Badajoz","Illes Balears","Barcelona","Burgos","Cáceres","Cádiz","Castellón","Ciudad Real","Córdoba","A Coruña","Cuenca","Girona","Granada","Guadalajara","Gipuzkoa","Huelva","Huesca","Jaén","León","Lleida","La Rioja","Lugo","Madrid","Málaga","Murcia","Navarra","Ourense","Asturias","Palencia","Las Palmas","Pontevedra","Salamanca","Santa Cruz de Tenerife","Cantabria","Segovia","Sevilla","Soria","Tarragona","Teruel","Toledo","Valencia","Valladolid","Bizkaia","Zamora","Zaragoza","Ceuta","Melilla"];
+function validarEntradaAdhesion(entrada) {
+  const valores = {};
+  const errores = {};
+  const obligatorios = new Set(["tratamiento","nombre","apellido1","tipoDocumento","documento","domicilio","correo","confirmarCorreo","texto"]);
+  const esCif = entrada?.tipoDocumento === "CIF";
+  if (esCif) { obligatorios.add("entidad"); obligatorios.add("cargo"); }
+  const espana = entrada?.domicilio === "espana";
+  const extranjero = entrada?.domicilio === "extranjero";
+  const nacionales = ["codigoPostal","provincia","poblacion","tipoVia","via","numero","bloque","piso","puerta","escalera"];
+  const exteriores = ["pais","direccion","direccion2","direccion3"];
+  if (espana) for (const n of nacionales.slice(0,6)) obligatorios.add(n);
+  if (extranjero) for (const n of ["pais","direccion"]) obligatorios.add(n);
+  for (const [nombre, maximo] of Object.entries(limitesAdhesion)) {
+    if (!esCif && ["entidad","cargo"].includes(nombre)) continue;
+    if ((!espana && nacionales.includes(nombre)) || (!extranjero && exteriores.includes(nombre))) continue;
+    const original = entrada?.[nombre];
+    if (original != null && typeof original !== "string") {
+      errores[nombre] = "Enter a valid text value.";
+      continue;
+    }
+    const valor = (original || "").trim().normalize("NFC");
+    valores[nombre] = valor;
+    if (obligatorios.has(nombre) && !valor) errores[nombre] = "Complete this field.";
+    else if (valor.length > maximo) errores[nombre] = "The maximum is " + maximo + " characters.";
+    else if (valor && !/^[\x20-\x7e\u00a0-\u00ff\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u02c6\u02dc\u2013-\u2014\u2018-\u201a\u201c-\u201e\u2020-\u2022\u2026\u2030\u2039-\u203a\u20ac\r\n\t]*$/.test(valor)) {
+      errores[nombre] = "A character is not supported by the PDF font. Check symbols or emoji.";
+    } else if (nombre !== "texto" && /[\r\n\t]/.test(valor)) errores[nombre] = "Enter this information on a single line.";
+  }
+  const opciones = {tratamiento:["Sr","Sra"], tipoDocumento:["NIF","NIE","Pasaporte","CIF"], domicilio:["espana","extranjero"]};
+  for (const [nombre, lista] of Object.entries(opciones)) {
+    if (valores[nombre] && !lista.includes(valores[nombre])) errores[nombre] = "Select a valid option.";
+  }
+  const tipo = valores.tipoDocumento;
+  if (valores.documento && !errores.documento) {
+    let documento = valores.documento;
+    if (tipo === "CIF") {
+      documento = documento.replace(/[\s-]/g, "").toUpperCase();
+      valores.documento = documento;
+      if (!/^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-J]$/.test(documento)) {
+        errores.documento = "Enter a CIF with an initial letter, seven digits and a check character.";
+      } else {
+        const digitos = documento.slice(1,8).split("").map(Number);
+        const suma = digitos.reduce((total, n, i) => total + (i % 2 ? n : Math.floor(n * 2 / 10) + n * 2 % 10), 0);
+        const control = (10 - suma % 10) % 10;
+        const final = documento.slice(-1);
+        const correcto = /^[ABEH]/.test(documento) ? final === String(control)
+          : /^[NPQRSW]/.test(documento) ? final === "JABCDEFGHI"[control]
+          : final === String(control) || final === "JABCDEFGHI"[control];
+        if (!correcto) errores.documento = "The CIF check character is incorrect. Check the number.";
+      }
+    } else if (tipo === "NIF" || tipo === "NIE") {
+      documento = documento.replace(/[\s-]/g,"").toUpperCase();
+      valores.documento = documento;
+      const formato = tipo === "NIF" ? /^\d{8}[A-Z]$/ : /^[XYZ]\d{7}[A-Z]$/;
+      if (!formato.test(documento)) errores.documento = tipo === "NIF"
+        ? "Enter a NIF with eight digits and a letter." : "Enter a NIE with X, Y or Z, seven digits and a letter.";
+      else {
+        const numero = tipo === "NIE" ? "XYZ".indexOf(documento[0]) + documento.slice(1,-1) : documento.slice(0,-1);
+        if ("TRWAGMYFPDXBNJZSQVHLCKE"[Number(numero) % 23] !== documento.slice(-1)) {
+          errores.documento = "The check letter for " + tipo + " is incorrect. Check the number and letter.";
+        }
+      }
+    } else if (!/^[A-Za-z0-9][A-Za-z0-9 ./-]*$/.test(documento)) {
+      errores.documento = "Check the passport number: use letters, digits, spaces, full stops, slashes or hyphens.";
+    }
+  }
+  if (espana) {
+    const cp = valores.codigoPostal || "";
+    if (cp && !/^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(cp)) errores.codigoPostal = "Enter a five-digit postcode with a province prefix from 01 to 52.";
+    const provincia = /^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(cp) ? provinciasAdhesion[Number(cp.slice(0,2))-1] : "";
+    if (provincia) {
+      valores.provincia = provincia;
+      delete errores.provincia;
+    }
+    if (valores.numero && !/^\d{1,7}$/.test(valores.numero)) errores.numero = "The official PDF allows up to seven digits here.";
+  }
+  for (const nombre of ["correo","confirmarCorreo"]) {
+    if (valores[nombre] && !/^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/.test(valores[nombre])) {
+      errores[nombre] = "Enter a valid email address.";
+    }
+  }
+  if (valores.correo && valores.confirmarCorreo && valores.correo !== valores.confirmarCorreo) errores.confirmarCorreo = "The two email addresses must match.";
+  for (const nombre of ["telefonoFijo","telefonoMovil","fax"]) {
+    const valor = valores[nombre];
+    if (!valor || errores[nombre]) continue;
+    if (!/^\+?[\d ()-]+$/.test(valor)) { errores[nombre] = "Check the phone number format."; continue; }
+    const compacto = valor.replace(/[ ()-]/g,"");
+    const valido = /^\+[1-9]\d{6,14}$/.test(compacto) || (espana && (nombre === "telefonoMovil" ? /^[67]\d{8}$/ : /^[89]\d{8}$/).test(compacto));
+    if (!valido) errores[nombre] = espana
+      ? "Enter a valid nine-digit Spanish number or an international number with + and country code."
+      : "Include +, the country code and the number.";
+  }
+  if (valores.texto === "The reason for my complaint is") errores.texto = "Explain why you support the complaint.";
+  if (entrada?.veracidad !== true) errores.veracidad = "Tick the declaration of truthfulness to submit.";
+  valores.veracidad = entrada?.veracidad === true;
+  return {valores, errores};
+}
+
+
+
+  const serviceMessages = {"Introduce un valor de texto válido.": "Enter a valid text value.", "Completa este campo.": "Complete this field.", " caracteres.": " characters.", "Hay un carácter que no admite la fuente del PDF. Revisa símbolos o emoticonos.": "A character is not supported by the PDF font. Check symbols or emoji.", "Introduce este dato en una sola línea.": "Enter this information on a single line.", "Selecciona una opción válida.": "Select a valid option.", "Introduce un CIF con una letra inicial, siete cifras y un carácter de control.": "Enter a CIF with an initial letter, seven digits and a check character.", "El carácter de control del CIF no es correcto. Revisa el número.": "The CIF check character is incorrect. Check the number.", "Introduce un NIF de ocho cifras y una letra.": "Enter a NIF with eight digits and a letter.", "Introduce un NIE con X, Y o Z, siete cifras y una letra.": "Enter a NIE with X, Y or Z, seven digits and a letter.", " no es correcta. Revisa el número y la letra.": " is incorrect. Check the number and letter.", "Revisa el pasaporte: utiliza letras, cifras, espacios, puntos, barras o guiones.": "Check the passport number: use letters, digits, spaces, full stops, slashes or hyphens.", "Introduce un código postal de cinco cifras con prefijo provincial entre 01 y 52.": "Enter a five-digit postcode with a province prefix from 01 to 52.", "El PDF oficial admite aquí hasta siete cifras.": "The official PDF allows up to seven digits here.", "Introduce una dirección de correo válida.": "Enter a valid email address.", "Las dos direcciones deben coincidir.": "The two email addresses must match.", "Revisa el formato del teléfono.": "Check the phone number format.", "Introduce nueve cifras españolas válidas o un número internacional con + y prefijo.": "Enter a valid nine-digit Spanish number or an international number with + and country code.", "Incluye +, el prefijo del país y el número.": "Include +, the country code and the number.", "Explica el motivo de tu adhesión.": "Explain why you support the complaint.", "Marca la declaración de veracidad para enviar.": "Tick the declaration of truthfulness to submit.", "Revisa los campos señalados. No se ha enviado la adhesión.": "Check the highlighted fields. Your statement of support has not been sent.", "No se pudo enviar la adhesión.": "Your statement of support could not be sent.", "Adhesión enviada. Revisa la copia en tu buzón.": "Statement of support sent. Check your inbox for the copy.", "No se pudo conectar. Puedes reintentar el mismo envío.": "Could not connect. You can retry the same submission.", "No se pudieron cargar las opciones. Recarga la página.": "The options could not be loaded. Reload the page.", "Origen no autorizado.": "This website is not authorised to use the service.", "Falta configurar el envío de correo.": "Email delivery has not been configured.", "El formulario no es válido.": "The form is invalid.", "Falta un identificador de adhesión válido.": "A valid submission identifier is missing.", "Revisa los campos señalados.": "Check the highlighted fields.", "Esta adhesión ya está registrada o se está procesando.": "This submission has already been registered or is being processed.", "Resend no confirmó el envío.": "Resend did not confirm delivery.", "No se pudo completar la operación.": "The operation could not be completed.", "Algún carácter del formulario o del texto no es compatible con la fuente del PDF.": "A character in the form or statement is not supported by the PDF font.", "El nombre o los apellidos no permiten formar la dirección del remitente.": "The sender address could not be created from the given name or surnames.", "Los datos del formulario no son válidos.": "The form data is invalid.", "Revisa el número de documento.": "Check the document number.", "Introduce un correo válido y confírmalo.": "Enter a valid email address and confirm it.", "Confirma la declaración de veracidad.": "Confirm the declaration of truthfulness.", "Selecciona el tipo de domicilio.": "Select where you live.", "Revisa el código postal.": "Check the postcode."};
+  function translateServiceMessage(message) {
+    if (serviceMessages[message]) return serviceMessages[message];
+    const limit = /^El máximo es de (\d+) caracteres\.$/.exec(message || "");
+    if (limit) return "The maximum is " + limit[1] + " characters.";
+    if (/^La letra del /.test(message || "")) return "The document check letter is incorrect. Check the number and letter.";
+    if (/^(Revisa el campo |El PDF oficial limita la longitud del campo )/.test(message || "")) return "Check the highlighted field and its length.";
+    return "The operation could not be completed. Please try again.";
+  }
+  const officialOptionLabels = {"ACCESO": "Access road", "ACEQUIA": "Irrigation channel", "ACERA": "Pavement", "AD": "AD", "AGREGADO": "Settlement", "ALAMEDA": "Tree-lined avenue", "ALDEA": "Hamlet", "ALTO": "Heights", "APARTAMENTO": "Apartment", "APDO CORREOS": "PO box", "APEADERO": "Railway halt", "ARBOLEDA": "Grove", "ARCO": "Arch", "ARRABAL": "Outlying district", "ARROYO": "Stream", "ATAJO": "Shortcut", "AUTOPISTA": "Motorway", "AUTOVIA": "Dual carriageway", "AVDA.": "Avenue", "BAJADA": "Downhill road", "BARRANCO": "Ravine", "BARRIO": "District", "BLOQUE": "Block", "BULEVAR": "Boulevard", "CALEYA": "Lane", "CALLE": "Street", "CALLE PARTICULAR": "Private street", "CALLEJA": "Lane", "CALLEJON": "Alley", "CALLEJUELA": "Narrow street", "CALZADA": "Causeway", "CAMINO": "Lane", "CAMINO VIEJO": "Old road", "CAMPA": "Open field", "CAMPING": "Campsite", "CAMPO": "Field", "CANAL": "Canal", "CAÑADA": "Drove road", "CARRER": "Street", "CARRERA": "Road", "CARRETERA": "Road", "CASA": "House", "CASERIO": "Farmstead", "CERRO": "Hill", "CHALET": "Detached house", "CINTURON": "Ring road", "CIRCUNVALACION": "Bypass", "COMPLEJO": "Complex", "CONJUNTO": "Building group", "CORREDOR": "Corridor", "COSTA": "Coast", "CUESTA": "Hill road", "CUEVAS": "Caves", "DEHESA": "Pasture", "EDIFICIO": "Building", "EMPRESA": "Business", "ENTRADA": "Entrance", "ESCALERAS": "Stairs", "ESCALINATA": "Steps", "ESTACION": "Station", "ESTRADA": "Road", "EXPLANADA": "Esplanade", "EXTRARRADIO": "Outskirts", "FINCA": "Estate", "GALERIA": "Arcade", "GLORIETA": "Roundabout", "GRAN VIA": "Main avenue", "GRANJA": "Farm", "GRUPO": "Housing group", "JARDIN": "Garden", "KALE": "Street", "LAGO": "Lake", "LLANURA": "Plain", "LUGAR": "Locality", "MALECON": "Embankment", "MASIA": "Farmhouse", "MERCADO": "Market", "MIRADOR": "Viewpoint", "MONTE": "Mount", "MUELLE": "Quay", "NUCLEO": "Settlement", "NUDO": "Junction", "PAGO": "Rural district", "PALACIO": "Palace", "PANTANO": "Reservoir", "PARQUE": "Park", "PARTIDA": "Rural district", "PASADIZO": "Passageway", "PASAJE": "Passage", "PASAJE PARTICULAR": "Private passage", "PASEO MARITIMO": "Seafront promenade", "PASILLO": "Passageway", "PASO": "Crossing", "PASO PARTICULAR": "Private crossing", "PASSEIG": "Promenade", "PATIO": "Courtyard", "PINAR": "Pine grove", "PISTA": "Track", "PLAÇA": "Square", "PLATJA": "Beach", "PLAYA": "Beach", "PLAZA": "Square", "PLAZOLETA": "Small square", "PLAZUELA": "Small square", "Pº": "Promenade", "POBLADO": "Settlement", "POLÍGONO": "Industrial estate", "PORTAL": "Building entrance", "PORTICO": "Portico", "POSADA": "Inn", "PROLONGACION": "Extension", "PUEBLO": "Village", "PUENTE": "Bridge", "PUERTA": "Gate", "PUERTO": "Port", "RAMBLA": "Rambla", "RAMPA": "Ramp", "RESIDENCIAL": "Residential complex", "RIBERA": "Riverbank", "RIERA": "Stream", "RINCON": "Corner", "RINCONADA": "Nook", "RONDA": "Ring road", "ROTONDA": "Roundabout", "RUA": "Street", "SECTOR": "Sector", "SENDA": "Path", "SENDERO": "Trail", "SUBIDA": "Uphill road", "TRANSITO": "Passage", "TRAVESIA": "Cross street", "TRAVESSIA": "Cross street", "TUNEL": "Tunnel", "URB.": "Housing development", "VALLE": "Valley", "VEGA": "River plain", "VEREDA": "Path", "VIA": "Way", "VIADUCTO": "Viaduct", "VIAL": "Road", "VILLA": "Villa", "VIVIENDAS": "Housing", "ZONA": "Zone", "Sr": "Mr", "Sra": "Ms", "Pasaporte": "Passport"};
+  const countryLabels = {"Afganistán": "Afghanistan", "Albania": "Albania", "Alemania": "Germany", "Angola": "Angola", "Anguilla": "Anguilla", "Antártida": "Antarctica", "Antigua y Barbuda": "Antigua & Barbuda", "Antillas Holandesas": "Netherlands Antilles", "Arabia Saudí": "Saudi Arabia", "Argelia": "Algeria", "Argentina": "Argentina", "Armenia": "Armenia", "Aruba": "Aruba", "Australia": "Australia", "Austria": "Austria", "Azerbaiyán": "Azerbaijan", "Bahamas": "Bahamas", "Bahrein": "Bahrain", "Bangla Desh": "Bangladesh", "Barbados": "Barbados", "Bélgica": "Belgium", "Belice": "Belize", "Benín": "Benin", "Bermuda": "Bermuda", "Bielorrusia": "Belarus", "Bolivia": "Bolivia", "Bosnia-Herzegovina": "Bosnia and Herzegovina", "Botsuana": "Botswana", "Brasil": "Brazil", "Brunei": "Brunei", "Bulgaria": "Bulgaria", "Burkina Faso": "Burkina Faso", "Burundi": "Burundi", "Bután": "Bhutan", "Cabo Verde": "Cape Verde", "Camboya": "Cambodia", "Camerún": "Cameroon", "Canadá": "Canada", "Chad": "Chad", "Chile": "Chile", "China": "China", "Chipre": "Cyprus", "Ciudad Estado del Vaticano": "Vatican City", "Comores": "Comoros", "Congo": "Congo", "Costa de marfil": "Côte d’Ivoire", "Costa Rica": "Costa Rica", "Croacia": "Croatia", "Cuba": "Cuba", "Dinamarca": "Denmark", "Dominica": "Dominica", "Ecuador": "Ecuador", "Egipto": "Egypt", "El Salvador": "El Salvador", "Emiratos Árabes Unidos": "United Arab Emirates", "Eritrea": "Eritrea", "Eslovaquia": "Slovakia", "Eslovenia": "Slovenia", "Estados Unidos": "United States", "Estonia": "Estonia", "Etiopía": "Ethiopia", "Filipinas": "Philippines", "Finlandia": "Finland", "Fiyi": "Fiji", "Francia": "France", "Gabón": "Gabon", "Gambia": "Gambia", "Georgia": "Georgia", "Georgia del Sur y las Islas Sándwich": "South Georgia and the South Sandwich Islands", "Ghana": "Ghana", "Gibraltar": "Gibraltar", "Granada": "Grenada", "Grecia": "Greece", "Groelandia": "Greenland", "Guadalupe": "Guadeloupe", "Guam": "Guam", "Guatemala": "Guatemala", "Guinea": "Guinea", "Guinea Ecuatorial": "Equatorial Guinea", "Guinea-Bissau": "Guinea-Bissau", "Guyana": "Guyana", "Guyana Francesa": "French Guiana", "Haití": "Haiti", "Honduras": "Honduras", "Hong Kong": "Hong Kong", "Hungría": "Hungary", "India": "India", "Indonesia": "Indonesia", "Irak": "Iraq", "Irán": "Iran", "Irlanda": "Ireland", "Isla Bouvet": "Bouvet Island", "Isla de Navidad": "Christmas Island", "Islandia": "Iceland", "Islas Äland": "Åland Islands", "Islas Caimán": "Cayman Islands", "Islas Cocos (Keeling)": "Cocos (Keeling) Islands", "Islas Cook": "Cook Islands", "Islas de Wallis y Afortunadas": "Wallis and Futuna", "Islas Feroes": "Faroe Islands", "Islas Heard y Mc Donald": "Heard and McDonald Islands", "Islas Malvinas (Falkland)": "Falkland Islands", "Islas Marianas": "Mariana Islands", "Islas Marshall": "Marshall Islands", "Islas Norfolk": "Norfolk Island", "Islas Salomón": "Solomon Islands", "Islas Svalbard y Jan Mayen": "Svalbard and Jan Mayen", "Islas Turcas y caicos": "Turks and Caicos Islands", "Islas Vírgenes Británicas": "British Virgin Islands", "Israel": "Israel", "Italia": "Italy", "Jamaica": "Jamaica", "Japón": "Japan", "Jordania": "Jordan", "Kazajstán": "Kazakhstan", "Kenia": "Kenya", "Kirguizistán": "Kyrgyzstan", "Kiribati": "Kiribati", "Kuwait": "Kuwait", "Laos": "Laos", "Lesotho": "Lesotho", "Letonia": "Latvia", "Líbano": "Lebanon", "Liberia": "Liberia", "Libia": "Libya", "Liechtenstein": "Liechtenstein", "Lituania": "Lithuania", "Luxemburgo": "Luxembourg", "Macao": "Macao", "Madagascar": "Madagascar", "Malasia": "Malaysia", "Malawi": "Malawi", "Maldivas": "Maldives", "Malí": "Mali", "Malta": "Malta", "Marruecos": "Morocco", "Martinica": "Martinique", "Mauricio": "Mauritius", "Mauritania": "Mauritania", "Mayote": "Mayotte", "México": "Mexico", "Moldavia": "Moldova", "Mónaco": "Monaco", "Mongolia": "Mongolia", "Montenegro": "Montenegro", "Montserrat": "Montserrat", "Mozambique": "Mozambique", "Myanmar": "Myanmar", "Namibia": "Namibia", "Nauru": "Nauru", "Nepal": "Nepal", "Nicaragua": "Nicaragua", "Níger": "Niger", "Nigeria": "Nigeria", "Niue": "Niue", "Noruega": "Norway", "Nueva Caledonia": "New Caledonia", "Nueva Zelanda": "New Zealand", "Omán": "Oman", "País Genérico": "Other country", "Países Bajos": "Netherlands", "Pakistán": "Pakistan", "Palau": "Palau", "Palestina": "Palestine", "Panamá": "Panama", "Papua Nueva Guinea": "Papua New Guinea", "Paraguay": "Paraguay", "Perú": "Peru", "Polonia": "Poland", "Portugal": "Portugal", "Principado de Andorra": "Andorra", "Puerto Rico": "Puerto Rico", "Qatar": "Qatar", "Reino Unido": "United Kingdom", "República Checa": "Czech Republic", "Ruanda": "Rwanda", "Rumanía": "Romania", "Rusia": "Russia", "Sáhara Occidental": "Western Sahara", "Samoa": "Samoa", "Samoa Americana": "American Samoa", "San Marino": "San Marino", "San Vicente y las Granadinas": "St. Vincent & Grenadines", "Santa Kitts y Nevis": "Saint Kitts and Nevis", "Santa Lucia": "Saint Lucia", "Santo Tome y Príncipe": "São Tomé and Príncipe", "Senegal": "Senegal", "Serbia": "Serbia", "Serbia y Montenegro": "Serbia and Montenegro", "Seychelles": "Seychelles", "Sierra Leona": "Sierra Leone", "Singapur": "Singapore", "Siria": "Syria", "Somalia": "Somalia", "Sri Lanka": "Sri Lanka", "Sudáfrica": "South Africa", "Sudan": "Sudan", "Suecia": "Sweden", "Suiza": "Switzerland", "Surinam": "Suriname", "Swazilandia": "Eswatini", "Tailandia": "Thailand", "Taiwán": "Taiwan", "Tanzania": "Tanzania", "Tayikistán": "Tajikistan", "Territorio Británico del Océano Indico": "British Indian Ocean Territory", "Territorios Australes y Antárticos Franceses": "French Southern and Antarctic Lands", "Timor Oriental": "Timor-Leste", "Togo": "Togo", "Tokelau": "Tokelau", "Tonga": "Tonga", "Trinidad y Tobago": "Trinidad & Tobago", "Túnez": "Tunisia", "Turkmenistán": "Turkmenistan", "Turquía": "Türkiye", "Tuvalu": "Tuvalu", "Ucrania": "Ukraine", "Uganda": "Uganda", "Uruguay": "Uruguay", "Uzbekistán": "Uzbekistan", "Vanuatu": "Vanuatu", "Venezuela": "Venezuela", "Vietnam": "Vietnam", "Yemen": "Yemen", "Yibuti": "Djibouti", "Zambia": "Zambia", "Zimbabue": "Zimbabwe"};
+  function optionLabel(field, value) {
+    return (field === "pais" ? countryLabels[value] : officialOptionLabels[value]) || value;
+  }
+
+  const formulario = document.getElementById("formulario-adhesion");
+  const resultado = document.getElementById("resultado-adhesion");
+  const enviar = formulario.querySelector('button[type="submit"]');
+  const contador = document.getElementById("contador-texto");
+  const domicilio = formulario.elements.domicilio;
+  let solicitudAnterior = "", idAdhesion = "", revisado = false;
+  let motivoEditado = false;
+  function actualizarPresentacion() {
+    const campos = formulario.elements;
+    const nombre = [campos.nombre.value, campos.apellido1.value, campos.apellido2.value].map(v => v.trim()).filter(Boolean).join(" ");
+    const esCif = campos.tipoDocumento.value === "CIF";
+    const entidad = document.getElementById("datos-entidad");
+    entidad.hidden = !esCif;
+    for (const campo of entidad.querySelectorAll("input")) campo.disabled = !esCif;
+    document.getElementById("identificacion-adhesion").textContent = esCif
+      ? "I, " + (nombre || "[full name]") + ", acting as " + (campos.cargo.value.trim() || "[role]") + " of " + (campos.entidad.value.trim() || "[organisation]") + ", CIF " + (campos.documento.value.trim() || "[number]") + ","
+      :
+      "I, " + (nombre || "[full name]") + ", with " +
+      (officialOptionLabels[campos.tipoDocumento.value] || campos.tipoDocumento.value || "[document type]") + " " +
+      (campos.documento.value.trim() || "[number]") + ",";
+    if (!motivoEditado) {
+      campos.texto.value = campos.texto.value.replace(/^I appear (?:as a citizen interested in the regulation of adoption|on behalf of this organisation)/,
+        esCif ? "I appear on behalf of this organisation" : "I appear as a citizen interested in the regulation of adoption");
+    }
+    contarTexto();
+  }
+  formulario.noValidate = true;
+  for (const campo of formulario.querySelectorAll("input, select, textarea")) {
+    campo.id = "adhesion-" + campo.name;
+    campo.setAttribute("aria-describedby", "error-" + campo.name);
+    const error = document.createElement("span");
+    error.id = "error-" + campo.name;
+    error.className = "adhesion-error";
+    error.hidden = true;
+    campo.closest("label").append(error);
+  }
+  function datosFormulario() {
+    const datos = Object.fromEntries(new FormData(formulario));
+    datos.veracidad = formulario.elements.veracidad.checked;
+    return datos;
+  }
+  function mostrarErrores(errores, enfocar = false) {
+    let primero;
+    for (const campo of formulario.querySelectorAll("input, select, textarea")) {
+      const original = errores[campo.name] || "";
+      const mensaje = /[áéíóúñ]|^(Introduce|Revisa|Completa|Selecciona|Marca|Las dos|El |La |Hay |Incluye)/.test(original) ? translateServiceMessage(original) : original;
+      const error = document.getElementById("error-" + campo.name);
+      error.textContent = mensaje;
+      error.hidden = !mensaje;
+      campo.setAttribute("aria-invalid", String(Boolean(mensaje)));
+      if (mensaje && !primero && !campo.disabled) primero = campo;
+    }
+    if (enfocar && primero) primero.focus();
+  }
+  function comprobar(enfocar = false) {
+    const revision = validarEntradaAdhesion(datosFormulario());
+    for (const campo of formulario.querySelectorAll("select[required]")) {
+      if (!campo.disabled && !Array.from(campo.options).some(opcion => opcion.value === revision.valores[campo.name] && opcion.value)) {
+        revision.errores[campo.name] = "Select a valid option.";
+      }
+    }
+    mostrarErrores(revision.errores, enfocar);
+    return revision;
+  }
+  function mostrarDomicilio() {
+    for (const opcion of ["espana","extranjero"]) {
+      const grupo = document.getElementById("domicilio-" + opcion);
+      grupo.hidden = domicilio.value !== opcion;
+      for (const campo of grupo.querySelectorAll("input, select")) campo.disabled = grupo.hidden;
+    }
+  }
+  function actualizarProvincia() {
+    const codigo = formulario.elements.codigoPostal.value;
+    formulario.elements.provincia.value = /^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(codigo)
+      ? provinciasAdhesion[Number(codigo.slice(0,2))-1] : "";
+  }
+  function contarTexto() {
+    contador.textContent = formulario.elements.texto.value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " / 50,000 characters";
+  }
+  formulario.elements.provincia.readOnly = true;
+  domicilio.addEventListener("change", mostrarDomicilio);
+  formulario.elements.codigoPostal.addEventListener("input", actualizarProvincia);
+  formulario.addEventListener("input", evento => { if (evento.target.name === "texto") motivoEditado = true; actualizarPresentacion(); if (revisado) comprobar(); });
+  formulario.addEventListener("change", () => { actualizarPresentacion(); if (revisado) comprobar(); });
+  formulario.addEventListener("focusout", evento => {
+    const campo = evento.target;
+    if (!campo.name || campo.disabled) return;
+    const revision = validarEntradaAdhesion(datosFormulario());
+    const mensaje = revision.errores[campo.name] || "";
+    document.getElementById("error-" + campo.name).textContent = mensaje;
+    document.getElementById("error-" + campo.name).hidden = !mensaje;
+    campo.setAttribute("aria-invalid", String(Boolean(mensaje)));
+  });
+  mostrarDomicilio();
+  contarTexto();
+  formulario.addEventListener("submit", async evento => {
+    evento.preventDefault();
+    if (enviar.disabled) return;
+    revisado = true;
+    const revision = comprobar(true);
+    if (Object.keys(revision.errores).length) {
+      resultado.textContent = "Check the highlighted fields. Your statement of support has not been sent.";
+      return;
+    }
+    const datos = revision.valores, solicitud = JSON.stringify(datos);
+    if (solicitud !== solicitudAnterior) { solicitudAnterior = solicitud; idAdhesion = crypto.randomUUID(); }
+    enviar.disabled = true;
+    resultado.textContent = "Sending your statement of support…";
+    try {
+      const respuesta = await fetch(formulario.dataset.endpoint, {
+        method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({...datos,idAdhesion}),
+      });
+      const mensaje = await respuesta.json();
+      if (!respuesta.ok || !mensaje.id) {
+        if (mensaje.campos) mostrarErrores(mensaje.campos,true);
+        throw new Error(mensaje.error ? translateServiceMessage(mensaje.error) : "Your statement of support could not be sent.");
+      }
+      resultado.textContent = "Statement of support sent. Check your inbox for the copy.";
+    } catch (error) {
+      resultado.textContent = error instanceof TypeError ? "Could not connect. You can retry the same submission." : error.message;
+    } finally { enviar.disabled = false; }
+  });
+  async function cargarOpciones() {
+    resultado.textContent = "Loading the official form options…";
+    try {
+      const respuesta = await fetch(formulario.dataset.endpoint + "?opciones=1");
+      if (!respuesta.ok) throw new Error("The options could not be loaded. Reload the page.");
+      const opciones = await respuesta.json();
+      for (const nombre of ["tratamiento","tipoDocumento","tipoVia","pais"]) {
+        const anterior = formulario.elements[nombre], selector = document.createElement("select");
+        selector.name = nombre; selector.id = anterior.id;
+        selector.setAttribute("aria-describedby", "error-" + nombre);
+        selector.required = true; selector.disabled = anterior.disabled;
+        selector.add(new Option("Select",""));
+        for (const valor of opciones[nombre]) selector.add(new Option(optionLabel(nombre,valor),valor));
+        anterior.replaceWith(selector);
+      }
+      actualizarPresentacion(); resultado.textContent = ""; enviar.disabled = false;
+    } catch (error) { resultado.textContent = error.message; }
+  }
+  cargarOpciones();
+
+</script>
+

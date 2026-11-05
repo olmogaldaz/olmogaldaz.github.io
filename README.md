@@ -561,3 +561,16 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 ### Publicación de la migración · 27 de septiembre de 2026
 
 Publicadas en producción las rutas descriptivas ES/EN, los avisos de las direcciones antiguas y los documentos actualizados. El sitemap incluye únicamente las nuevas rutas; los avisos antiguos declaran como canonical la nueva página de su idioma. La guía de producción utiliza el dominio definitivo.
+
+### Formulario de adhesión por correo — producción, 05/11/2026
+
+- Español: `/es/queja-adoptados-bebes-robados/adhesiones-por-correo/`.
+- Inglés: `/en/complaint-adoptees-stolen-babies/join-by-email/`.
+- Ambas páginas de la queja ofrecen envío automático y presentación directa.
+- La versión inglesa traduce las etiquetas, el texto de adhesión, la identificación, los mensajes y los errores del servicio. Mantiene los nombres y valores de los campos requeridos por el PDF oficial; el formulario oficial y la queja original siguen en español.
+- Ambas versiones del formulario permiten indexación en producción. Sus rutas y fechas están en `html` de `_data/resources.yml`, que alimenta los enlaces de idioma y el sitemap. En pruebas, `indexable: false` mantiene el `noindex` general del entorno.
+- Ambos formularios tienen ya los textos definitivos de producción, sin avisos internos de pruebas ni instrucciones de usar datos ficticios. El entorno de pruebas conserva su protección general de indexación y su señalización común.
+- Vercel tiene dos funciones independientes en el proyecto `adhesionesmail`: `/api/adhesiones_mail` para pruebas (origen y PDF de `enpruebas.gomezaldaz.com`, destinatario `olmo.gomez.aldaz@gmail.com`) y `/api/adhesiones_mail_produccion` para producción (origen y PDF de `gomezaldaz.com`, destinatario `registro@defensordelpueblo.es`).
+- Los formularios ES/EN seleccionan la función con Liquid según `site.indexable`: `false` en pruebas y `true` en producción. Jekyll genera el endpoint definitivo al compilar; los mismos archivos sirven en ambos entornos.
+- Ambas funciones están desplegadas y comprobadas. La función original de pruebas se conserva intacta; sus destinatario y origen no se sustituyen al publicar producción.
+- Publicados ambos formularios y las páginas ES/EN de la queja con las dos vías de adhesión. El catálogo incluye las nuevas URL y las fechas de publicación/modificación. Se conservan el dominio, la configuración y los PDF específicos de producción.

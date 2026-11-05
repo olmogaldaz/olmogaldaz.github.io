@@ -29,9 +29,12 @@ html:
     en: {url: "/en/sentence/", modified: "2026-08-06T01:48:08+02:00"}
     section: "SENTENCIAS / JUDGMENTS"
 
-  - es: {url: "/es/queja-adoptados-bebes-robados/", modified: "2026-09-27"}
-    en: {url: "/en/complaint-adoptees-stolen-babies/", published: "2026-09-20", modified: "2026-09-27"}
+  - es: {url: "/es/queja-adoptados-bebes-robados/", modified: "2026-11-05"}
+    en: {url: "/en/complaint-adoptees-stolen-babies/", published: "2026-09-20", modified: "2026-11-05"}
     section: "QUEJA / COMPLAINT"
+
+  - es: {url: "/es/queja-adoptados-bebes-robados/adhesiones-por-correo/", published: "2026-11-05", modified: "2026-11-05"}
+    en: {url: "/en/complaint-adoptees-stolen-babies/join-by-email/", published: "2026-11-05", modified: "2026-11-05"}
 
   - es: {url: "/es/colaboraciones/", published: "2026-11-01", modified: "2026-11-02"}
     en: {url: "/en/collaborations/", published: "2026-11-01", modified: "2026-11-02"}
@@ -97,6 +100,7 @@ html:
     en: {url: "/en/contact/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
     section: "CONTACTO / CONTACT"
 
+
 legacy_html:
   - es: {url: "/es/queja-26097224/", modified: "2026-09-27"}
     en: {url: "/en/complaint-26097224/", published: "2026-09-20", modified: "2026-09-27"}
@@ -132,4 +136,5 @@ pdf:
   - {url: "/docs/I-am-going-to-talk-about-resilience-v1.pdf"}
   - {url: "/docs/nota-prensa-reconocimiento-bebe-robado-julio-2026.pdf", modified: "2026-07-14"}
   - {url: "/docs/nota-prensa-ley-memoria-democratica-bebes-robados-agosto-2026.pdf", modified: "2026-08-04"}
+
 

@@ -1,0 +1,374 @@
+---
+layout: default
+lang: es
+title: Adhesiones por correo
+description: Formulario de adhesión por correo al expediente 26037767 del Defensor del Pueblo.
+extra_css:
+  - /css/queja.css
+---
+<main class="complaint-page adhesiones-correo">
+  <p class="breadcrumb"><a href="/">Inicio</a> &gt; <a href="../">Queja ante el Defensor del Pueblo</a> &gt; Adhesiones por correo</p>
+  <header class="complaint-hero">
+    <p class="complaint-kicker">Defensor del Pueblo · Expediente n.º 26037767</p>
+    <h1>Adhesiones por correo</h1>
+    <p class="complaint-lead">Rellena el formulario para preparar tu adhesión. El envío incluye el formulario oficial, la queja original y tu texto de adhesión.</p>
+  </header>
+  <p>Antes de adherirte, puedes <a href="/docs/queja-adhesion-adoptados-bebes-robados.pdf" target="_blank" rel="noopener">leer la queja original (PDF)</a>, que se adjuntará al correo.</p>
+  <form id="formulario-adhesion" data-endpoint="https://adhesionesmail.vercel.app/api/{% if site.indexable %}adhesiones_mail_produccion{% else %}adhesiones_mail{% endif %}" method="post">
+    <p>Los campos marcados con * son obligatorios.</p>
+    <fieldset>
+      <legend>Datos personales</legend>
+      <div class="adhesion-grid">
+        <label>Tratamiento *<select name="tratamiento" required><option value="">Selecciona</option><option value="Sr">Sr.</option><option value="Sra">Sra.</option></select></label>
+        <label>Nombre *<input name="nombre" type="text" maxlength="100" required></label>
+        <label>Primer apellido *<input name="apellido1" type="text" maxlength="100" required></label>
+        <label>Segundo apellido<input name="apellido2" type="text" maxlength="100"></label>
+        <label>Tipo de documento *<select name="tipoDocumento" required><option value="">Selecciona</option><option value="NIF">NIF</option><option value="NIE">NIE</option><option value="Pasaporte">Pasaporte</option><option value="CIF">CIF</option></select></label>
+        <label>Número de documento *<input name="documento" type="text" maxlength="40" required></label>
+      </div>
+    </fieldset>
+    <fieldset id="datos-entidad" hidden>
+      <legend>Entidad representada</legend>
+      <div class="adhesion-grid">
+        <label>Entidad *<input name="entidad" type="text" maxlength="60" required disabled></label>
+        <label>Cargo *<input name="cargo" type="text" maxlength="200" required disabled></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Domicilio</legend>
+      <label>Dónde resides *<select name="domicilio" required><option value="">Selecciona</option><option value="espana">España</option><option value="extranjero">Otro país</option></select></label>
+      <div id="domicilio-espana" class="adhesion-grid" hidden>
+        <label>Código postal *<input name="codigoPostal" type="text" maxlength="5" required inputmode="numeric" pattern="[0-9]{5}"></label>
+        <label>Provincia *<input name="provincia" type="text" maxlength="50" required></label>
+        <label>Población *<input name="poblacion" type="text" maxlength="80" required></label>
+        <label>Tipo de vía *<input name="tipoVia" type="text" maxlength="40" required list="tipos-via" placeholder="CALLE"></label>
+        <datalist id="tipos-via"><option value="CALLE"><option value="AVDA."><option value="PLAZA"><option value="CAMINO"><option value="CARRETERA"><option value="PASAJE"><option value="Pº"></datalist>
+        <label>Nombre de la vía *<input name="via" type="text" maxlength="100" required></label>
+        <label>Número *<input name="numero" type="text" maxlength="7" required></label>
+        <label>Bloque<input name="bloque" type="text" maxlength="10"></label>
+        <label>Piso<input name="piso" type="text" maxlength="10"></label>
+        <label>Puerta<input name="puerta" type="text" maxlength="10"></label>
+        <label>Escalera<input name="escalera" type="text" maxlength="3"></label>
+      </div>
+      <div id="domicilio-extranjero" class="adhesion-grid" hidden>
+        <label>País *<input name="pais" type="text" maxlength="100" required></label>
+        <label>Dirección *<input name="direccion" type="text" maxlength="100" required></label>
+        <label>Dirección, segunda línea<input name="direccion2" type="text" maxlength="150"></label>
+        <label>Dirección, tercera línea<input name="direccion3" type="text" maxlength="150"></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Contacto</legend>
+      <div class="adhesion-grid">
+        <label>Correo electrónico *<input name="correo" type="email" maxlength="60" required autocomplete="email"></label>
+        <label>Repite tu correo electrónico *<input name="confirmarCorreo" type="email" maxlength="60" required autocomplete="off"></label>
+        <label>Teléfono móvil<input name="telefonoMovil" type="tel" maxlength="20"></label>
+        <label>Teléfono fijo<input name="telefonoFijo" type="tel" maxlength="20"></label>
+        <label>Fax<input name="fax" type="tel" maxlength="20"></label>
+      </div>
+      <p>Recibirás en el correo electrónico que has indicado una copia del mensaje que se enviará al Defensor del Pueblo, a registro@defensordelpueblo.es, con los tres documentos adjuntos.</p>
+    </fieldset>
+    <fieldset>
+      <legend>Texto de adhesión</legend>
+      <p>Revisa y adapta el texto de adhesión a tu situación. Se incorporará íntegro a un PDF adjunto.</p>
+      <p id="identificacion-adhesion" aria-live="polite">Yo, [nombre y apellidos], con [tipo de documento] [número],</p>
+      <label>Motivo de la adhesión *<textarea name="texto" rows="12" maxlength="50000" required>comparezco como ciudadano interesado en la regulación de la adopción y me adhiero a la queja del expediente n.º 26037767. La fundamentación completa, las tres quejas planteadas y sus solicitudes se recogen en el documento adjunto, cuyo contenido respaldo.
+
+La legislación española ha regulado ampliamente la adopción durante la minoría de edad, pero deja insuficientemente resuelta la posición jurídica de la persona adoptada adulta. La adopción puede haber extinguido sus vínculos jurídicos de origen, sustituido sus apellidos y determinado su identidad registral sin que pudiera decidirlo, manteniéndose después esos efectos de forma esencialmente permanente.
+
+El derecho a conocer los orígenes no equivale necesariamente a recuperar jurídicamente la filiación ni todos los derechos derivados de ella. Por eso, esta adhesión respalda el examen de las tres cuestiones generales desarrolladas en la queja adjunta.
+
+La primera es la diferencia de trato que puede producirse cuando la filiación por naturaleza de una persona adoptada ha sido jurídicamente determinada, pero la existencia de la adopción limita efectos que esa misma filiación tendría en una persona no adoptada. El caso ilustrativo incorporado a la queja muestra que filiación de origen y adopción pueden coexistir jurídicamente.
+
+La segunda es la ausencia de una acción propia de la persona adoptada adulta para extinguir la adopción. La irrevocabilidad protege al menor frente al abandono unilateral de los adoptantes, pero no debería impedir que, alcanzada la mayoría de edad, pueda decidir sobre la continuidad de una relación jurídica constituida durante su infancia.
+
+La tercera afecta al modelo adoptivo sustitutivo: la adopción extingue como regla general los vínculos jurídicos con la familia de origen. La queja sostiene que la protección del menor no exige necesariamente esa extinción general, pues pueden limitarse las facultades incompatibles de los adultos sin borrar la filiación ni todos los derechos derivados del origen.
+
+Por estas razones, solicito que el Defensor del Pueblo examine las cuestiones y solicitudes desarrolladas en la queja adjunta y valore las actuaciones y reformas necesarias para garantizar los derechos de filiación, identidad y autonomía de las personas adoptadas adultas.</textarea></label>
+      <p id="contador-texto" aria-live="polite"></p>
+    </fieldset>
+    <label class="adhesion-confirmacion"><input type="checkbox" name="veracidad" required> Declaro que los datos consignados son veraces y se corresponden con mi identidad y señas de contacto.</label>
+    <div class="adhesion-privacidad">
+      <p>Tus datos se utilizarán únicamente para cumplimentar los documentos y efectuar ese envío. Este portal no los utiliza para otros fines ni mantiene un archivo propio de las adhesiones. El proceso utiliza los servicios de <a href="https://vercel.com/legal/dpa" target="_blank" rel="noopener">Vercel</a> y <a href="https://resend.com/security/gdpr/" target="_blank" rel="noopener">Resend</a>; los enlaces explican cómo tratan y conservan los datos. <a href="https://www.defensordelpueblo.es/wp-content/uploads/queja/FormularioQuejasOffline.pdf#page=3" target="_blank" rel="noopener">Consulta aquí la cláusula de protección de datos del Defensor del Pueblo (página 3 del PDF oficial)</a>.</p>
+    </div>
+    <button class="cta cta-campaign" type="submit" disabled>Enviar adhesión</button>
+    <p id="resultado-adhesion" role="status" aria-live="polite"></p>
+    <noscript><p>Activa JavaScript para utilizar el formulario.</p></noscript>
+  </form>
+  <div class="adhesion-volver-inicio">
+    <a class="cta" href="/">Pulsa aquí cuando haya terminado el envío del formulario para volver al inicio de esta web</a>
+  </div>
+</main>
+<style>
+  .adhesiones-correo fieldset { margin: 1.4rem 0; padding: 1rem; border: 1px solid var(--campaign-line); border-radius: 12px; min-width: 0; }
+  .adhesiones-correo fieldset[hidden] { display: none; }
+  .adhesiones-correo legend { padding: 0 .4rem; color: var(--campaign-dark); font-weight: 700; }
+  .adhesion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: .85rem 1rem; }
+  .adhesion-grid[hidden] { display: none; }
+  .adhesiones-correo label { display: block; font-weight: 600; }
+  .adhesiones-correo input:not([type="checkbox"]), .adhesiones-correo select, .adhesiones-correo textarea { display: block; box-sizing: border-box; width: 100%; padding: .55rem; margin: .25rem 0 0; border: 1px solid var(--campaign-line); border-radius: 6px; font: inherit; font-weight: normal; }
+  .adhesiones-correo textarea { resize: vertical; }
+  .adhesion-error { display: block; color: #a32121; font-size: .92rem; font-weight: normal; margin-top: .3rem; }
+  .adhesion-error[hidden] { display: none; }
+  .adhesiones-correo [aria-invalid="true"] { border-color: #a32121; }
+  .adhesiones-correo a:not(.cta), .adhesiones-correo a:not(.cta):hover { text-decoration: none; }
+  .adhesiones-correo a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  #identificacion-adhesion { margin: 1rem 0 .6rem; }
+  .adhesion-privacidad { margin: 1rem 0; font-size: .95rem; }
+  .adhesiones-correo select[name="domicilio"] { margin-bottom: .85rem; }
+  .adhesiones-correo .adhesion-confirmacion { margin-top: .85rem; font-weight: normal; }
+  .adhesiones-correo button:disabled { opacity: .65; cursor: default; }
+  .adhesiones-correo .adhesion-volver-inicio { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .adhesiones-correo .adhesion-volver-inicio .cta { display: block; box-sizing: border-box; width: 100%; min-width: 0; white-space: normal; text-align: center; }
+</style>
+<script>
+const limitesAdhesion = {
+  entidad: 60, cargo: 200, tratamiento: 10, nombre: 100, apellido1: 100, apellido2: 100, tipoDocumento: 20,
+  documento: 40, domicilio: 12, codigoPostal: 5, provincia: 50, poblacion: 80,
+  tipoVia: 40, via: 100, numero: 7, bloque: 10, piso: 10, puerta: 10, escalera: 3,
+  pais: 100, direccion: 100, direccion2: 150, direccion3: 150,
+  correo: 60, confirmarCorreo: 60, telefonoFijo: 20, telefonoMovil: 20, fax: 20, texto: 50000,
+};
+const provinciasAdhesion = ["Álava","Albacete","Alicante","Almería","Ávila","Badajoz","Illes Balears","Barcelona","Burgos","Cáceres","Cádiz","Castellón","Ciudad Real","Córdoba","A Coruña","Cuenca","Girona","Granada","Guadalajara","Gipuzkoa","Huelva","Huesca","Jaén","León","Lleida","La Rioja","Lugo","Madrid","Málaga","Murcia","Navarra","Ourense","Asturias","Palencia","Las Palmas","Pontevedra","Salamanca","Santa Cruz de Tenerife","Cantabria","Segovia","Sevilla","Soria","Tarragona","Teruel","Toledo","Valencia","Valladolid","Bizkaia","Zamora","Zaragoza","Ceuta","Melilla"];
+function validarEntradaAdhesion(entrada) {
+  const valores = {};
+  const errores = {};
+  const obligatorios = new Set(["tratamiento","nombre","apellido1","tipoDocumento","documento","domicilio","correo","confirmarCorreo","texto"]);
+  const esCif = entrada?.tipoDocumento === "CIF";
+  if (esCif) { obligatorios.add("entidad"); obligatorios.add("cargo"); }
+  const espana = entrada?.domicilio === "espana";
+  const extranjero = entrada?.domicilio === "extranjero";
+  const nacionales = ["codigoPostal","provincia","poblacion","tipoVia","via","numero","bloque","piso","puerta","escalera"];
+  const exteriores = ["pais","direccion","direccion2","direccion3"];
+  if (espana) for (const n of nacionales.slice(0,6)) obligatorios.add(n);
+  if (extranjero) for (const n of ["pais","direccion"]) obligatorios.add(n);
+  for (const [nombre, maximo] of Object.entries(limitesAdhesion)) {
+    if (!esCif && ["entidad","cargo"].includes(nombre)) continue;
+    if ((!espana && nacionales.includes(nombre)) || (!extranjero && exteriores.includes(nombre))) continue;
+    const original = entrada?.[nombre];
+    if (original != null && typeof original !== "string") {
+      errores[nombre] = "Introduce un valor de texto válido.";
+      continue;
+    }
+    const valor = (original || "").trim().normalize("NFC");
+    valores[nombre] = valor;
+    if (obligatorios.has(nombre) && !valor) errores[nombre] = "Completa este campo.";
+    else if (valor.length > maximo) errores[nombre] = "El máximo es de " + maximo + " caracteres.";
+    else if (valor && !/^[\x20-\x7e\u00a0-\u00ff\u0152\u0153\u0160\u0161\u0178\u017d\u017e\u0192\u02c6\u02dc\u2013-\u2014\u2018-\u201a\u201c-\u201e\u2020-\u2022\u2026\u2030\u2039-\u203a\u20ac\r\n\t]*$/.test(valor)) {
+      errores[nombre] = "Hay un carácter que no admite la fuente del PDF. Revisa símbolos o emoticonos.";
+    } else if (nombre !== "texto" && /[\r\n\t]/.test(valor)) errores[nombre] = "Introduce este dato en una sola línea.";
+  }
+  const opciones = {tratamiento:["Sr","Sra"], tipoDocumento:["NIF","NIE","Pasaporte","CIF"], domicilio:["espana","extranjero"]};
+  for (const [nombre, lista] of Object.entries(opciones)) {
+    if (valores[nombre] && !lista.includes(valores[nombre])) errores[nombre] = "Selecciona una opción válida.";
+  }
+  const tipo = valores.tipoDocumento;
+  if (valores.documento && !errores.documento) {
+    let documento = valores.documento;
+    if (tipo === "CIF") {
+      documento = documento.replace(/[\s-]/g, "").toUpperCase();
+      valores.documento = documento;
+      if (!/^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-J]$/.test(documento)) {
+        errores.documento = "Introduce un CIF con una letra inicial, siete cifras y un carácter de control.";
+      } else {
+        const digitos = documento.slice(1,8).split("").map(Number);
+        const suma = digitos.reduce((total, n, i) => total + (i % 2 ? n : Math.floor(n * 2 / 10) + n * 2 % 10), 0);
+        const control = (10 - suma % 10) % 10;
+        const final = documento.slice(-1);
+        const correcto = /^[ABEH]/.test(documento) ? final === String(control)
+          : /^[NPQRSW]/.test(documento) ? final === "JABCDEFGHI"[control]
+          : final === String(control) || final === "JABCDEFGHI"[control];
+        if (!correcto) errores.documento = "El carácter de control del CIF no es correcto. Revisa el número.";
+      }
+    } else if (tipo === "NIF" || tipo === "NIE") {
+      documento = documento.replace(/[\s-]/g,"").toUpperCase();
+      valores.documento = documento;
+      const formato = tipo === "NIF" ? /^\d{8}[A-Z]$/ : /^[XYZ]\d{7}[A-Z]$/;
+      if (!formato.test(documento)) errores.documento = tipo === "NIF"
+        ? "Introduce un NIF de ocho cifras y una letra." : "Introduce un NIE con X, Y o Z, siete cifras y una letra.";
+      else {
+        const numero = tipo === "NIE" ? "XYZ".indexOf(documento[0]) + documento.slice(1,-1) : documento.slice(0,-1);
+        if ("TRWAGMYFPDXBNJZSQVHLCKE"[Number(numero) % 23] !== documento.slice(-1)) {
+          errores.documento = "La letra del " + tipo + " no es correcta. Revisa el número y la letra.";
+        }
+      }
+    } else if (!/^[A-Za-z0-9][A-Za-z0-9 ./-]*$/.test(documento)) {
+      errores.documento = "Revisa el pasaporte: utiliza letras, cifras, espacios, puntos, barras o guiones.";
+    }
+  }
+  if (espana) {
+    const cp = valores.codigoPostal || "";
+    if (cp && !/^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(cp)) errores.codigoPostal = "Introduce un código postal de cinco cifras con prefijo provincial entre 01 y 52.";
+    const provincia = /^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(cp) ? provinciasAdhesion[Number(cp.slice(0,2))-1] : "";
+    if (provincia) {
+      valores.provincia = provincia;
+      delete errores.provincia;
+    }
+    if (valores.numero && !/^\d{1,7}$/.test(valores.numero)) errores.numero = "El PDF oficial admite aquí hasta siete cifras.";
+  }
+  for (const nombre of ["correo","confirmarCorreo"]) {
+    if (valores[nombre] && !/^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/.test(valores[nombre])) {
+      errores[nombre] = "Introduce una dirección de correo válida.";
+    }
+  }
+  if (valores.correo && valores.confirmarCorreo && valores.correo !== valores.confirmarCorreo) errores.confirmarCorreo = "Las dos direcciones deben coincidir.";
+  for (const nombre of ["telefonoFijo","telefonoMovil","fax"]) {
+    const valor = valores[nombre];
+    if (!valor || errores[nombre]) continue;
+    if (!/^\+?[\d ()-]+$/.test(valor)) { errores[nombre] = "Revisa el formato del teléfono."; continue; }
+    const compacto = valor.replace(/[ ()-]/g,"");
+    const valido = /^\+[1-9]\d{6,14}$/.test(compacto) || (espana && (nombre === "telefonoMovil" ? /^[67]\d{8}$/ : /^[89]\d{8}$/).test(compacto));
+    if (!valido) errores[nombre] = espana
+      ? "Introduce nueve cifras españolas válidas o un número internacional con + y prefijo."
+      : "Incluye +, el prefijo del país y el número.";
+  }
+  if (valores.texto === "El motivo de mi queja es") errores.texto = "Explica el motivo de tu adhesión.";
+  if (entrada?.veracidad !== true) errores.veracidad = "Marca la declaración de veracidad para enviar.";
+  valores.veracidad = entrada?.veracidad === true;
+  return {valores, errores};
+}
+
+
+  const formulario = document.getElementById("formulario-adhesion");
+  const resultado = document.getElementById("resultado-adhesion");
+  const enviar = formulario.querySelector('button[type="submit"]');
+  const contador = document.getElementById("contador-texto");
+  const domicilio = formulario.elements.domicilio;
+  let solicitudAnterior = "", idAdhesion = "", revisado = false;
+  let motivoEditado = false;
+  function actualizarPresentacion() {
+    const campos = formulario.elements;
+    const nombre = [campos.nombre.value, campos.apellido1.value, campos.apellido2.value].map(v => v.trim()).filter(Boolean).join(" ");
+    const esCif = campos.tipoDocumento.value === "CIF";
+    const entidad = document.getElementById("datos-entidad");
+    entidad.hidden = !esCif;
+    for (const campo of entidad.querySelectorAll("input")) campo.disabled = !esCif;
+    document.getElementById("identificacion-adhesion").textContent = esCif
+      ? "Yo, " + (nombre || "[nombre y apellidos]") + ", en calidad de " + (campos.cargo.value.trim() || "[cargo]") + " de " + (campos.entidad.value.trim() || "[entidad]") + ", con CIF " + (campos.documento.value.trim() || "[número]") + ","
+      :
+      "Yo, " + (nombre || "[nombre y apellidos]") + ", con " +
+      (campos.tipoDocumento.value || "[tipo de documento]") + " " +
+      (campos.documento.value.trim() || "[número]") + ",";
+    if (!motivoEditado) {
+      campos.texto.value = campos.texto.value.replace(/^comparezco (?:como ciudadan[oa] interesad[oa](?: en la regulación de la adopción)?|en representación de dicha entidad)/,
+        esCif ? "comparezco en representación de dicha entidad"
+        : campos.tratamiento.value === "Sra" ? "comparezco como ciudadana interesada en la regulación de la adopción" : "comparezco como ciudadano interesado en la regulación de la adopción");
+    }
+    contarTexto();
+  }
+  formulario.noValidate = true;
+  for (const campo of formulario.querySelectorAll("input, select, textarea")) {
+    campo.id = "adhesion-" + campo.name;
+    campo.setAttribute("aria-describedby", "error-" + campo.name);
+    const error = document.createElement("span");
+    error.id = "error-" + campo.name;
+    error.className = "adhesion-error";
+    error.hidden = true;
+    campo.closest("label").append(error);
+  }
+  function datosFormulario() {
+    const datos = Object.fromEntries(new FormData(formulario));
+    datos.veracidad = formulario.elements.veracidad.checked;
+    return datos;
+  }
+  function mostrarErrores(errores, enfocar = false) {
+    let primero;
+    for (const campo of formulario.querySelectorAll("input, select, textarea")) {
+      const mensaje = errores[campo.name] || "";
+      const error = document.getElementById("error-" + campo.name);
+      error.textContent = mensaje;
+      error.hidden = !mensaje;
+      campo.setAttribute("aria-invalid", String(Boolean(mensaje)));
+      if (mensaje && !primero && !campo.disabled) primero = campo;
+    }
+    if (enfocar && primero) primero.focus();
+  }
+  function comprobar(enfocar = false) {
+    const revision = validarEntradaAdhesion(datosFormulario());
+    for (const campo of formulario.querySelectorAll("select[required]")) {
+      if (!campo.disabled && !Array.from(campo.options).some(opcion => opcion.value === revision.valores[campo.name] && opcion.value)) {
+        revision.errores[campo.name] = "Selecciona una opción válida.";
+      }
+    }
+    mostrarErrores(revision.errores, enfocar);
+    return revision;
+  }
+  function mostrarDomicilio() {
+    for (const opcion of ["espana","extranjero"]) {
+      const grupo = document.getElementById("domicilio-" + opcion);
+      grupo.hidden = domicilio.value !== opcion;
+      for (const campo of grupo.querySelectorAll("input, select")) campo.disabled = grupo.hidden;
+    }
+  }
+  function actualizarProvincia() {
+    const codigo = formulario.elements.codigoPostal.value;
+    formulario.elements.provincia.value = /^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(codigo)
+      ? provinciasAdhesion[Number(codigo.slice(0,2))-1] : "";
+  }
+  function contarTexto() {
+    contador.textContent = formulario.elements.texto.value.length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " / 50.000 caracteres";
+  }
+  formulario.elements.provincia.readOnly = true;
+  domicilio.addEventListener("change", mostrarDomicilio);
+  formulario.elements.codigoPostal.addEventListener("input", actualizarProvincia);
+  formulario.addEventListener("input", evento => { if (evento.target.name === "texto") motivoEditado = true; actualizarPresentacion(); if (revisado) comprobar(); });
+  formulario.addEventListener("change", () => { actualizarPresentacion(); if (revisado) comprobar(); });
+  formulario.addEventListener("focusout", evento => {
+    const campo = evento.target;
+    if (!campo.name || campo.disabled) return;
+    const revision = validarEntradaAdhesion(datosFormulario());
+    const mensaje = revision.errores[campo.name] || "";
+    document.getElementById("error-" + campo.name).textContent = mensaje;
+    document.getElementById("error-" + campo.name).hidden = !mensaje;
+    campo.setAttribute("aria-invalid", String(Boolean(mensaje)));
+  });
+  mostrarDomicilio();
+  contarTexto();
+  formulario.addEventListener("submit", async evento => {
+    evento.preventDefault();
+    if (enviar.disabled) return;
+    revisado = true;
+    const revision = comprobar(true);
+    if (Object.keys(revision.errores).length) {
+      resultado.textContent = "Revisa los campos señalados. No se ha enviado la adhesión.";
+      return;
+    }
+    const datos = revision.valores, solicitud = JSON.stringify(datos);
+    if (solicitud !== solicitudAnterior) { solicitudAnterior = solicitud; idAdhesion = crypto.randomUUID(); }
+    enviar.disabled = true;
+    resultado.textContent = "Enviando la adhesión…";
+    try {
+      const respuesta = await fetch(formulario.dataset.endpoint, {
+        method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({...datos,idAdhesion}),
+      });
+      const mensaje = await respuesta.json();
+      if (!respuesta.ok || !mensaje.id) {
+        if (mensaje.campos) mostrarErrores(mensaje.campos,true);
+        throw new Error(mensaje.error || "No se pudo enviar la adhesión.");
+      }
+      resultado.textContent = "Adhesión enviada. Revisa la copia en tu buzón.";
+    } catch (error) {
+      resultado.textContent = error instanceof TypeError ? "No se pudo conectar. Puedes reintentar el mismo envío." : error.message;
+    } finally { enviar.disabled = false; }
+  });
+  async function cargarOpciones() {
+    resultado.textContent = "Cargando las opciones del formulario oficial…";
+    try {
+      const respuesta = await fetch(formulario.dataset.endpoint + "?opciones=1");
+      if (!respuesta.ok) throw new Error("No se pudieron cargar las opciones. Recarga la página.");
+      const opciones = await respuesta.json();
+      for (const nombre of ["tratamiento","tipoDocumento","tipoVia","pais"]) {
+        const anterior = formulario.elements[nombre], selector = document.createElement("select");
+        selector.name = nombre; selector.id = anterior.id;
+        selector.setAttribute("aria-describedby", "error-" + nombre);
+        selector.required = true; selector.disabled = anterior.disabled;
+        selector.add(new Option("Selecciona",""));
+        for (const valor of opciones[nombre]) selector.add(new Option(valor,valor));
+        anterior.replaceWith(selector);
+      }
+      actualizarPresentacion(); resultado.textContent = ""; enviar.disabled = false;
+    } catch (error) { resultado.textContent = error.message; }
+  }
+  cargarOpciones();
+
+</script>
