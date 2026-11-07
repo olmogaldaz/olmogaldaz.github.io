@@ -23,7 +23,7 @@ extra_css:
         <label>Nombre *<input name="nombre" type="text" maxlength="100" required></label>
         <label>Primer apellido *<input name="apellido1" type="text" maxlength="100" required></label>
         <label>Segundo apellido<input name="apellido2" type="text" maxlength="100"></label>
-        <label>Tipo de documento *<select name="tipoDocumento" required><option value="">Selecciona</option><option value="NIF">NIF</option><option value="NIE">NIE</option><option value="Pasaporte">Pasaporte</option><option value="CIF">CIF</option></select></label>
+        <label>Tipo de documento *<select name="tipoDocumento" required><option value="">Selecciona</option><option value="NIF">DNI/NIF</option><option value="NIE">NIE</option><option value="Pasaporte">Pasaporte</option><option value="CIF">CIF</option></select></label>
         <label>Número de documento *<input name="documento" type="text" maxlength="40" required></label>
       </div>
     </fieldset>
@@ -363,7 +363,7 @@ function validarEntradaAdhesion(entrada) {
         selector.setAttribute("aria-describedby", "error-" + nombre);
         selector.required = true; selector.disabled = anterior.disabled;
         selector.add(new Option("Selecciona",""));
-        for (const valor of opciones[nombre]) selector.add(new Option(valor,valor));
+        for (const valor of opciones[nombre]) selector.add(new Option(nombre === "tipoDocumento" && valor === "NIF" ? "DNI/NIF" : valor, valor));
         anterior.replaceWith(selector);
       }
       actualizarPresentacion(); resultado.textContent = ""; enviar.disabled = false;
