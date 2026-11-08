@@ -270,10 +270,11 @@ Una página puede contener varios nodos Schema. El nodo que representa la URL co
 
 ## Catálogo central de recursos
 
-`_data/resources.yml` contiene tres grupos:
+`_data/resources.yml` contiene cuatro grupos:
 
 - `html`: parejas ES/EN de páginas vigentes, en el orden en que aparecen en el sitemap. El campo `section` en la primera pareja de un bloque genera su encabezado en el XML.
 - `legacy_html`: parejas ES/EN de avisos antiguos que conservan su selector de idioma y sus fechas. El sitemap omite este grupo.
+- `external_html`: direcciones completas de otros subdominios propios, sin `hreflang` bilingüe; se incorporan al sitemap con su `lastmod`.
 - `pdf`: documentos PDF incluidos al final del sitemap.
 
 Cada versión HTML admite `url`, `published`, `modified` e `images`. El layout busca la página en los dos grupos HTML. La otra versión proporciona el enlace del selector de idioma y el `hreflang`. `published` y `modified` proporcionan las fechas a los datos estructurados cuando están registradas.
@@ -290,9 +291,12 @@ Jekyll usa la plantilla `sitemap.xml` y el catálogo `_data/resources.yml` para 
 - `lastmod` cuando existe `modified`;
 - los enlaces alternativos `hreflang`;
 - los datos opcionales de imágenes;
+- las URL completas de los subdominios propios registradas en `external_html`;
 - las URL de documentos PDF y su `lastmod` cuando existe.
 
 En ambos entornos, el XML enumera direcciones de producción. `modified` se publica como `<lastmod>` y representa la última modificación registrada. `published` representa la fecha de publicación en los datos estructurados de la página.
+
+La portada `https://queja.gomezaldaz.com/` figura en el catálogo `external_html` con fecha de modificación `2026-11-08`. Su tratamiento como URL de otro subdominio en Google Search Console requiere comprobar la verificación de propiedad y, cuando corresponda, el procedimiento de envío de sitemaps entre sitios. La mera incorporación al XML no garantiza la indexación.
 
 Para revisar el archivo generado, abre [el sitemap de pruebas](https://enpruebas.gomezaldaz.com/sitemap.xml) o [el sitemap público](https://gomezaldaz.com/sitemap.xml) y pulsa **Ctrl+U** en Chrome. El código fuente muestra los encabezados por sección, las parejas ES/EN y los PDF al final.
 
@@ -432,7 +436,7 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 - Número inicial de queja: **26097224**. Ambos corresponden al mismo asunto; el número inicial se explica como antecedente y las instrucciones de adhesión utilizan el expediente actual.
 - Español: `/es/queja-adoptados-bebes-robados/`.
 - Inglés: `/en/complaint-adoptees-stolen-babies/`.
-- Las portadas enlazan directamente con estas rutas descriptivas. Las páginas y los banners comparten `/css/queja.css`.
+- La portada española ofrece un botón hacia `https://queja.gomezaldaz.com/` (web independiente con tres opciones de adhesión e información). La portada inglesa conserva su acceso a la ruta explicativa en inglés. Los banners y páginas comparten `/css/queja.css`.
 - Las rutas antiguas `/es/queja-26097224/` y `/en/complaint-26097224/` muestran un aviso explicativo con un botón hacia la nueva página. No tienen redirección automática.
 - La pareja antigua permanece en `legacy_html` para el selector de idioma y queda fuera del sitemap. Cada aviso declara `noindex: true` y canonical hacia la nueva página de su idioma; el layout admite esta exclusión por página.
 - PDF actuales en español: `/docs/guia-adhesion-adoptados-bebes-robados.pdf` y `/docs/queja-adhesion-adoptados-bebes-robados.pdf`. El catálogo incluye sus rutas nuevas y las fechas de modificación.
