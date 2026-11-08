@@ -45,6 +45,16 @@ layout: null
   {%- endfor %}
 {%- endfor %}
 
+  <!-- SUBDOMINIO DE LA QUEJA / COMPLAINT SUBDOMAIN -->
+{%- for item in site.data.resources.external_html %}
+  <url>
+    <loc>{{ item.url | xml_escape }}</loc>
+    {%- if item.modified %}
+    <lastmod>{{ item.modified }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endfor %}
+
   <!-- DOCUMENTOS PDF / PDF DOCUMENTS -->
 {%- for item in site.data.resources.pdf %}
   <url>
