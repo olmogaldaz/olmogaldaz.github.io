@@ -1,11 +1,11 @@
 # Catálogo de páginas bilingües y documentos PDF.
-# html y pdf alimentan el sitemap. legacy_html recoge los avisos antiguos.
+# html, external_html y pdf alimentan el sitemap. legacy_html recoge los avisos antiguos.
 # En html, section abre un bloque en el XML generado.
 # Cada versión HTML admite url, published, modified e images.
 # images es una lista opcional con url, title y caption.
 
 html:
-  - es: {url: "/", modified: "2026-11-01"}
+  - es: {url: "/", modified: "2026-11-08"}
     en: {url: "/en/", modified: "2026-11-01"}
     section: "PORTADA / HOME"
 
@@ -110,6 +110,10 @@ legacy_html:
 
   - es: {url: "/es/obra/asociacion-maria-madre/", modified: "2026-10-11"}
     en: {url: "/en/work/maria-madre-association/", modified: "2026-10-11"}
+
+# URL propia de otro subdominio, registrada con su dominio completo.
+external_html:
+  - {url: "https://queja.gomezaldaz.com/", modified: "2026-11-08"}
 
 pdf:
   - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-26"}
