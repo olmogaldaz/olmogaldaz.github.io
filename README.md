@@ -25,7 +25,7 @@ La carpeta `_site/` es la salida local generada automáticamente por Jekyll dura
 
 | Elemento | Pruebas | Producción |
 |---|---|---|
-| Repositorio | `olmogaldaz/gomezaldaz-pruebas` | `olmogaldaz/olmogaldaz.github.io` |
+| Repositorio | `olmogaldaz/enpruebas.gomezaldaz.com` | `olmogaldaz/olmogaldaz.github.io` |
 | Dominio | `enpruebas.gomezaldaz.com` | `gomezaldaz.com` |
 | `url` | `https://enpruebas.gomezaldaz.com` | `https://gomezaldaz.com` |
 | `public_url` | `https://gomezaldaz.com` | `https://gomezaldaz.com` |
