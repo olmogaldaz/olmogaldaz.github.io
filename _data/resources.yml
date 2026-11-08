@@ -79,8 +79,8 @@ html:
   - es: {url: "/es/prensa/", modified: "2026-10-11"}
     en: {url: "/en/press/", modified: "2026-10-11"}
     section: "PRENSA / PRESS"
-  - es: {url: "/es/prensa/medios/", modified: "2026-11-04"}
-    en: {url: "/en/press/media/", modified: "2026-11-04"}
+  - es: {url: "/es/prensa/medios/", modified: "2026-11-08"}
+    en: {url: "/en/press/media/", modified: "2026-11-08"}
   - es: {url: "/es/prensa/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", modified: "2026-08-06T01:48:08+02:00"}
